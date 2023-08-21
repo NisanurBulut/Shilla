@@ -7,6 +7,7 @@ namespace MagicCity_ShillaAPI.Controllers
     [ApiController]
     public class ShillaAPIController : ControllerBase
     {
+        [HttpGet]
         public IEnumerable<Shilla> GetShillas()
         {
             return new List<Shilla>
