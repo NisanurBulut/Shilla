@@ -10,14 +10,23 @@ namespace MagicCity_ShillaAPI.Controllers
     public class ShillaAPIController : ControllerBase
     {
         [HttpGet]
-        public IEnumerable<ShillaDto> GetShillas()
+        public ActionResult<IEnumerable<ShillaDto>> GetShillas()
         {
-            return ShillaStore.shillaList;
+            return Ok(ShillaStore.shillaList);
         }
-        [HttpGet("id")]
-        public ShillaDto GetShilla(int id)
+        [HttpGet("{id:int}")]
+        public ActionResult<ShillaDto> GetShilla(int id)
         {
-            return ShillaStore.shillaList.FirstOrDefault(u => u.Id == id);
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+            var shillaItem = ShillaStore.shillaList.FirstOrDefault(u => u.Id == id);
+            if (shillaItem == null)
+            {
+                return NotFound();
+            }
+            return Ok(shillaItem);
         }
     }
 }
