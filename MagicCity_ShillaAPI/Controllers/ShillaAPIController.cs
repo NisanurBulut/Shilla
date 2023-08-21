@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MagicCity_ShillaAPI.Controllers
 {
-    [Route("api/ShillaAPI")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ShillaAPIController : ControllerBase
     {
