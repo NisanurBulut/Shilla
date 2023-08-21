@@ -11,19 +11,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [HttpGet]
         public IEnumerable<ShillaDto> GetShillas()
         {
-            return new List<ShillaDto>
-            {
-                new ShillaDto
-                {
-                    Id = 1,
-                    Name = "Pool View"
-                },
-                new ShillaDto
-                {
-                    Id = 2,
-                    Name = "Beach View"
-                }
-            };
+            
         }
     }
 }
