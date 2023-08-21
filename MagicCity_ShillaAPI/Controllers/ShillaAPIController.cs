@@ -15,6 +15,9 @@ namespace MagicCity_ShillaAPI.Controllers
             return Ok(ShillaStore.shillaList);
         }
         [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type=typeof(ShillaDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<ShillaDto> GetShilla(int id)
         {
             if (id == 0)
