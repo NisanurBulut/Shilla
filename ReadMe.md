@@ -72,3 +72,24 @@ Benefits of using region director :
   <li>code can be easily navigated</li>
   <li>increade efficiency</li>
 </ul>
+
+<hr/>
+
+<h2>Packages</h2>
+
+<ol>
+<li> 
+
+[Microsoft.AspNetCore.JsonPatch](https://www.nuget.org/packages/Microsoft.AspNetCore.JsonPatch/7.0.10) </li>
+<li> 
+
+[Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/7.0.10) 
+</li>
+</ol>
+
+<h2>Links</h2>
+
+<ol><li> 
+
+[What is JSON Patch?](https://jsonpatch.com/) 
+</li></ol>
