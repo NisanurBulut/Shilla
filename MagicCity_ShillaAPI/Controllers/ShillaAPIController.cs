@@ -1,6 +1,7 @@
 ﻿using MagicCity_ShillaAPI.Data;
 using MagicCity_ShillaAPI.Models;
 using MagicCity_ShillaAPI.Models.Dto;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MagicCity_ShillaAPI.Controllers
@@ -94,6 +95,26 @@ namespace MagicCity_ShillaAPI.Controllers
             shillaItem.Name = shillaDto.Name;
             shillaItem.Sqft = shillaDto.Sqft;
             shillaItem.Occupancy = shillaDto.Occupancy;
+            return NoContent();
+        }
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPatch("{id:int}", Name ="UpdatePartialShilla")]
+        public IActionResult UpdatePartialShilla(int id, JsonPatchDocument<ShillaDto> pathcItem)
+        {
+            if(pathcItem == null || id == 0)
+            {
+                return BadRequest();
+            }
+
+            var shillaItem = ShillaStore.shillaList.FirstOrDefault(a => a.Id == id);
+            pathcItem.ApplyTo(shillaItem);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             return NoContent();
         }
     }
