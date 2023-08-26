@@ -14,7 +14,8 @@ namespace MagicCity_ShillaAPI.Controllers
         {
             return Ok(ShillaStore.shillaList);
         }
-        [HttpGet("{id:int}")]
+        [HttpGet("{id:int}", Name = "GetShillaById")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ShillaDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -45,7 +46,7 @@ namespace MagicCity_ShillaAPI.Controllers
             }
             shillaDto.Id = ShillaStore.shillaList.OrderByDescending(a => a.Id).FirstOrDefault().Id + 1;
             ShillaStore.shillaList.Add(shillaDto);
-            return Ok(shillaDto)
+            return CreatedAtRoute("GetShillaById", new { id = shillaDto.Id }, shillaDto);
         }
     }
 }
