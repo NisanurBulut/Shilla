@@ -51,4 +51,8 @@ public IActionResult GetProductById([FromRoute] int id)
 </li>
 </ol>
 
+* Validation
+
+[Validation Diagram](./../asset/model_state_diagram.png)
+
 <hr/>
