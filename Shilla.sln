@@ -4,11 +4,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicCity_ShillaAPI", "MagicCity_ShillaAPI\MagicCity_ShillaAPI.csproj", "{D6CE8032-3C85-4E5A-83D3-0F9797F9DC99}"
+<<<<<<< Updated upstream
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6D79D4B4-2BD2-47FD-B514-88332AC7DDAB}"
 	ProjectSection(SolutionItems) = preProject
 		ReadMe.md = ReadMe.md
 	EndProjectSection
+=======
+>>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
