@@ -17,13 +17,13 @@ If you like or are using this project to learn or start your solution, please gi
 from URL address and we need to check <b>?</b> character.
 Example <i>https://example.com/api/products?id=123&name=keyboard</i>
 
-<code>
+```C#
 [HttpGet("products")]
 public IActionResult GetProduct([FromQuery] int id, [FromQuery] string name)
 {
 
 }
-</code>
+```
 
 </p>
 </li>
@@ -31,23 +31,23 @@ public IActionResult GetProduct([FromQuery] int id, [FromQuery] string name)
 Kind of data might be JSON, XML or another type.
 </p>
 
-<code>
+```C#
 [HttpPost("products")]
 public IActionResult CreateProduct([FromBody] ProductDto productDto)
 {
    
 }
-</code>
+```
 </li>
 <li>FromRoute : <p>It is used to bind routing parameters in the URL to a parameter in the API method. Redirect parameters are dynamic values specified in a specific part of the URL.
 Example <i>https://example.com/api/products/{id}</i> It is commonly used when reading resource id information.
 </p>
-<code>
+```C#
 [HttpGet("products/{id}")]
 public IActionResult GetProductById([FromRoute] int id)
 {
 }
-</code>
+```
 </li>
 </ol>
 
@@ -55,4 +55,20 @@ public IActionResult GetProductById([FromRoute] int id)
 
 ![Validation Diagram](/MagicCity_ShillaAPI/asset/model_state_diagram.png)
 
-<hr/>
+* Region Directive
+
+I am particularly fond of 😻 the <code>#region</code> directive. It allows us to collapse code in a customized manor.
+Regions are created in this format,
+
+```C#
+#region NisanurStartedCoding
+return Ok(👌);
+#endregion
+```
+Benefits of using region director :
+<ul role="list" style="list-style: square;">
+  <li>Well organized</li>
+  <li>easily readable</li>
+  <li>code can be easily navigated</li>
+  <li>increade efficiency</li>
+</ul>

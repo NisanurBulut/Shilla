@@ -61,5 +61,23 @@ namespace MagicCity_ShillaAPI.Controllers
             ShillaStore.shillaList.Add(shillaDto);
             return CreatedAtRoute("GetShillaById", new { id = shillaDto.Id }, shillaDto);
         }
+
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpDelete("{id:int}", Name ="DeleteShillaById")]
+        public IActionResult DeleteShilla(int id) {
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+            var shillaItem = ShillaStore.shillaList.FirstOrDefault(u => u.Id == id);
+            if (shillaItem == null)
+            {
+                return NotFound();
+            }
+            ShillaStore.shillaList.Remove(shillaItem);
+            return NoContent();
+        }
     }
 }
