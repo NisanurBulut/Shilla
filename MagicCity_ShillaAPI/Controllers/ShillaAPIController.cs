@@ -65,8 +65,9 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpDelete("{id:int}", Name ="DeleteShillaById")]
-        public IActionResult DeleteShilla(int id) {
+        [HttpDelete("{id:int}", Name = "DeleteShillaById")]
+        public IActionResult DeleteShilla(int id)
+        {
             if (id == 0)
             {
                 return BadRequest();
@@ -77,6 +78,22 @@ namespace MagicCity_ShillaAPI.Controllers
                 return NotFound();
             }
             ShillaStore.shillaList.Remove(shillaItem);
+            return NoContent();
+        }
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPut("{id:int}", Name = "UpdateShilla")]
+        public IActionResult UpdateShilla(int id, [FromBody] ShillaDto shillaDto)
+        {
+            if (shillaDto == null || id != shillaDto.Id)
+            {
+                return BadRequest(shillaDto);
+            }
+
+            var shillaItem = ShillaStore.shillaList.FirstOrDefault(a => a.Id == id);
+            shillaItem.Name = shillaDto.Name;
+            shillaItem.Sqft = shillaDto.Sqft;
+            shillaItem.Occupancy = shillaDto.Occupancy;
             return NoContent();
         }
     }
