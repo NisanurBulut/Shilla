@@ -36,6 +36,10 @@ namespace MagicCity_ShillaAPI.Controllers
         [HttpPost]
         public ActionResult<ShillaDto> CreateShilla([FromBody] ShillaDto shillaDto)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             if (shillaDto == null)
             {
                 return BadRequest(shillaDto);
