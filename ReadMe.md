@@ -1,7 +1,7 @@
 ﻿﻿
 # Magic Shilla App 
 
-<3 I have missed the code Net core 
+❤ I have missed the code Net core 
 
 ## Give a Star! :star:
 If you like or are using this project to learn or start your solution, please give it a star. Thanks!
