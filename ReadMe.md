@@ -85,6 +85,15 @@ Benefits of using region director :
 
 [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/7.0.10) 
 </li>
+
+<li>
+
+[Serilog.AspNetCore](https://www.nuget.org/packages/Serilog.AspNetCore/7.0.0)
+</li>
+<li>
+
+[Serilog.Sinks.File](https://www.nuget.org/packages/Serilog.Sinks.File/5.0.0)
+</li>
 </ol>
 
 <h2>Links</h2>
