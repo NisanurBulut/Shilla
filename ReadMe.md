@@ -53,6 +53,6 @@ public IActionResult GetProductById([FromRoute] int id)
 
 * Validation
 
-[Validation Diagram](/MagicCity_ShillaAPI/asset/model_state_diagram.png)
+![Validation Diagram](/MagicCity_ShillaAPI/asset/model_state_diagram.png)
 
 <hr/>
