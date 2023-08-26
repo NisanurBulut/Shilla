@@ -36,10 +36,19 @@ namespace MagicCity_ShillaAPI.Controllers
         [HttpPost]
         public ActionResult<ShillaDto> CreateShilla([FromBody] ShillaDto shillaDto)
         {
+            #region custom validation
+            if (ShillaStore.shillaList.FirstOrDefault(a => a.Name.ToLower() == shillaDto.Name.ToLower()) != null)
+            {
+                ModelState.AddModelError("", "Shilla city is already exists !");
+                return BadRequest(ModelState);
+            }
+            #endregion
+            #region using ModelState.IsValid
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            #endregion
             if (shillaDto == null)
             {
                 return BadRequest(shillaDto);
