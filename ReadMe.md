@@ -214,6 +214,12 @@ Use AsNoTracking when you only require read-only access to entities and want to 
 </li><li>
 
 [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools/7.0.10)
+</li><li>
+
+[AutoMapper.Extensions.Microsoft.DependencyInjection](https://www.nuget.org/packages/AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.1)
+</li><li>
+
+[AutoMapper](https://www.nuget.org/packages/AutoMapper/12.0.1)
 </li></ol></td><td><ol><li> 
 
 [What is JSON Patch?](https://jsonpatch.com/) 
