@@ -1,4 +1,5 @@
 ﻿using MagicCity_ShillaAPI.Data;
+using MagicCity_ShillaAPI.Logging;
 using MagicCity_ShillaAPI.Models;
 using MagicCity_ShillaAPI.Models.Dto;
 using Microsoft.AspNetCore.JsonPatch;
@@ -10,9 +11,9 @@ namespace MagicCity_ShillaAPI.Controllers
     [ApiController]
     public class ShillaAPIController : ControllerBase
     {
-        private readonly ILogger<ShillaAPIController> _logger;
+        private readonly ILogging _logger;
 
-        public ShillaAPIController(ILogger<ShillaAPIController> logger)
+        public ShillaAPIController(ILogging logger)
         {
             _logger = logger;
         }
@@ -21,7 +22,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<ShillaDto>> GetShillas()
         {
-            _logger.LogInformation("Getting all Shilla items");
+            _logger.Log("Getting all Shilla items","");
             return Ok(ShillaStore.shillaList);
         }
         [HttpGet("{id:int}", Name = "GetShillaById")]
@@ -33,7 +34,7 @@ namespace MagicCity_ShillaAPI.Controllers
         {
             if (id == 0)
             {
-                _logger.LogError("Get Shilla error with id {id}", id);
+                _logger.Log($"Get Shilla error with id {id}","error");
                 return BadRequest();
             }
             var shillaItem = ShillaStore.shillaList.FirstOrDefault(u => u.Id == id);
