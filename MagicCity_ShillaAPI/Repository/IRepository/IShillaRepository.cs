@@ -3,14 +3,9 @@ using System.Linq.Expressions;
 
 namespace MagicCity_ShillaAPI.Repository.IRepository
 {
-    public interface IShillaRepository
+    public interface IShillaRepository:IRepository<Shilla>
     {
-        Task<List<Shilla>> GetAllAsync(Expression<Func<Shilla, bool>> filter = null);
-        Task<Shilla> GetAsync(Expression<Func<Shilla, bool>> filter = null, bool tracked = true);
-
-        Task CreateAsync(Shilla shillaEntity);
-        Task RemoveAsync(Shilla shillaEntity);
-        Task UpdateAsync(Shilla shillaEntity);
-        Task SaveAsync();
+      
+        Task<Shilla> UpdateAsync(Shilla shillaEntity);
     }
 }
