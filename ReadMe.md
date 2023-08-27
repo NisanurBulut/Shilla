@@ -191,7 +191,12 @@ Benefits of using region director :
 <ol><li> 
 
 [What is JSON Patch?](https://jsonpatch.com/) 
-</li></ol>
+</li>
+<li>
+
+[Generate Fake C# Data](https://generatedata.com/generator)
+</li>
+</ol>
 
 <h2>References</h2>
 

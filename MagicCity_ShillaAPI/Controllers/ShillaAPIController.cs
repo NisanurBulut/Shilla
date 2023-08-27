@@ -164,20 +164,15 @@ namespace MagicCity_ShillaAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            Shilla entityItem = new()
-            {
-                Id = id,
-                Name = shillaDtoItem.Name,
-                Occupancy = shillaDtoItem.Occupancy,
-                Sqft = shillaDtoItem.Sqft,
-                Details = shillaDtoItem.Details,
-                Rate = shillaDtoItem.Rate,
-                Amenity = shillaDtoItem.Amenity,
-                ImageUrl = shillaDtoItem.ImageUrl,
-                UpdatedAt = DateTime.Now,
-            };
+            shillaItem.Name = shillaDtoItem.Name;
+            shillaItem.Occupancy = shillaDtoItem.Occupancy;
+            shillaItem.Sqft = shillaDtoItem.Sqft;
+            shillaItem.Details = shillaDtoItem.Details;
+            shillaItem.Rate = shillaDtoItem.Rate;
+            shillaItem.Amenity = shillaDtoItem.Amenity;
+            shillaItem.ImageUrl = shillaDtoItem.ImageUrl;
+            shillaItem.UpdatedAt = DateTime.Now;
 
-            _context.Update(entityItem);
             _context.SaveChanges();
 
             return NoContent();
