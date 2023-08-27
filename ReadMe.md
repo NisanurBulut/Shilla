@@ -182,55 +182,65 @@ Use AsNoTracking when you only require read-only access to entities and want to 
 </ul>
 
 <hr/>
-<h2>Packages</h2>
 
-<ol>
-<li> 
+<b>Data Transfer Objects</b> are used to transfer data between the <b>Application Layer</b> and <b>the Presentation Layer</b>.
+
+
+<hr/>
+
+<table>
+  <tr>
+    <th>Packages</th>
+    <th>Links</th>
+	<th>References</th>
+  </tr>
+  <tr>
+    <td>
+	<ol><li> 
 
 [Microsoft.AspNetCore.JsonPatch](https://www.nuget.org/packages/Microsoft.AspNetCore.JsonPatch/7.0.10) </li>
 <li> 
 
 [Microsoft.AspNetCore.Mvc.NewtonsoftJson](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.NewtonsoftJson/7.0.10) 
-</li>
-
-<li>
+</li><li>
 
 [Serilog.AspNetCore](https://www.nuget.org/packages/Serilog.AspNetCore/7.0.0)
-</li>
-<li>
+</li><li> 
 
 [Serilog.Sinks.File](https://www.nuget.org/packages/Serilog.Sinks.File/5.0.0)
-</li>
-<li>
+</li><li>
 
 [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/7.0.10)
-</li>
-<li>
+</li><li>
 
 [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools/7.0.10)
-</li>
-</ol>
+</li><li>
 
-<h2>Links</h2>
+[AutoMapper.Extensions.Microsoft.DependencyInjection](https://www.nuget.org/packages/AutoMapper.Extensions.Microsoft.DependencyInjection/12.0.1)
+</li><li>
 
-<ol><li> 
+[AutoMapper](https://www.nuget.org/packages/AutoMapper/12.0.1)
+</li></ol></td><td><ol><li> 
 
 [What is JSON Patch?](https://jsonpatch.com/) 
-</li>
-<li>
+</li><li>
 
 [Generate Fake C# Data](https://generatedata.com/generator)
-</li>
-</ol>
+</li><li>
 
-<h2>References</h2>
-
-<ol><li> 
+[10-bad-practices-to-avoid-in-aspnet-core-api-controllers](https://dev.to/andytechdev/10-bad-practices-to-avoid-in-aspnet-core-api-controllers-2o9l)
+</li></ol></td><td><ol><li> 
 
 [<i>differences-between-scoped-transient-and-singleton-service</i>](https://www.c-sharpcorner.com/article/differences-between-scoped-transient-and-singleton-service/) 
-</li>
-<li>
+</li><li>
 
 [<i>explaining-difference-between-asnotracking-net-core</i>](https://www.linkedin.com/pulse/explaining-difference-between-asnotracking-net-core-ahad-tagh%C4%B1yev/)
-</li>
-</ol>
+</li><li>
+
+[<i>Data-Transfer-Objects</i>](https://aspnetboilerplate.com/Pages/Documents/Data-Transfer-Objects)
+</li></ol></td></tr></table>
+
+
+
+
+
