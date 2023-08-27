@@ -17,18 +17,18 @@ namespace MagicCity_ShillaAPI.Controllers
     public class ShillaAPIController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly ShillaDbContext _context;
-        public ShillaAPIController(ShillaDbContext context, IMapper mapper)
+        private readonly IShillaRepository _shillaRepo;
+        public ShillaAPIController(IShillaRepository shillaRepo, IMapper mapper)
         {
             _mapper = mapper;
-            _context = context;
+            _shillaRepo = shillaRepo;
         }
 
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ShillaDto>>> GetShillas()
         {
-            IEnumerable<Shilla> entityList = await _context.Shillas.ToListAsync();
+            IEnumerable<Shilla> entityList = await _shillaRepo.GetAllAsync();
             return Ok(_mapper.Map<ShillaDto>(entityList));
 
         }
@@ -43,7 +43,7 @@ namespace MagicCity_ShillaAPI.Controllers
             {
                 return BadRequest();
             }
-            var shillaItem = await _context.Shillas.FirstOrDefaultAsync(u => u.Id == id);
+            var shillaItem = await _shillaRepo.GetAsync(u => u.Id == id);
             if (shillaItem == null)
             {
                 return NotFound();
@@ -55,7 +55,7 @@ namespace MagicCity_ShillaAPI.Controllers
         public async Task<ActionResult<ShillaDto>> CreateShilla([FromBody] CreateShillaDto shillaDto)
         {
             #region custom validation
-            if (await _context.Shillas.FirstOrDefaultAsync(a => a.Name.ToLower() == shillaDto.Name.ToLower()) != null)
+            if (await _shillaRepo.GetAsync(a => a.Name.ToLower() == shillaDto.Name.ToLower()) != null)
             {
                 ModelState.AddModelError("", "Shilla city is already exists !");
                 return BadRequest(ModelState);
@@ -73,8 +73,7 @@ namespace MagicCity_ShillaAPI.Controllers
             }
 
             Shilla entityItem = _mapper.Map<Shilla>(shillaDto);
-             await _context.Shillas.AddAsync(entityItem);
-             await _context.SaveChangesAsync();
+            await _shillaRepo.CreateAsync(entityItem);
             return CreatedAtRoute("GetShillaById", new { id = entityItem.Id }, shillaDto);
         }
 
@@ -82,19 +81,18 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpDelete("{id:int}", Name = "DeleteShillaById")]
-        public IActionResult DeleteShilla(int id)
+        public async Task<IActionResult> DeleteShilla(int id)
         {
             if (id == 0)
             {
                 return BadRequest();
             }
-            var shillaItem = _context.Shillas.FirstOrDefault(u => u.Id == id);
+            var shillaItem = await _shillaRepo.GetAsync(u => u.Id == id);
             if (shillaItem == null)
             {
                 return NotFound();
             }
-            _context.Shillas.Remove(shillaItem);
-            _context.SaveChanges();
+            await _shillaRepo.RemoveAsync(shillaItem);
             return NoContent();
         }
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -109,8 +107,7 @@ namespace MagicCity_ShillaAPI.Controllers
 
             Shilla entityItem = _mapper.Map<Shilla>(shillaDto);
 
-            _context.Shillas.Update(entityItem);
-            await _context.SaveChangesAsync();
+            await _shillaRepo.UpdateAsync(entityItem);
             return NoContent();
         }
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -123,7 +120,7 @@ namespace MagicCity_ShillaAPI.Controllers
                 return BadRequest();
             }
 
-            var shillaItem = await _context.Shillas.FirstOrDefaultAsync(a => a.Id == id);
+            var shillaItem = await _shillaRepo.GetAsync(a => a.Id == id, tracked:false);
             UpdateShillaDto shillaDtoItem= _mapper.Map<UpdateShillaDto>(shillaItem);
             if (shillaItem == null)
             {
@@ -138,8 +135,7 @@ namespace MagicCity_ShillaAPI.Controllers
             }
 
             var model = _mapper.Map<Shilla>(shillaDtoItem);
-            _context.Update(model);
-            await _context.SaveChangesAsync();
+            await _shillaRepo.UpdateAsync(model);
 
             return NoContent();
         }

@@ -3,13 +3,9 @@ using System.Linq.Expressions;
 
 namespace MagicCity_ShillaAPI.Repository.IRepository
 {
-    public interface IShillaRepository
+    public interface IShillaRepository:IRepository<Shilla>
     {
-        Task<List<Shilla>> GetAll(Expression<Func<Shilla,bool>> filter = null);
-        Task<Shilla> Get(Expression<Func<Shilla,bool>> filter = null, bool tracked = true);
-
-        Task Create(Shilla shillaEntity);
-        Task Remove(Shilla shillaEntity);
-        Task Save();
+      
+        Task<Shilla> UpdateAsync(Shilla shillaEntity);
     }
 }

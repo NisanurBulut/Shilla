@@ -6,52 +6,22 @@ using System.Linq.Expressions;
 
 namespace MagicCity_ShillaAPI.Repository
 {
-    public class ShillaRepository : IShillaRepository
+    public class ShillaRepository : Repository<Shilla>, IShillaRepository
     {
         private ShillaDbContext _dbContext;
-        public ShillaRepository(ShillaDbContext dbContext)
+        public ShillaRepository(ShillaDbContext dbContext):base(dbContext)
         {
             _dbContext = dbContext;
         }
-        public async Task Create(Shilla shillaEntity)
-        {
-          await _dbContext.Shillas.AddAsync(shillaEntity);
-            await Save();
-        }
+       
 
-        public async Task<Shilla> Get(Expression<Func<Shilla, bool>> filter = null, bool tracked = true)
+    
+        public async Task<Shilla> UpdateAsync(Shilla shillaEntity)
         {
-            IQueryable<Shilla> queryable = _dbContext.Shillas.AsQueryable();
-            if (!tracked)
-            {
-                queryable = queryable.AsNoTracking();
-            }
-            if(filter != null)
-            {
-                queryable=queryable.Where(filter);
-            }
-            return await queryable.FirstOrDefaultAsync();
-        }
-
-        public async Task<List<Shilla>> GetAll(Expression<Func<Shilla, bool>> filter = null)
-        {
-            IQueryable<Shilla> queryable = _dbContext.Shillas;
-            if (filter != null)
-            {
-                queryable = queryable.Where(filter);
-            }
-            return await queryable.ToListAsync();
-        }
-
-        public async Task Remove(Shilla shillaEntity)
-        {
-            _dbContext.Shillas.Remove(shillaEntity);
-            await Save();
-        }
-
-        public async Task Save()
-        {
-         await   _dbContext.SaveChangesAsync();
+            shillaEntity.UpdatedAt=DateTime.Now;
+            _dbContext.Shillas.Update(shillaEntity);
+            await _dbContext.SaveChangesAsync();
+            return shillaEntity;
         }
     }
 }
