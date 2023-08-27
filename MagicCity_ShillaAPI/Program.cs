@@ -1,3 +1,4 @@
+using MagicCity_ShillaAPI;
 using MagicCity_ShillaAPI.Controllers;
 using MagicCity_ShillaAPI.Data;
 using MagicCity_ShillaAPI.Logging;
@@ -17,6 +18,7 @@ builder.Services.AddDbContext<ShillaDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
 });
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 builder.Services.AddControllers(option =>
 {
    // option.ReturnHttpNotAcceptable = true;
