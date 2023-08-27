@@ -10,7 +10,7 @@ If you like or are using this project to learn or start your solution, please gi
 <hr/>
 
 ### Technical Dictionary
-* Binding Parameters in Asp.Net MVC
+🧨 Binding Parameters in Asp.Net MVC
 
 <ol>
 <li>FromQuery : <p> This type contains query items. To use them,  we need to read parameters 
@@ -42,6 +42,7 @@ public IActionResult CreateProduct([FromBody] ProductDto productDto)
 <li>FromRoute : <p>It is used to bind routing parameters in the URL to a parameter in the API method. Redirect parameters are dynamic values specified in a specific part of the URL.
 Example <i>https://example.com/api/products/{id}</i> It is commonly used when reading resource id information.
 </p>
+
 ```C#
 [HttpGet("products/{id}")]
 public IActionResult GetProductById([FromRoute] int id)
@@ -51,14 +52,15 @@ public IActionResult GetProductById([FromRoute] int id)
 </li>
 </ol>
 
-* Validation
+🧨 Validation
 
 ![Validation Diagram](/MagicCity_ShillaAPI/asset/model_state_diagram.png)
 
-* Region Directive
+🧨 Region Directive
 
 I am particularly fond of 😻 the <code>#region</code> directive. It allows us to collapse code in a customized manor.
 Regions are created in this format,
+
 
 ```C#
 #region NisanurStartedCoding
@@ -75,6 +77,111 @@ Benefits of using region director :
 
 <hr/>
 
+
+🧨 Differences Between Scoped, Transient, And Singleton Service
+
+<p><strong>Why we require</strong></p>
+
+<ul>
+	<li>It defines the lifetime of object creation or a registration&nbsp;in the .net core with the help of Dependency Injection.</li>
+	<li>The DI Container has to decide whether to return a new object of the service or consume an existing instance.</li>
+	<li>The lifetime of the Service depends on how we instantiate the dependency.</li>
+	<li>We define the lifetime when we register the service.</li>
+</ul>
+
+<p><strong>Three types of&nbsp;lifetime and registration options</strong></p>
+
+<ol>
+	<li><em>Scoped</em></li>
+	<li><em>Transient</em></li>
+	<li><em>Singleton</em></li>
+</ol>
+
+<h2>Scoped</h2>
+
+<ul>
+	<li>In this service, with every HTTP request, we get a new instance.</li>
+	<li>The same instance is provided for the entire scope of that&nbsp;request.
+	<ul>
+		<li>eg., if we have a couple of parameter in the controller, both object contains the same instance across the request</li>
+	</ul>
+	</li>
+	<li>This is a better option when you want to maintain a state within a request.</li>
+</ul>
+
+<div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0">
+<code class="language-csharp">services<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddScoped</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>IAuthService<span class="token punctuation">,</span>AuthService<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code>
+</div>
+
+<p style="text-align:center"><img alt="" class="" data-src="https://f4n3x6c5.stackpathcdn.com/article/differences-between-scoped-transient-and-singleton-service/Images/scoped_service.PNG" style="height:245px; width:800px" src="https://f4n3x6c5.stackpathcdn.com/article/differences-between-scoped-transient-and-singleton-service/Images/scoped_service.PNG"></p>
+
+<h2>Transient</h2>
+
+<ul>
+	<li>A new service instance is created for each object in the HTTP request.</li>
+	<li>This is a good approach for the multithreading approach because both objects are independent of one another.</li>
+	<li>The instance is&nbsp;created every time they will use&nbsp;<strong>more memory</strong>&nbsp;and <strong>resources </strong>and can have a&nbsp;<strong>negative</strong>&nbsp;impact on performance</li>
+	<li>Utilize for the&nbsp;<strong>lightweight</strong>&nbsp;service with little or&nbsp;<strong>no state</strong>.</li>
+</ul>
+
+<div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp">services<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddTransient</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>ICronJobService<span class="token punctuation">,</span>CronJobService<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code>
+</div>
+
+<p style="text-align:center"><img alt="" class="" data-src="https://f4n3x6c5.stackpathcdn.com/article/differences-between-scoped-transient-and-singleton-service/Images/tranient_service.PNG" style="height:220px; width:800px" src="https://f4n3x6c5.stackpathcdn.com/article/differences-between-scoped-transient-and-singleton-service/Images/tranient_service.PNG"></p>
+
+<h2>Singleton</h2>
+
+<ul>
+	<li>Only one service instance was created throughout the lifetime.</li>
+	<li>Reused the same instance in future, wherever the service is required</li>
+	<li>Since it's a single lifetime service creation, memory leaks in these services will build up over time.</li>
+	<li>Also, it has&nbsp;memory efficient as they are created once reused everywhere.</li>
+</ul>
+
+<div class="code-toolbar"><pre class="language-csharp line-numbers" tabindex="0"><code class="language-csharp">services<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">AddSingleton</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>ILoggingService<span class="token punctuation">,</span> LoggingService<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code>
+</div>
+
+<p style="text-align:center"><img class="" data-src="https://f4n3x6c5.stackpathcdn.com/article/differences-between-scoped-transient-and-singleton-service/Images/image.png" style="height:162px; width:800px" src="https://f4n3x6c5.stackpathcdn.com/article/differences-between-scoped-transient-and-singleton-service/Images/image.png"></p>
+
+<h2>When to use which Service</h2>
+
+<p>Singleton approach =&gt; We can use this for logging service, feature flag(to on and off module while deployment), and email service</p>
+
+<p>Scoped approach =&gt; This is a better option when you want to maintain a state within a request.</p>
+
+<p>Transient approach =&gt;&nbsp; Use this approach&nbsp;for the lightweight service with little or no state.</p>
+</div>
+
+<hr/>
+
+🔍 AsNoTracking:
+
+<p>
+in scenarios where you only need read-only access to data and don't intend to modify or update it, 
+using AsNoTracking can offer performance benefits. </p>
+
+💡 It avoids the overhead of change tracking, resulting in faster query execution.
+
+🔍 AsNoTrackingWithIdentity:
+
+<p>When using AsNoTrackingWithIdentity, EF Core still tracks the identity of entities retrieved from the database.</p>
+
+💡 It is particularly useful when working with scenarios that require a mix of read-only and update operations
+
+📌 Key Differences:
+
+<ul>
+<li>AsNoTracking completely disables change tracking, resulting in improved performance for read-only scenarios</li>
+<li> AsNoTrackingWithIdentity disables change tracking for most properties, but it keeps track of the entity's identity, 
+allowing updates to be applied efficiently when necessary.</li></ul>
+🔧 When to Use Which ❓  when should you use each method ❓
+<ul>
+<li>
+Use AsNoTracking when you only require read-only access to entities and want to optimize performance.</li>
+<li>Use AsNoTrackingWithIdentity when you need both read-only access and the ability to update specific entities efficiently.</li>
+</ul>
+
+<hr/>
 <h2>Packages</h2>
 
 <ol>
@@ -94,6 +201,14 @@ Benefits of using region director :
 
 [Serilog.Sinks.File](https://www.nuget.org/packages/Serilog.Sinks.File/5.0.0)
 </li>
+<li>
+
+[Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/7.0.10)
+</li>
+<li>
+
+[Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools/7.0.10)
+</li>
 </ol>
 
 <h2>Links</h2>
@@ -101,4 +216,21 @@ Benefits of using region director :
 <ol><li> 
 
 [What is JSON Patch?](https://jsonpatch.com/) 
-</li></ol>
+</li>
+<li>
+
+[Generate Fake C# Data](https://generatedata.com/generator)
+</li>
+</ol>
+
+<h2>References</h2>
+
+<ol><li> 
+
+[<i>differences-between-scoped-transient-and-singleton-service</i>](https://www.c-sharpcorner.com/article/differences-between-scoped-transient-and-singleton-service/) 
+</li>
+<li>
+
+[<i>explaining-difference-between-asnotracking-net-core</i>](https://www.linkedin.com/pulse/explaining-difference-between-asnotracking-net-core-ahad-tagh%C4%B1yev/)
+</li>
+</ol>
