@@ -3,6 +3,7 @@ using MagicCity_ShillaAPI.Data;
 using MagicCity_ShillaAPI.Logging;
 using MagicCity_ShillaAPI.Models;
 using MagicCity_ShillaAPI.Models.Dto;
+using MagicCity_ShillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,7 @@ namespace MagicCity_ShillaAPI.Controllers
         {
             IEnumerable<Shilla> entityList = await _context.Shillas.ToListAsync();
             return Ok(_mapper.Map<ShillaDto>(entityList));
+
         }
         [HttpGet("{id:int}", Name = "GetShillaById")]
         [ProducesResponseType(StatusCodes.Status201Created)]
