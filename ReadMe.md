@@ -176,6 +176,14 @@ Benefits of using region director :
 
 [Serilog.Sinks.File](https://www.nuget.org/packages/Serilog.Sinks.File/5.0.0)
 </li>
+<li>
+
+[Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/7.0.10)
+</li>
+<li>
+
+[Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools/7.0.10)
+</li>
 </ol>
 
 <h2>Links</h2>
