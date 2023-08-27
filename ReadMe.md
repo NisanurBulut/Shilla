@@ -152,11 +152,36 @@ Benefits of using region director :
 <p>Transient approach =&gt;&nbsp; Use this approach&nbsp;for the lightweight service with little or no state.</p>
 </div>
 
-
-
-
 <hr/>
 
+🔍 AsNoTracking:
+
+<p>
+in scenarios where you only need read-only access to data and don't intend to modify or update it, 
+using AsNoTracking can offer performance benefits. </p>
+
+💡 It avoids the overhead of change tracking, resulting in faster query execution.
+
+🔍 AsNoTrackingWithIdentity:
+
+<p>When using AsNoTrackingWithIdentity, EF Core still tracks the identity of entities retrieved from the database.</p>
+
+💡 It is particularly useful when working with scenarios that require a mix of read-only and update operations
+
+📌 Key Differences:
+
+<ul>
+<li>AsNoTracking completely disables change tracking, resulting in improved performance for read-only scenarios</li>
+<li> AsNoTrackingWithIdentity disables change tracking for most properties, but it keeps track of the entity's identity, 
+allowing updates to be applied efficiently when necessary.</li></ul>
+🔧 When to Use Which ❓  when should you use each method ❓
+<ul>
+<li>
+Use AsNoTracking when you only require read-only access to entities and want to optimize performance.</li>
+<li>Use AsNoTrackingWithIdentity when you need both read-only access and the ability to update specific entities efficiently.</li>
+</ul>
+
+<hr/>
 <h2>Packages</h2>
 
 <ol>
@@ -203,4 +228,9 @@ Benefits of using region director :
 <ol><li> 
 
 [<i>differences-between-scoped-transient-and-singleton-service</i>](https://www.c-sharpcorner.com/article/differences-between-scoped-transient-and-singleton-service/) 
-</li></ol>
+</li>
+<li>
+
+[<i>explaining-difference-between-asnotracking-net-core</i>](https://www.linkedin.com/pulse/explaining-difference-between-asnotracking-net-core-ahad-tagh%C4%B1yev/)
+</li>
+</ol>
