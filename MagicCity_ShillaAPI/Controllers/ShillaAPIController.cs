@@ -11,18 +11,15 @@ namespace MagicCity_ShillaAPI.Controllers
     [ApiController]
     public class ShillaAPIController : ControllerBase
     {
-        private readonly ILogging _logger;
 
-        public ShillaAPIController(ILogging logger)
+        public ShillaAPIController()
         {
-            _logger = logger;
         }
 
 
         [HttpGet]
         public ActionResult<IEnumerable<ShillaDto>> GetShillas()
         {
-            _logger.Log("Getting all Shilla items","");
             return Ok(ShillaStore.shillaList);
         }
         [HttpGet("{id:int}", Name = "GetShillaById")]
@@ -34,7 +31,6 @@ namespace MagicCity_ShillaAPI.Controllers
         {
             if (id == 0)
             {
-                _logger.Log($"Get Shilla error with id {id}","error");
                 return BadRequest();
             }
             var shillaItem = ShillaStore.shillaList.FirstOrDefault(u => u.Id == id);
