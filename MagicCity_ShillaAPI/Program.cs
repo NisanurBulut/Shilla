@@ -27,6 +27,7 @@ builder.Services.AddControllers(option =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IShillaRepository, ShillaRepository>();
+builder.Services.AddScoped<IShillaNumberRepository, ShillaNumberRepository>();
 //builder.Services.AddSingleton<ILogging, Logging>();
 var app = builder.Build();
 
