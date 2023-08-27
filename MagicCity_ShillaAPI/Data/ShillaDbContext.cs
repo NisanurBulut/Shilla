@@ -11,6 +11,7 @@ namespace MagicCity_ShillaAPI.Data
             
         }
         public DbSet<Shilla> Shillas { get; set; }
+        public DbSet<ShillaNumber> ShillaNumbers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Shilla>().HasData(
