@@ -13,13 +13,13 @@ namespace MagicCity_ShillaAPI.Repository
         {
             _dbContext = dbContext;
         }
-        public async Task Create(Shilla shillaEntity)
+        public async Task CreateAsync(Shilla shillaEntity)
         {
           await _dbContext.Shillas.AddAsync(shillaEntity);
-            await Save();
+            await SaveAsync();
         }
 
-        public async Task<Shilla> Get(Expression<Func<Shilla, bool>> filter = null, bool tracked = true)
+        public async Task<Shilla> GetAsync(Expression<Func<Shilla, bool>> filter = null, bool tracked = true)
         {
             IQueryable<Shilla> queryable = _dbContext.Shillas.AsQueryable();
             if (!tracked)
@@ -33,7 +33,7 @@ namespace MagicCity_ShillaAPI.Repository
             return await queryable.FirstOrDefaultAsync();
         }
 
-        public async Task<List<Shilla>> GetAll(Expression<Func<Shilla, bool>> filter = null)
+        public async Task<List<Shilla>> GetAllAsync(Expression<Func<Shilla, bool>> filter = null)
         {
             IQueryable<Shilla> queryable = _dbContext.Shillas;
             if (filter != null)
@@ -43,15 +43,21 @@ namespace MagicCity_ShillaAPI.Repository
             return await queryable.ToListAsync();
         }
 
-        public async Task Remove(Shilla shillaEntity)
+        public async Task RemoveAsync(Shilla shillaEntity)
         {
             _dbContext.Shillas.Remove(shillaEntity);
-            await Save();
+            await SaveAsync();
         }
 
-        public async Task Save()
+        public async Task SaveAsync()
         {
          await   _dbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Shilla shillaEntity)
+        {
+            _dbContext.Shillas.Update(shillaEntity);
+            await SaveAsync();
         }
     }
 }
