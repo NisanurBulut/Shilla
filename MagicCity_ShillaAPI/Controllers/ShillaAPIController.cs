@@ -4,7 +4,9 @@ using MagicCity_ShillaAPI.Models;
 using MagicCity_ShillaAPI.Models.Dto;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using System.Collections.Immutable;
 
 namespace MagicCity_ShillaAPI.Controllers
 {
@@ -20,22 +22,22 @@ namespace MagicCity_ShillaAPI.Controllers
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<ShillaDto>> GetShillas()
+        public async Task<ActionResult<IEnumerable<ShillaDto>>> GetShillas()
         {
-            return Ok(_context.Shillas.ToList());
+            return Ok(await _context.Shillas.ToListAsync());
         }
         [HttpGet("{id:int}", Name = "GetShillaById")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ShillaDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<ShillaDto> GetShilla(int id)
+        public async Task<ActionResult<ShillaDto>> GetShilla(int id)
         {
             if (id == 0)
             {
                 return BadRequest();
             }
-            var shillaItem = _context.Shillas.FirstOrDefault(u => u.Id == id);
+            var shillaItem = await _context.Shillas.FirstOrDefaultAsync(u => u.Id == id);
             if (shillaItem == null)
             {
                 return NotFound();
@@ -44,10 +46,10 @@ namespace MagicCity_ShillaAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult<ShillaDto> CreateShilla([FromBody] ShillaDto shillaDto)
+        public async Task<ActionResult<ShillaDto>> CreateShilla([FromBody] ShillaDto shillaDto)
         {
             #region custom validation
-            if (_context.Shillas.FirstOrDefault(a => a.Name.ToLower() == shillaDto.Name.ToLower()) != null)
+            if (await _context.Shillas.FirstOrDefaultAsync(a => a.Name.ToLower() == shillaDto.Name.ToLower()) != null)
             {
                 ModelState.AddModelError("", "Shilla city is already exists !");
                 return BadRequest(ModelState);
@@ -78,8 +80,8 @@ namespace MagicCity_ShillaAPI.Controllers
                 ImageUrl = shillaDto.ImageUrl,
                 CreatedAt = DateTime.Now,
             };
-            _context.Shillas.Add(entityItem);
-            _context.SaveChanges();
+            await _context.Shillas.AddAsync(entityItem);
+            await _context.SaveChangesAsync();
             return CreatedAtRoute("GetShillaById", new { id = shillaDto.Id }, shillaDto);
         }
 
@@ -105,7 +107,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPut("{id:int}", Name = "UpdateShilla")]
-        public IActionResult UpdateShilla(int id, [FromBody] ShillaDto shillaDto)
+        public async Task<IActionResult> UpdateShilla(int id, [FromBody] ShillaDto shillaDto)
         {
             if (shillaDto == null || id != shillaDto.Id)
             {
@@ -126,20 +128,20 @@ namespace MagicCity_ShillaAPI.Controllers
             };
 
             _context.Shillas.Update(entityItem);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return NoContent();
         }
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPatch("{id:int}", Name = "UpdatePartialShilla")]
-        public IActionResult UpdatePartialShilla(int id, JsonPatchDocument<ShillaDto> pathcItem)
+        public async Task<IActionResult> UpdatePartialShilla(int id, JsonPatchDocument<ShillaDto> pathcItem)
         {
             if (pathcItem == null || id == 0)
             {
                 return BadRequest();
             }
 
-            var shillaItem = _context.Shillas.FirstOrDefault(a => a.Id == id);
+            var shillaItem = await _context.Shillas.FirstOrDefaultAsync(a => a.Id == id);
 
             if (shillaItem == null)
             {
@@ -173,7 +175,7 @@ namespace MagicCity_ShillaAPI.Controllers
             shillaItem.ImageUrl = shillaDtoItem.ImageUrl;
             shillaItem.UpdatedAt = DateTime.Now;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }
