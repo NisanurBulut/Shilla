@@ -33,7 +33,7 @@ namespace MagicCity_ShillaAPI.Repository
             return await queryable.FirstOrDefaultAsync();
         }
 
-        public Task<List<Shilla>> GetAll(Expression<Func<Shilla, bool>> filter = null)
+        public async Task<List<Shilla>> GetAll(Expression<Func<Shilla, bool>> filter = null)
         {
             IQueryable<Shilla> queryable = _dbContext.Shillas;
             if (filter != null)

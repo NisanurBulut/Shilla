@@ -2,6 +2,7 @@
 using MagicCity_ShillaAPI.Logging;
 using MagicCity_ShillaAPI.Models;
 using MagicCity_ShillaAPI.Models.Dto;
+using MagicCity_ShillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
@@ -12,17 +13,17 @@ namespace MagicCity_ShillaAPI.Controllers
     [ApiController]
     public class ShillaAPIController : ControllerBase
     {
-        private readonly ShillaDbContext _context;
-        public ShillaAPIController(ShillaDbContext context)
+        private readonly IShillaRepository _shillaRepo;
+        public ShillaAPIController(IShillaRepository shillaRepo)
         {
-            _context = context;
+           _shillaRepo=shillaRepo
         }
 
 
         [HttpGet]
         public ActionResult<IEnumerable<ShillaDto>> GetShillas()
         {
-            return Ok(_context.Shillas.ToList());
+            return Ok(_shillaRepo.GetAll());
         }
         [HttpGet("{id:int}", Name = "GetShillaById")]
         [ProducesResponseType(StatusCodes.Status201Created)]

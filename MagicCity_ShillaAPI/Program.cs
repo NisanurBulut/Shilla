@@ -1,6 +1,8 @@
 using MagicCity_ShillaAPI.Controllers;
 using MagicCity_ShillaAPI.Data;
 using MagicCity_ShillaAPI.Logging;
+using MagicCity_ShillaAPI.Repository;
+using MagicCity_ShillaAPI.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -22,6 +24,7 @@ builder.Services.AddControllers(option =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IShillaRepository, ShillaRepository>();
 //builder.Services.AddSingleton<ILogging, Logging>();
 var app = builder.Build();
 
