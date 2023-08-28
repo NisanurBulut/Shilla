@@ -98,7 +98,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPut("{id:int}", Name = "UpdateShilla")]
-        public async Task<IActionResult> UpdateShilla(int id, [FromBody] ShillaDto shillaDto)
+        public async Task<IActionResult> UpdateShilla(int id, [FromBody] UpdateShillaDto shillaDto)
         {
             if (shillaDto == null || id != shillaDto.Id)
             {

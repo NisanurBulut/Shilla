@@ -14,7 +14,6 @@ namespace MagicCity_ShillaAPI.Models.Dto
         public string Amenity { get; set; }
         public string Details { get; set; }
         public double Rate { get; set; }
-
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt = DateTime.Now;
     }

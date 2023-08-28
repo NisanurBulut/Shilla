@@ -14,11 +14,13 @@ namespace MagicCity_ShillaAPI.Controllers
         protected APIResponseModel _apiResponseModel;
         private readonly IMapper _mapper;
         private readonly IShillaNumberRepository _shillaNumberRepo;
-        public ShillaNumberController(IMapper mapper, IShillaNumberRepository shillaNumberRepository)
+        private readonly IShillaRepository _shillaRepo;
+        public ShillaNumberController(IMapper mapper, IShillaNumberRepository shillaNumberRepository, IShillaRepository shillaRepo)
         {
             _mapper = mapper;
             _shillaNumberRepo = shillaNumberRepository;
             this._apiResponseModel = new APIResponseModel();
+            _shillaRepo = shillaRepo;
         }
 
         [HttpGet]
@@ -76,10 +78,18 @@ namespace MagicCity_ShillaAPI.Controllers
                 #region custom validation
                 if (await _shillaNumberRepo.GetAsync(a => a.ShillaNo == shillaNumberDto.ShillaNo) != null)
                 {
-                    ModelState.AddModelError("", "Shilla Number is already exists !");
-                    _apiResponseModel.setBadRequest();
+                    ModelState.AddModelError("Custom Error", "Shilla Number is already exists !");
+                    _apiResponseModel.setBadRequestWithErrorMessage("Shilla Number is already exists !");
                     return BadRequest(ModelState);
                 }
+
+                if(await _shillaRepo.GetAsync(a => a.Id == shillaNumberDto.ShillaID) == null)
+                {
+                    ModelState.AddModelError("Custom Error", "Shilla ID is invalid !");
+                    _apiResponseModel.setBadRequestWithErrorMessage("Shilla ID is invalid !");
+                    return BadRequest(ModelState);
+                }
+
                 #endregion
                 #region using ModelState.IsValid
                 if (!ModelState.IsValid)
@@ -104,7 +114,7 @@ namespace MagicCity_ShillaAPI.Controllers
             }
             return _apiResponseModel;
         }
-
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -136,7 +146,7 @@ namespace MagicCity_ShillaAPI.Controllers
 
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPut("{id:int}", Name = "UpdateShilla")]
+        [HttpPut("{id:int}", Name = "UpdateShillaNumber")]
         public async Task<ActionResult<APIResponseModel>> UpdateShillaNumber(int id, [FromBody] ShillaNumberUpdateDto shillaNumberDto)
         {
             try
@@ -146,7 +156,12 @@ namespace MagicCity_ShillaAPI.Controllers
                     _apiResponseModel.setBadRequest();
                     return BadRequest(shillaNumberDto);
                 }
-
+                if (await _shillaRepo.GetAsync(a => a.Id == shillaNumberDto.ShillaID) == null)
+                {
+                    ModelState.AddModelError("Custom Error", "Shilla ID is invalid !");
+                    _apiResponseModel.setBadRequestWithErrorMessage("Shilla ID is invalid !");
+                    return BadRequest(ModelState);
+                }
                 ShillaNumber entityItem = _mapper.Map<ShillaNumber>(shillaNumberDto);
 
                 await _shillaNumberRepo.UpdateAsync(entityItem);
