@@ -1,4 +1,4 @@
-﻿using MagicCity_ShillaAPI.Models.Dto;
+﻿using MagicShilla_Utility.Dto;
 
 namespace MagicCity_ShillaAPI.Data
 {

@@ -1,4 +1,4 @@
-﻿using MagicCity_ShillaAPI.Models;
+﻿using MagicShilla_Utility.Entity;
 using System.Linq.Expressions;
 
 namespace MagicCity_ShillaAPI.Repository.IRepository

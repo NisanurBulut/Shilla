@@ -1,6 +1,6 @@
 using MagicCity_ShillaAPI;
 using MagicCity_ShillaAPI.Controllers;
-using MagicCity_ShillaAPI.Data;
+using MagicShilla_Utility.Data;
 using MagicCity_ShillaAPI.Logging;
 using MagicCity_ShillaAPI.Repository;
 using MagicCity_ShillaAPI.Repository.IRepository;
@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-Log.Logger = new LoggerConfiguration().MinimumLevel.Error().WriteTo.File("log(shillaLogs.txt",rollingInterval:RollingInterval.Day).CreateLogger();
+Log.Logger = new LoggerConfiguration().MinimumLevel.Error().WriteTo.File("shillaLogs.txt",rollingInterval:RollingInterval.Day).CreateLogger();
 
 builder.Host.UseSerilog();
 builder.Services.AddDbContext<ShillaDbContext>(option =>

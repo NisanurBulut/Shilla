@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MagicCity_ShillaAPI.Models.Dto
+namespace MagicShilla_Utility.Dto
 {
     public class UpdateShillaDto
     {

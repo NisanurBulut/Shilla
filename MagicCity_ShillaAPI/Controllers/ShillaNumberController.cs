@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
-using MagicCity_ShillaAPI.Models.Dto;
-using MagicCity_ShillaAPI.Models;
+using MagicShilla_Utility.Dto;
+using MagicShilla_Utility.Entity;
 using MagicCity_ShillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using MagicCity_ShillaAPI.Models;
 
 namespace MagicCity_ShillaAPI.Controllers
 {

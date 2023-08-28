@@ -1,5 +1,7 @@
-﻿using MagicCity_ShillaAPI.Data;
+﻿using MagicShilla_Utility.Data;
 using MagicCity_ShillaAPI.Models;
+using MagicShilla_Utility.Entity;
+using MagicShilla_Utility.Dto;
 using MagicCity_ShillaAPI.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;

@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MagicShilla_Utility\MagicShilla_Utility.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using MagicCity_ShillaAPI.Data;
 using MagicCity_ShillaAPI.Logging;
-using MagicCity_ShillaAPI.Models;
-using MagicCity_ShillaAPI.Models.Dto;
+using MagicShilla_Utility.Entity;
+using MagicShilla_Utility.Dto;
 using MagicCity_ShillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;

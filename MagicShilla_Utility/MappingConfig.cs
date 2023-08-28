@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using MagicCity_ShillaAPI.Models;
-using MagicCity_ShillaAPI.Models.Dto;
+using MagicShilla_Utility.Entity;
+using MagicShilla_Utility.Dto;
 
 namespace MagicCity_ShillaAPI
 {

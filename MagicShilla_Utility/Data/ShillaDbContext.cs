@@ -1,8 +1,8 @@
-﻿using MagicCity_ShillaAPI.Models;
+﻿using MagicShilla_Utility.Entity;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MagicCity_ShillaAPI.Data
+namespace MagicShilla_Utility.Data
 {
     public class ShillaDbContext:DbContext
     {

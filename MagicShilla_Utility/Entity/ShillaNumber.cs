@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MagicCity_ShillaAPI.Models
+namespace MagicShilla_Utility.Entity
 {
     public class ShillaNumber
     {

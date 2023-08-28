@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MagicCity_ShillaAPI.Models.Dto
+namespace MagicShilla_Utility.Dto
 {
-    public class ShillaNumberCreateDto
+    public class ShillaNumberDto
     {
         [Required]
         public int ShillaNo { get; set; } = 0;

@@ -26,4 +26,8 @@
     <Folder Include="asset\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MagicShilla_Utility\MagicShilla_Utility.csproj" />
+  </ItemGroup>
+
 </Project>
