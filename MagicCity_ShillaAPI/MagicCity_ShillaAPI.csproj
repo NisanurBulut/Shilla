@@ -24,9 +24,11 @@
 
   <ItemGroup>
     <Folder Include="asset\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MagicCity_ShillaWEB\MagicCity_ShillaWEB.csproj" />
     <ProjectReference Include="..\MagicShilla_Utility\MagicShilla_Utility.csproj" />
   </ItemGroup>
 
