@@ -7,5 +7,7 @@ namespace MagicCity_ShillaAPI.Models.Dto
         [Required]
         public int ShillaNo { get; set; } = 0;
         public string Details { get; set; }
+        [Required]
+        public int ShillaID { get; set; }
     }
 }
