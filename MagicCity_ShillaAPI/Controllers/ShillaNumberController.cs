@@ -69,7 +69,7 @@ namespace MagicCity_ShillaAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<APIResponseModel>> CreateShillaNumber([FromBody] ShillaNumberDto shillaNumberDto)
+        public async Task<ActionResult<APIResponseModel>> CreateShillaNumber([FromBody] ShillaNumberCreateDto shillaNumberDto)
         {
             try
             {
@@ -137,7 +137,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPut("{id:int}", Name = "UpdateShilla")]
-        public async Task<ActionResult<APIResponseModel>> UpdateShillaNumber(int id, [FromBody] ShillaNumberDto shillaNumberDto)
+        public async Task<ActionResult<APIResponseModel>> UpdateShillaNumber(int id, [FromBody] ShillaNumberUpdateDto shillaNumberDto)
         {
             try
             {
