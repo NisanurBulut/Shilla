@@ -33,9 +33,130 @@ namespace MagicCity_ShillaAPI.Controllers
             }
             catch (Exception ex)
             {
-                _apiResponseModel.IsSuccess = false;
-                _apiResponseModel.StatusCode = HttpStatusCode.BadRequest;
-                _apiResponseModel.ErrorMessages = new List<string>() { ex.ToString() };
+                _apiResponseModel.setBadRequestWithErrorMessage(ex.ToString());
+            }
+            return _apiResponseModel;
+        }
+
+        [HttpGet("{id:int}", Name = "GetShillaNumberById")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ShillaDto))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<APIResponseModel>> GetShillaNumber(int id)
+        {
+            try
+            {
+                if (id == 0)
+                {
+                    _apiResponseModel.setBadRequest();
+                }
+                var shillaNumberItem = await _shillaNumberRepo.GetAsync(u => u.ShillaNo == id);
+                if (shillaNumberItem == null)
+                {
+                    _apiResponseModel.StatusCode = HttpStatusCode.NotFound;
+
+                }
+                _apiResponseModel.Result = _mapper.Map<ShillaNumberDto>(shillaNumberItem);
+                _apiResponseModel.StatusCode = HttpStatusCode.OK;
+                return Ok(_apiResponseModel);
+            }
+            catch (Exception ex)
+            {
+                _apiResponseModel.setBadRequestWithErrorMessage(ex.ToString());
+            }
+            return _apiResponseModel;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<APIResponseModel>> CreateShillaNumber([FromBody] ShillaNumberDto shillaNumberDto)
+        {
+            try
+            {
+                #region custom validation
+                if (await _shillaNumberRepo.GetAsync(a => a.ShillaNo == shillaNumberDto.ShillaNo) != null)
+                {
+                    ModelState.AddModelError("", "Shilla Number is already exists !");
+                    _apiResponseModel.setBadRequest();
+                    return BadRequest(ModelState);
+                }
+                #endregion
+                #region using ModelState.IsValid
+                if (!ModelState.IsValid)
+                {
+                    _apiResponseModel.setBadRequest();
+                    return BadRequest(ModelState);
+                }
+                #endregion
+                if (shillaNumberDto == null)
+                {
+                    _apiResponseModel.setBadRequest();
+                    return BadRequest(shillaNumberDto);
+                }
+
+                ShillaNumber entityItem = _mapper.Map<ShillaNumber>(shillaNumberDto);
+                _apiResponseModel.Result = _shillaNumberRepo.CreateAsync(entityItem);
+                return CreatedAtRoute("GetShillaNumberById", new { id = entityItem.ShillaNo }, shillaNumberDto);
+            }
+            catch (Exception ex)
+            {
+                _apiResponseModel.setBadRequestWithErrorMessage(ex.ToString());
+            }
+            return _apiResponseModel;
+        }
+
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpDelete("{id:int}", Name = "DeleteShillaNumberById")]
+        public async Task<ActionResult<APIResponseModel>> DeleteShillaNumber(int id)
+        {
+            try
+            {
+                if (id == 0)
+                {
+                    return BadRequest();
+                }
+                var shillaNumberItem = await _shillaNumberRepo.GetAsync(u => u.ShillaNo == id);
+                if (shillaNumberItem == null)
+                {
+                    return NotFound();
+                }
+                await _shillaNumberRepo.RemoveAsync(shillaNumberItem);
+                _apiResponseModel.StatusCode = HttpStatusCode.OK;
+                _apiResponseModel.IsSuccess = true;
+                return Ok(_apiResponseModel);
+            }
+            catch (Exception ex)
+            {
+                _apiResponseModel.setBadRequestWithErrorMessage(ex.ToString());
+            }
+            return _apiResponseModel;
+        }
+
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPut("{id:int}", Name = "UpdateShilla")]
+        public async Task<ActionResult<APIResponseModel>> UpdateShillaNumber(int id, [FromBody] ShillaNumberDto shillaNumberDto)
+        {
+            try
+            {
+                if (shillaNumberDto == null || id != shillaNumberDto.ShillaNo)
+                {
+                    _apiResponseModel.setBadRequest();
+                    return BadRequest(shillaNumberDto);
+                }
+
+                ShillaNumber entityItem = _mapper.Map<ShillaNumber>(shillaNumberDto);
+
+                await _shillaNumberRepo.UpdateAsync(entityItem);
+                _apiResponseModel.IsSuccess = true;
+                _apiResponseModel.StatusCode = HttpStatusCode.NoContent;
+                return Ok(_apiResponseModel);
+            }
+            catch (Exception ex)
+            {
+                _apiResponseModel.setBadRequestWithErrorMessage(ex.ToString());
             }
             return _apiResponseModel;
         }
