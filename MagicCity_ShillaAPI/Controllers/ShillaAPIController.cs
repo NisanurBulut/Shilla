@@ -29,7 +29,12 @@ namespace MagicCity_ShillaAPI.Controllers
         public async Task<ActionResult<IEnumerable<ShillaDto>>> GetShillas()
         {
             IEnumerable<Shilla> entityList = await _shillaRepo.GetAllAsync();
-            return Ok(_mapper.Map<ShillaDto>(entityList));
+            var response = new List<ShillaDto>();
+            foreach (var entity in entityList)
+            {
+                response.Add(_mapper.Map<ShillaDto>(entity));
+            }
+            return Ok(response);
 
         }
         [HttpGet("{id:int}", Name = "GetShillaById")]
@@ -120,13 +125,13 @@ namespace MagicCity_ShillaAPI.Controllers
                 return BadRequest();
             }
 
-            var shillaItem = await _shillaRepo.GetAsync(a => a.Id == id, tracked:false);
-            UpdateShillaDto shillaDtoItem= _mapper.Map<UpdateShillaDto>(shillaItem);
+            var shillaItem = await _shillaRepo.GetAsync(a => a.Id == id, tracked: false);
+            UpdateShillaDto shillaDtoItem = _mapper.Map<UpdateShillaDto>(shillaItem);
             if (shillaItem == null)
             {
                 return BadRequest();
             }
-          
+
             pathcItem.ApplyTo(shillaDtoItem, ModelState);
 
             if (!ModelState.IsValid)
