@@ -2,7 +2,7 @@
 using MagicShilla_Utility.Entity;
 using MagicShilla_Utility.Dto;
 
-namespace MagicCity_ShillaAPI
+namespace MagicShilla_Utility
 {
     public class MappingConfig : Profile
     {

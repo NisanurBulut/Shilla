@@ -6,6 +6,7 @@ using MagicCity_ShillaAPI.Repository;
 using MagicCity_ShillaAPI.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using MagicShilla_Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
