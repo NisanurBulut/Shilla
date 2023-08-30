@@ -1,7 +1,13 @@
+using MagicCity_ShillaWEB.Services;
+using MagicCity_ShillaWEB.Services.IServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IShillaService, ShillaService>();
+builder.Services.AddHttpClient<IShillaService, ShillaService>();
+
 
 var app = builder.Build();
 

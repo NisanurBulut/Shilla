@@ -72,4 +72,3 @@ namespace MagicCity_ShillaWEB.Services
         }
     }
 }
-}
