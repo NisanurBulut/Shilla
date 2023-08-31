@@ -19,7 +19,7 @@ namespace MagicCity_ShillaWEB.Services
 
         public Task<T> CreateAsync<T>(CreateShillaDto param)
         {
-            return SendAsync<T>(new APIRequest() { apiType = SD.ApiType.POST, Data = param, Url = $"{_shillaUrl}/api/shillaAPI/" });
+            return SendAsync<T>(new APIRequest() { apiType = SD.ApiType.POST, Data = param, Url = $"{_shillaUrl}/ShillaAPI/CreateShilla" });
         }
 
         public Task<T> DeleteAsync<T>(int id)
@@ -27,7 +27,7 @@ namespace MagicCity_ShillaWEB.Services
             return SendAsync<T>(new APIRequest()
             {
                 apiType = SD.ApiType.DELETE,
-                Url = $"{_shillaUrl}/api/shillaAPI/{id}"
+                Url = $"{_shillaUrl}/ShillaAPI/DeleteShilla/{id}"
             });
         }
 
@@ -36,7 +36,7 @@ namespace MagicCity_ShillaWEB.Services
             return SendAsync<T>(new APIRequest()
             {
                 apiType = SD.ApiType.GET,
-                Url = $"{_shillaUrl}/api/shillaAPI/"
+                Url = $"{_shillaUrl}/ShillaAPI/GetShillas"
             });
         }
 
@@ -45,7 +45,7 @@ namespace MagicCity_ShillaWEB.Services
             return SendAsync<T>(new APIRequest()
             {
                 apiType = SD.ApiType.GET,
-                Url = $"{_shillaUrl}/api/shillaAPI/{id}"
+                Url = $"{_shillaUrl}/ShillaAPI/GetShilla/{id}"
             });
         }
 
@@ -55,7 +55,7 @@ namespace MagicCity_ShillaWEB.Services
             {
                 apiType = SD.ApiType.PUT,
                 Data = param,
-                Url = $"{_shillaUrl}/api/shillaAPI/{param.Id}"
+                Url = $"{_shillaUrl}/ShillaAPI/UpdateShilla/{param.Id}"
             });
         }
     }

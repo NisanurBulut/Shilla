@@ -10,9 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicCity_ShillaWEB", "MagicCity_ShillaWEB\MagicCity_ShillaWEB.csproj", "{E1B858D8-2E6A-4017-8D13-E17AD2482CD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicCity_ShillaWEB", "MagicCity_ShillaWEB\MagicCity_ShillaWEB.csproj", "{E1B858D8-2E6A-4017-8D13-E17AD2482CD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagicShilla_Utility", "MagicShilla_Utility\MagicShilla_Utility.csproj", "{DC6194AA-321C-46B2-B548-3D2AF524057C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicShilla_Utility", "MagicShilla_Utility\MagicShilla_Utility.csproj", "{DC6194AA-321C-46B2-B548-3D2AF524057C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

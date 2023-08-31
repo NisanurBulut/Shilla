@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using System.Collections.Immutable;
+using MagicCity_ShillaWEB.Models;
+using System.Net;
 
 namespace MagicCity_ShillaAPI.Controllers
 {
@@ -16,17 +18,19 @@ namespace MagicCity_ShillaAPI.Controllers
     [ApiController]
     public class ShillaAPIController : ControllerBase
     {
+        protected APIResponse _apiResponseModel;
         private readonly IMapper _mapper;
         private readonly IShillaRepository _shillaRepo;
         public ShillaAPIController(IShillaRepository shillaRepo, IMapper mapper)
         {
             _mapper = mapper;
             _shillaRepo = shillaRepo;
+            this._apiResponseModel = new APIResponse();
         }
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ShillaDto>>> GetShillas()
+        public async Task<ActionResult<APIResponse>> GetShillas()
         {
             IEnumerable<Shilla> entityList = await _shillaRepo.GetAllAsync();
             var response = new List<ShillaDto>();
@@ -34,7 +38,10 @@ namespace MagicCity_ShillaAPI.Controllers
             {
                 response.Add(_mapper.Map<ShillaDto>(entity));
             }
-            return Ok(response);
+            _apiResponseModel.Result = response;
+            _apiResponseModel.IsSuccess = true;
+            _apiResponseModel.StatusCode = HttpStatusCode.OK;
+            return Ok(_apiResponseModel);
 
         }
         [HttpGet("{id:int}", Name = "GetShillaById")]
