@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Azure;
 using MagicCity_ShillaWEB.Models;
 using MagicCity_ShillaWEB.Services.IServices;
 using MagicShilla_Utility.Dto;
@@ -25,6 +26,25 @@ namespace MagicCity_ShillaWEB.Controllers
                 shillaDtos = JsonConvert.DeserializeObject<List<ShillaDto>>(Convert.ToString(response.Result));
             }
             return View(shillaDtos);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateShilla(CreateShillaDto paramModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(ModelState);
+            }
+            var response = await _shillaService.CreateAsync<APIResponse>(paramModel);
+            if (response != null && response.IsSuccess)
+            {
+                return RedirectToAction(nameof(IndexShilla));
+            }
+            return View(ModelState);
+        }
+        public async Task<IActionResult> CreateShilla()
+        {
+            return View(new CreateShillaDto());
         }
     }
 }

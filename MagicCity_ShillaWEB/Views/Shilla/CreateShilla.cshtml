@@ -1,0 +1,33 @@
+﻿@model MagicShilla_Utility.Dto.CreateShillaDto
+<div class="container">
+    <form asp-action="CreateShilla">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-3">
+            <label asp-for="Name" for="formGroupExampleInput" class="form-label">Example label</label>
+            <input type="text" asp-for="Name" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ImageUrl" for="formGroupExampleInputImageUrl" class="form-label">Image Url</label>
+            <input asp-for="ImageUrl" type="url" class="form-control" id="formGroupExampleInputImageUrl" placeholder="Another input placeholder">
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Details" for="formGroupExampleInputDetail" class="form-label">Example label</label>
+            <textarea type="text" asp-for="Details" class="form-control" rows="4" id="formGroupExampleInputDetail" placeholder="Example input placeholder" ></textarea>
+            <span asp-validation-for="Details" class="text-danger"></span>
+        </div>
+       <div class="mb-3">
+            <label asp-for="Occupancy" for="formGroupExampleInputOccupancy"></label>
+            <input type="text" asp-for="Occupancy" class="form-control" id="formGroupExampleInputOccupancy" />
+            <span asp-validation-for="Occupancy"></span>
+       </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+    </form>
+</div>
+
+            @section Scripts {
+                <partial name="_ValidationScriptsPartial" />
+            }
