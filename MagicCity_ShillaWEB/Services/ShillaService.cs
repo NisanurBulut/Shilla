@@ -8,7 +8,9 @@ namespace MagicCity_ShillaWEB.Services
     public class ShillaService : BaseService, IShillaService
     {
         private readonly IHttpClientFactory _httpClientFactory;
+
         private string _shillaUrl;
+      
         public ShillaService(IHttpClientFactory httpClientFactoryParam, IConfiguration configuration) : base(httpClientFactoryParam)
         {
             this._httpClientFactory = httpClientFactoryParam;

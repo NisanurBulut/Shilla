@@ -29,7 +29,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IShillaRepository, ShillaRepository>();
 builder.Services.AddScoped<IShillaNumberRepository, ShillaNumberRepository>();
-//builder.Services.AddSingleton<ILogging, Logging>();
+builder.Services.AddSingleton<ILogging, Logging>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

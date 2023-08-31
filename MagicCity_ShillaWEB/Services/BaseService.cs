@@ -14,7 +14,7 @@ namespace MagicCity_ShillaWEB.Services
         public IHttpClientFactory httpClientFactory { get; set; }
         public BaseService(IHttpClientFactory httpClientFactoryParam)
         {
-            responseModel = new APIResponse();
+            responseModel = new();
             httpClientFactory = httpClientFactoryParam;
         }
 
@@ -22,7 +22,7 @@ namespace MagicCity_ShillaWEB.Services
         {
             try
             {
-                var clientItem = this.httpClientFactory.CreateClient("ShillaAPI");
+                var clientItem = httpClientFactory.CreateClient("ShillaAPI");
                 HttpRequestMessage httpRequestMessage = new HttpRequestMessage();
                 httpRequestMessage.Headers.Add("Accept", "application/json");
                 httpRequestMessage.RequestUri = new Uri(apiRequest.Url);
