@@ -78,6 +78,12 @@ Benefits of using region director :
 <hr/>
 
 
+### Dapper & Entity FrameWork
+
+![Dapper v/s Entity Framework(Core) https://www.youtube.com/watch?v=ialFGpKD8yI](/MagicCity_ShillaAPI/asset/dapper_ef.png)
+
+<hr/>
+
 🧨 Differences Between Scoped, Transient, And Singleton Service
 
 <p><strong>Why we require</strong></p>
@@ -238,6 +244,9 @@ Use AsNoTracking when you only require read-only access to entities and want to 
 </li><li>
 
 [<i>Data-Transfer-Objects</i>](https://aspnetboilerplate.com/Pages/Documents/Data-Transfer-Objects)
+</li><li>
+
+[<i>Dapper v/s Entity Framework(Core)</i>](https://www.youtube.com/watch?v=ialFGpKD8yI)
 </li></ol></td></tr></table>
 
 
