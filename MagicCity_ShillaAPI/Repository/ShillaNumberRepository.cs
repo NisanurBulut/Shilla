@@ -1,5 +1,5 @@
-﻿using MagicCity_ShillaAPI.Data;
-using MagicCity_ShillaAPI.Models;
+﻿using MagicShilla_Utility.Data;
+using MagicShilla_Utility.Entity;
 using MagicCity_ShillaAPI.Repository.IRepository;
 
 namespace MagicCity_ShillaAPI.Repository

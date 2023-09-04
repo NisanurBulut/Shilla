@@ -7,8 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="12.0.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <Compile Remove="Models\**" />
+    <Content Remove="Models\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="7.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
@@ -24,6 +29,11 @@
 
   <ItemGroup>
     <Folder Include="asset\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MagicCity_ShillaWEB\MagicCity_ShillaWEB.csproj" />
+    <ProjectReference Include="..\MagicShilla_Utility\MagicShilla_Utility.csproj" />
   </ItemGroup>
 
 </Project>

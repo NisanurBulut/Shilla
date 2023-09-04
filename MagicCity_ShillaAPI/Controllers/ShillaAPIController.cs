@@ -1,14 +1,16 @@
 ﻿using AutoMapper;
 using MagicCity_ShillaAPI.Data;
 using MagicCity_ShillaAPI.Logging;
-using MagicCity_ShillaAPI.Models;
-using MagicCity_ShillaAPI.Models.Dto;
+using MagicShilla_Utility.Entity;
+using MagicShilla_Utility.Dto;
 using MagicCity_ShillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using System.Collections.Immutable;
+using MagicCity_ShillaWEB.Models;
+using System.Net;
 
 namespace MagicCity_ShillaAPI.Controllers
 {
@@ -16,20 +18,30 @@ namespace MagicCity_ShillaAPI.Controllers
     [ApiController]
     public class ShillaAPIController : ControllerBase
     {
+        protected APIResponse _apiResponseModel;
         private readonly IMapper _mapper;
         private readonly IShillaRepository _shillaRepo;
         public ShillaAPIController(IShillaRepository shillaRepo, IMapper mapper)
         {
             _mapper = mapper;
             _shillaRepo = shillaRepo;
+            this._apiResponseModel = new APIResponse();
         }
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ShillaDto>>> GetShillas()
+        public async Task<ActionResult<APIResponse>> GetShillas()
         {
             IEnumerable<Shilla> entityList = await _shillaRepo.GetAllAsync();
-            return Ok(_mapper.Map<ShillaDto>(entityList));
+            var response = new List<ShillaDto>();
+            foreach (var entity in entityList)
+            {
+                response.Add(_mapper.Map<ShillaDto>(entity));
+            }
+            _apiResponseModel.Result = response;
+            _apiResponseModel.IsSuccess = true;
+            _apiResponseModel.StatusCode = HttpStatusCode.OK;
+            return Ok(_apiResponseModel);
 
         }
         [HttpGet("{id:int}", Name = "GetShillaById")]
@@ -120,13 +132,13 @@ namespace MagicCity_ShillaAPI.Controllers
                 return BadRequest();
             }
 
-            var shillaItem = await _shillaRepo.GetAsync(a => a.Id == id, tracked:false);
-            UpdateShillaDto shillaDtoItem= _mapper.Map<UpdateShillaDto>(shillaItem);
+            var shillaItem = await _shillaRepo.GetAsync(a => a.Id == id, tracked: false);
+            UpdateShillaDto shillaDtoItem = _mapper.Map<UpdateShillaDto>(shillaItem);
             if (shillaItem == null)
             {
                 return BadRequest();
             }
-          
+
             pathcItem.ApplyTo(shillaDtoItem, ModelState);
 
             if (!ModelState.IsValid)

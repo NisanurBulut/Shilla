@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicCity_ShillaWEB", "MagicCity_ShillaWEB\MagicCity_ShillaWEB.csproj", "{E1B858D8-2E6A-4017-8D13-E17AD2482CD6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicShilla_Utility", "MagicShilla_Utility\MagicShilla_Utility.csproj", "{DC6194AA-321C-46B2-B548-3D2AF524057C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +24,14 @@ Global
 		{D6CE8032-3C85-4E5A-83D3-0F9797F9DC99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6CE8032-3C85-4E5A-83D3-0F9797F9DC99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6CE8032-3C85-4E5A-83D3-0F9797F9DC99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1B858D8-2E6A-4017-8D13-E17AD2482CD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1B858D8-2E6A-4017-8D13-E17AD2482CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1B858D8-2E6A-4017-8D13-E17AD2482CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1B858D8-2E6A-4017-8D13-E17AD2482CD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC6194AA-321C-46B2-B548-3D2AF524057C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC6194AA-321C-46B2-B548-3D2AF524057C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC6194AA-321C-46B2-B548-3D2AF524057C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC6194AA-321C-46B2-B548-3D2AF524057C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

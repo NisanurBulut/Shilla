@@ -1,17 +1,18 @@
 using MagicCity_ShillaAPI;
 using MagicCity_ShillaAPI.Controllers;
-using MagicCity_ShillaAPI.Data;
+using MagicShilla_Utility.Data;
 using MagicCity_ShillaAPI.Logging;
 using MagicCity_ShillaAPI.Repository;
 using MagicCity_ShillaAPI.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using MagicShilla_Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-Log.Logger = new LoggerConfiguration().MinimumLevel.Error().WriteTo.File("log(shillaLogs.txt",rollingInterval:RollingInterval.Day).CreateLogger();
+Log.Logger = new LoggerConfiguration().MinimumLevel.Error().WriteTo.File("shillaLogs.txt",rollingInterval:RollingInterval.Day).CreateLogger();
 
 builder.Host.UseSerilog();
 builder.Services.AddDbContext<ShillaDbContext>(option =>
@@ -28,7 +29,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IShillaRepository, ShillaRepository>();
 builder.Services.AddScoped<IShillaNumberRepository, ShillaNumberRepository>();
-//builder.Services.AddSingleton<ILogging, Logging>();
+builder.Services.AddSingleton<ILogging, Logging>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,5 +1,4 @@
-﻿using MagicCity_ShillaAPI.Models;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace MagicCity_ShillaAPI.Repository.IRepository
 {
