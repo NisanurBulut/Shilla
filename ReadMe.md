@@ -262,7 +262,7 @@ Use AsNoTracking when you only require read-only access to entities and want to 
 <table>
   <tr>
     <th>Architecture Patterns</th>
-    <th>Links</th>
+    <th>Speed Up API Performance Methods</th>
   </tr>
   <tr>
     <td>
