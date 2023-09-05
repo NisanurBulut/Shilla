@@ -256,7 +256,22 @@ Use AsNoTracking when you only require read-only access to entities and want to 
 [<i>IEnumerable vs IQueryable</i>](https://www.youtube.com/watch?v=J2u1DmnE9mU)
 </li></ol></td></tr></table>
 
+<hr/>
 
+
+<table>
+  <tr>
+    <th>Architecture Patterns</th>
+    <th>Links</th>
+  </tr>
+  <tr>
+    <td>
+	<img src="/MagicCity_ShillaAPI/asset/arch_patterns.png" />
+	</td>
+	<td><img src="/MagicCity_ShillaAPI/asset/increase_api_performance.png" /></td>
+	</tr>
+
+</table>
 
 
 
