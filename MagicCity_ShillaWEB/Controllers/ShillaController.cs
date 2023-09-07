@@ -46,5 +46,30 @@ namespace MagicCity_ShillaWEB.Controllers
         {
             return View(new CreateShillaDto());
         }
+        public async Task<IActionResult> UpdateShilla(int shillaId)
+        {
+            var shillaEntityResponse = await _shillaService.GetAsync<APIResponse>(shillaId);
+            if (shillaEntityResponse!= null && shillaEntityResponse.IsSuccess==true)
+            {
+                ShillaDto shillaDtoModel = JsonConvert.DeserializeObject<ShillaDto>(Convert.ToString(shillaEntityResponse.Result));
+                return View(_mapper.Map<UpdateShillaDto>(shillaDtoModel));
+            }
+            return NotFound();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateShilla(UpdateShillaDto paramModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(ModelState);
+            }
+            var response = await _shillaService.UpdateAsync<APIResponse>(paramModel);
+            if (response != null && response.IsSuccess)
+            {
+                return RedirectToAction(nameof(IndexShilla));
+            }
+            return View(ModelState);
+        }
     }
 }
