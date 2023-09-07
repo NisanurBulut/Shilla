@@ -1,0 +1,2 @@
+2023-09-07 10:33:37.089 +03:00 [FTL] Connection id "0HMTFEHQPTNNO" exceeded the output operations maximum queue size.
+Microsoft.AspNetCore.Connections.ConnectionAbortedException: HTTP/2 connection exceeded the output operations maximum queue size.
