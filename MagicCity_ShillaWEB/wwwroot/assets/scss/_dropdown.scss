@@ -1,0 +1,179 @@
+@function set-notification-text-color($color) {
+    @if (lightness($color) > 50) {
+        @return #000000; // Lighter backgorund, return dark color
+    }
+
+    @else {
+        @return #ffffff; // Darker background, return light color
+    }
+}
+
+.dropdown-toggle {
+    &:after {
+        display: none;
+    }
+}
+
+.dropdown {
+    & > .dropdown-toggle {
+        &:before {
+            content: "";
+            height: 6px;
+            width: 6px;
+            border-radius: 4px;
+            top: 100%;
+            left: 50%;
+            margin-left: -3px;
+            background-color: rgba($template-color-primary, 0.7);
+            position: absolute;
+            margin-top: 30px;
+            opacity: 0;
+            @extend .transition;
+        }
+
+        & + .dropdown-menu {
+            margin-top: 50px;
+            opacity: 0;
+            border: 0;
+            transition: margin ease 0.5s;
+            -webkit-transition: margin ease 0.5s;
+            -moz-transition: margin ease 0.5s;
+            -ms-transition: margin ease 0.5s;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+            -ms-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+
+            .dropdown-item {
+                padding: 10px 15px
+            }
+
+            &.dropdown-menu-sm {
+                min-width: 100px;
+                padding: 0.25rem 0;
+
+                .dropdown-item {
+                    padding: 5px 15px;
+                    font-size: 13px;
+                }
+            }
+        }
+
+    }
+
+    &.show {
+        & > .dropdown-toggle {
+            color: set-notification-text-color($template-bgcolor);
+            background-color: rgba($template-color-primary, 0.4);
+
+            &.active {
+                & + .dropdown-menu {
+                    opacity: 1;
+                    margin-top: 20px;
+                }
+
+                &:before {
+                    top: 100%;
+                    opacity: 1;
+                    margin-top: 10px;
+                }
+
+                &.btn-sm {
+                    &:before {
+                        margin-top: 7px;
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    .dropdown-menu {
+        font-size: 1em;
+
+        .dropdown-item {
+            white-space: normal;
+
+            &.new {
+                background-color: rgba($template-color-primary, 0.15);
+            }
+
+            &:active {
+                background-color: $template-bgcolor;
+
+                .text-success,
+                .text-primary,
+                .text-danger,
+                .text-dark,
+                .text-secondary,
+                .text-warning,
+                .text-info,
+                i {
+                    color: set-notification-text-color($template-bgcolor) !important;
+                }
+            }
+
+        }
+
+        &.dropdown-menu-center {
+            width: 300px;
+            left: -130px;
+        }
+
+        & *::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+
+        & *::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            background: rgba($template-color-primary, 0.5);
+        }
+
+        & *::-webkit-scrollbar-track {
+            border-radius: 5px;
+            background: rgba($template-color-primary, 0.15);
+        }
+
+    }
+
+    .nav-pills {
+        &.tab-white {
+            .nav-link {
+                color: $white;
+
+                &.active {
+                    background-color: rgba($white, 0.15);
+                }
+            }
+        }
+    }
+
+
+}
+
+.easy-autocomplete-container {
+    border: 0;
+    border-radius: 5px;
+    transition: margin ease 0.5s;
+    -webkit-transition: margin ease 0.5s;
+    -moz-transition: margin ease 0.5s;
+    -ms-transition: margin ease 0.5s;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    color: #000000;
+}
+
+@media screen and (max-width:767px) {
+    .dropdown {
+        .dropdown-menu {
+            &.dropdown-menu-center {
+                width: 270px;
+            }
+        }
+    }
+}

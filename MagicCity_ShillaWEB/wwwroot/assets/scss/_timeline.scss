@@ -1,0 +1,80 @@
+.timeline-circle-wrap {
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    .timeline-circle {
+        height: 14px;
+        width: 14px;
+        border-radius: 10px;
+        border: 2px solid #ffffff;
+        display: block;
+        margin-top: 5px;
+        z-index: 1;
+
+        & > span {
+            height: 6px;
+            width: 6px;
+            border-radius: 5px;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+        }
+
+        &:after {
+            content: "";
+            width: 10px;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.1);
+            display: block;
+            position: absolute;
+            top: 6px;
+            left: 14px;
+            z-index: 0
+        }
+
+        &:before {
+            content: "";
+            width: 1px;
+            height: 110%;
+            background-color: rgba(0, 0, 0, 0.1);
+            display: block;
+            position: absolute;
+            top: 14px;
+            left: 6px;
+            z-index: 0
+        }
+    }
+}
+
+.card {
+    .card-body {
+        .timeline-circle-wrap {
+            .timeline-circle {
+                &:after {
+                    background-color: rgba($template-color, 0.1);
+                }
+
+                &:before {
+                    background-color: rgba($template-color, 0.1);
+                    height:calc(100% + 29px);
+                    top: -15px;
+                }
+            }
+        }
+    }
+}
+
+.timeline-list {
+    .list-group-item {
+        padding-top: 0;
+        padding-bottom: 0;
+
+        & > div {
+            & > div {
+                padding-top: 15px;
+                padding-bottom: 15px
+            }
+        }
+    }
+}

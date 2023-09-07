@@ -71,5 +71,27 @@ namespace MagicCity_ShillaWEB.Controllers
             }
             return View(ModelState);
         }
+        public async Task<IActionResult> DeleteShilla(int shillaId)
+        {
+            var shillaEntityResponse = await _shillaService.GetAsync<APIResponse>(shillaId);
+            if (shillaEntityResponse != null && shillaEntityResponse.IsSuccess == true)
+            {
+                ShillaDto shillaDtoModel = JsonConvert.DeserializeObject<ShillaDto>(Convert.ToString(shillaEntityResponse.Result));
+                return View(_mapper.Map<UpdateShillaDto>(shillaDtoModel));
+            }
+            return NotFound();
+        }
+        [HttpDelete]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteShilla(ShillaDto paramModel)
+        {
+           
+            var response = await _shillaService.DeleteAsync<APIResponse>(paramModel.Id);
+            if (response != null && response.IsSuccess)
+            {
+                return RedirectToAction(nameof(IndexShilla));
+            }
+            return View(ModelState);
+        }
     }
 }

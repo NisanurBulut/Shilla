@@ -1,0 +1,115 @@
+@function set-notification-text-color($color) {
+    @if (lightness($color) > 50) {
+        @return #000000; // Lighter backgorund, return dark color
+    }
+
+    @else {
+        @return #ffffff; // Darker background, return light color
+    }
+}
+
+.btn {
+    position: relative;
+
+    i {
+        vertical-align: middle;
+
+        &:first-child {
+            margin-right: 5px;
+        }
+
+        &:last-child {
+            margin-left: 5px;
+
+            &:first-child {
+                margin: 0px;
+            }
+
+        }
+    }
+
+    &.btn-rounded-circle {
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        vertical-align: middle;
+        text-align: center;
+
+        &.btn-sm {
+            height: 40px;
+            width: 40px;
+        }
+
+    }
+
+
+
+    &.btn-sm {
+        padding: 0.23rem 0.5rem;
+        font-size: 0.80rem;
+        line-height: 1.4;
+    }
+
+    &.btn-rounded {
+        border-radius: 40px;
+    }
+
+    &.floating-right {
+        position: absolute;
+        right: 15px;
+    }
+
+    &.floating-top {
+        position: absolute;
+        right: 15px;
+    }
+}
+
+.fc-button-primary {
+    text-transform: uppercase;
+    font-size: 90%;
+    border-color: $template-color-primary;
+    color: set-notification-text-color($template-bgcolor);
+    background-color: transparent;
+
+    &:hover,
+    &:not(:disabled).fc-button-active, &:not(:disabled):active {
+        background-color: $template-color-primary;
+        border-color: $template-color-primary;
+        color: $template-color;
+    }
+}
+
+.btn-outline-template {
+    border-color: $template-color-primary;
+    color: set-notification-text-color($template-bgcolor);
+
+    &:hover,
+    &:focus {
+        color: set-notification-text-color($template-bgcolor);
+        background-color: $template-color-primary;
+    }
+}
+
+.user-like {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    z-index: 1
+}
+
+.closePersonalize{
+    position: absolute;
+    z-index: 1;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    color: #fff;
+    padding: 10px;
+    right: 10px;
+    font-size: 20px;
+    border-radius: 20px;
+    height: 40px;
+    width: 40px;
+    top: 10px;
+    line-height: 16px;
+}

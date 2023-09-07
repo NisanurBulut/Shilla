@@ -1,0 +1,79 @@
+.card {
+    background-color: $template-bgcolor-light;
+
+    &.blur {
+        background-color: rgba($template-color-primary-light, 0.25);
+        -webkit-backdrop-filter: saturate(125%) blur(10px);
+        -moz-backdrop-filter: saturate(125%) blur(10px);
+        -ms-backdrop-filter: saturate(125%) blur(10px);
+        backdrop-filter: saturate(125%) blur(10px);
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .card-header {
+        padding: 10px 15px;
+
+        .card-title {
+            margin-bottom: 0;
+            vertical-align: middle;
+            line-height: 24px;
+        }
+
+        &.overlay-header {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            z-index: 2;
+        }
+    }
+
+    .card-footer {
+        padding: 10px 15px;
+        background-color: transparent;
+    }
+
+    .close-btn {
+        height: 20px;
+        width: 20px;
+        text-align: center;
+        line-height: 18px;
+        vertical-align: middle;
+        border-radius: 10px;
+        background: rgba($template-color, 0.2);
+        color: rgba($template-color, 0.5);
+        display: block;
+        font-size: 1em;
+        float: right;
+
+        i {
+            font-size: 1em;
+            vertical-align: middle;
+            color: rgba($template-color, 0.5);
+        }
+    }
+
+    .card-img-top {
+        max-height: 250px;
+        height: 200px;
+        line-height: 190px;
+        overflow-y: hidden;
+        margin-bottom: 0;
+        text-align: center;
+        vertical-align: middle;
+        position: relative;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.header {
+    .card {
+        background-color: $white
+    }
+}

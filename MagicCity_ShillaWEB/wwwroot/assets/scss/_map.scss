@@ -1,0 +1,21 @@
+.worldmap3 {
+    height: 214px;
+
+    & > .jvectormap-container {
+        height: 100%;
+        background: none !important;
+
+        path {
+            fill: $template-color-primary-light;
+        }
+    }
+}
+
+.worldmap {
+    height: 214px;
+
+    & > .jvectormap-container {
+        height: 100%;
+        background: none !important;
+    }
+}

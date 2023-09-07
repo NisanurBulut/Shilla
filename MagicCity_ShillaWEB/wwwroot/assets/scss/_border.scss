@@ -1,0 +1,49 @@
+.border-left-dashed {
+    border-left: 1px dashed $template-color-primary;
+}
+
+.header-fill {
+    .border-left-dashed {
+        border-left: 1px dashed $header-color;
+    }
+}
+
+.header,
+.submenu,
+table.dataTable > tbody > tr.child ul.dtr-details > li,
+.table tr:last-child td,
+.border-bottom,
+.list-group-item {
+    border-bottom: 1px solid rgba($template-color-primary, 0.15) !important
+}
+
+.status-border,
+.list-group-flush .list-group-item.status-border {
+    border-left: 4px solid #ffffff
+}
+
+.table th,
+.table td,
+hr,
+.footer,
+.border-top
+ {
+    border-top: 1px solid rgba($template-color-primary, 0.15) !important;
+}
+
+.list-group-item {
+    &.status-border {
+        border-top: 1px solid rgba($template-color-primary, 0.15) !important
+    }
+}
+
+.border-left {
+    border-left: 1px solid rgba($template-color-primary, 0.15) !important
+}
+
+.border, .table-bordered, .table tbody tr td, .table thead tr th, .table tbody tr th, .fc-unthemed .fc-content, .fc-unthemed .fc-divider, .fc-unthemed .fc-list-heading td, .fc-unthemed .fc-list-view, .fc-unthemed .fc-popover, .fc-unthemed .fc-row, .fc-unthemed tbody, .fc-unthemed td, .fc-unthemed th, .fc-unthemed thead{
+    border-color: rgba($template-color-primary, 0.15) !important
+}
+.border-right{
+    border-color: rgba($template-color-primary, 0.15) !important
+}

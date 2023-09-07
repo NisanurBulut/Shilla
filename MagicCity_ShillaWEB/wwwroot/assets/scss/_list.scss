@@ -1,0 +1,66 @@
+.list-group-item {
+    background-color: transparent;
+    border-top: 0px;
+    color: $template-color;
+
+    &.new {
+        background-color: rgba($template-color-primary, 0.15);
+
+        p {
+            color: $template-color;
+        }
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $template-color;
+        background-color: rgba($template-color-primary, 0.25)
+    }
+
+    &.status-border {
+        border-bottom: none !important;
+        border-right: 0;
+    }
+
+    &.active {
+
+        .text-template-primary,
+        a {
+            color: #ffffff !important;
+        }
+    }
+
+}
+
+a.list-group-item {
+    @extend .template-inverse;
+
+    &:hover {
+        @extend .template-inverse;
+    }
+}
+
+.mailist {}
+
+
+.list-group-flush {
+    .list-group-item {
+        &:last-child {
+            border-bottom: none !important;
+        }
+    }
+
+}
+
+.modal-dialog {
+    .list-group-item {
+        color: #222222;
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: #000000;
+        }
+    }
+}

@@ -1,0 +1,92 @@
+/* Rules for sizing the icon. */
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+.icons {
+    padding: 0;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    border-radius: 3px;
+    font-size: 1.18em;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+
+    i {
+        vertical-align: middle
+    }
+
+    &.icon-30 {
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
+    }
+
+    &.icon-40 {
+        line-height: 40px;
+        height: 40px;
+        width: 40px;
+    }
+
+    &.icon-50 {
+        line-height: 50px;
+        height: 50px;
+        width: 50px;
+    }
+
+    &.icon-60 {
+        line-height: 60px;
+        height: 60px;
+        width: 60px;
+    }
+
+    &.icon-70 {
+        line-height: 70px;
+        height: 70px;
+        width: 70px;
+    }
+
+    &.icon-80 {
+        line-height: 80px;
+        height: 80px;
+        width: 80px;
+    }
+
+    &.icon-90 {
+        line-height: 90px;
+        height: 90px;
+        width: 90px;
+    }
+
+    &.icon-100 {
+        line-height: 100px;
+        height: 100px;
+        width: 100px;
+    }
+
+    &.icon-110 {
+        line-height: 110px;
+        height: 110px;
+        width: 110px;
+    }
+
+    &.icon-120 {
+        line-height: 120px;
+        height: 120px;
+        width: 120px;
+    }
+}

@@ -1,0 +1,34 @@
+.gallery-pic {
+    height: 80px;
+    overflow: hidden;
+    margin-bottom: 0;
+    margin: 2px;
+}
+
+
+.gallery-top {
+    height: 350px;
+
+    .swiper-slide {
+        background-size: cover;
+    }
+}
+
+.gallery-thumbs {
+    height: 100px;
+    margin: 1px;
+
+    .swiper-slide {
+        background-size: cover;
+    }
+}
+
+.sl-overlay {
+    background-color: $template-bgcolor;
+}
+
+.sl-wrapper .sl-navigation button,
+.sl-wrapper .sl-close,
+.sl-wrapper .sl-counter {
+    color: $template-color
+}

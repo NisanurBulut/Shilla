@@ -1,0 +1,118 @@
+.table {
+    color: $template-color;
+
+    thead {
+        tr {
+            th {
+                color: $template-color;
+                border: 0 none;
+                font-weight: 400;
+                padding: 0.75rem 0.5rem
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                color: $template-color-primary-light;
+                vertical-align: middle;
+                padding: 0.75rem 0.5rem;
+
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6 {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+table.dataTable thead > tr > th.sorting_asc,
+table.dataTable thead > tr > th.sorting_desc,
+table.dataTable thead > tr > th.sorting,
+table.dataTable thead > tr > td.sorting_asc,
+table.dataTable thead > tr > td.sorting_desc,
+table.dataTable thead > tr > td.sorting {
+    padding-right: 18px;
+}
+
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc_disabled:before {
+    right: 10px;
+
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
+    right: 4px;
+    content: "\2193";
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:before {
+    top: 50%;
+    margin-top: -9px;
+}
+
+table.dataTable > tbody > tr.child span.dtr-title {
+    font-weight: 400
+}
+
+table.dataTable > tbody > tr.child span.dtr-data {
+    display: inline-block;
+    margin-left: 15px
+}
+
+table.dataTable > tbody > tr.child ul.dtr-details {
+    width: 100%
+}
+
+.dataTables_paginate {
+    .paginate_button {
+        border-radius: 0.25rem;
+
+        .page-link {
+            background-color: transparent;
+            border: 0;
+            color: $template-color;
+            border-radius: 0.25rem;
+        }
+
+        &.active {
+            background-color: $template-color-primary;
+
+            .page-link {
+                color: #ffffff;
+            }
+        }
+
+        &.disabled {
+            opacity: 0.5
+        }
+    }
+}
+
+.footable {
+    .footable-detail-row {
+        & > td {
+            background-color: rgba($template-color-primary-light, 0.1)
+        }
+
+        .footable-details {
+            th {
+                font-weight: 500;
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.style-picker {
+    &.active {
+        border: 2px solid rgba(0, 0, 0, 0.35) !important;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
+        -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
+        -ms-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.45);
+    }
+}
+
+.swiper-themepicker{
+    .swiper-slide{
+        width: 194px;
+        padding: 5px 15px 25px 15px ;
+    }
+}

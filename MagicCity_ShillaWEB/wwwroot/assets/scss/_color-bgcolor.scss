@@ -1,0 +1,122 @@
+@function set-notification-text-color($color) {
+    @if (lightness($color) > 50) {
+        @return #000000; // Lighter backgorund, return dark color
+    }
+
+    @else {
+        @return #ffffff; // Darker background, return light color
+    }
+}
+
+.template-bg {
+    background-color: $template-bgcolor
+}
+
+.bg-light-warning {
+    background-color: rgba($yellow, 0.35) !important;
+    color: $yellow;
+
+    &:hover,
+    &:focus {
+        color: lighten($yellow, 10%);
+    }
+}
+
+.bg-light-danger {
+    background-color: rgba($red, 0.35) !important;
+    color: $red;
+
+    &:hover,
+    &:focus {
+        color: lighten($red, 10%);
+    }
+}
+
+.bg-light-success {
+    background-color: rgba($green, 0.35) !important;
+    color: $green;
+
+    &:hover,
+    &:focus {
+        color: lighten($green, 10%);
+    }
+}
+
+.bg-light-info {
+    background-color: rgba($teal, 0.35) !important;
+    color: $teal;
+
+    &:hover,
+    &:focus {
+        color: lighten($teal, 10%);
+    }
+}
+
+.bg-light-primary {
+    background-color: rgba($blue, 0.35) !important;
+    color: $blue;
+
+    &:hover,
+    &:focus {
+        color: lighten($blue, 10%);
+    }
+}
+
+.bg-none {
+    background-color: transparent !important
+}
+
+.text-template-primary, .btn-link{
+    color: $template-color-primary
+}
+
+.bg-template-primary {
+    background-color: $template-color-primary !important
+}
+
+.bg-light {
+    background-color: rgba($white, 0.4) !important
+}
+
+.text-template-primary-light, .bg-template-primary-light {
+    color: $template-color-primary-light !important
+}
+
+
+.template-inverse {
+    color: set-notification-text-color($template-bgcolor);
+}
+
+.text-template-primary-opac, .bg-template-primary-opac {
+    background-color: rgba($template-color-primary, 0.4) !important;
+}
+
+.text-template-primary-opac-10 {
+    background-color: rgba($template-color-primary, 0.1);
+}
+
+.text-mute {
+    opacity: 0.65;
+}
+
+.bg-darkblue{
+    background-color: #24316c !important;
+}
+.bg-blue{
+    background-color: #4f7dff !important;
+}
+.bg-orange{
+    background-color: #ff6a0d !important;
+}
+.bg-tomato{
+    background-color: #f36b7f !important;
+}
+.bg-purple{
+    background-color: #673AB7 !important;
+}
+.bg-pista{
+    background-color: #5faa15 !important;
+}
+.bg-green{
+    background-color: #4caf78 !important;
+}

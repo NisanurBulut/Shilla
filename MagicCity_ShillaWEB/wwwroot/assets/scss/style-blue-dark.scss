@@ -1,0 +1,93 @@
+/* 
+-----------------------------------------------
+Index
+-----------------------------------------------
+1. Bootstrap v4.3.1 
+2. AdminUX style v1.0.0 
+
+
+*/
+
+/*!
+ * Bootstrap v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+@import "../vendor/bootstrap/scss/functions";
+@import "../vendor/bootstrap/scss/variables";
+@import "../vendor/bootstrap/scss/mixins";
+@import "../vendor/bootstrap/scss/root";
+@import "../vendor/bootstrap/scss/reboot";
+@import "../vendor/bootstrap/scss/type";
+@import "../vendor/bootstrap/scss/images";
+@import "../vendor/bootstrap/scss/code";
+@import "../vendor/bootstrap/scss/grid";
+@import "../vendor/bootstrap/scss/tables";
+@import "../vendor/bootstrap/scss/forms";
+@import "../vendor/bootstrap/scss/buttons";
+@import "../vendor/bootstrap/scss/transitions";
+@import "../vendor/bootstrap/scss/dropdown";
+@import "../vendor/bootstrap/scss/button-group";
+@import "../vendor/bootstrap/scss/input-group";
+@import "../vendor/bootstrap/scss/custom-forms";
+@import "../vendor/bootstrap/scss/nav";
+@import "../vendor/bootstrap/scss/navbar";
+@import "../vendor/bootstrap/scss/card";
+@import "../vendor/bootstrap/scss/breadcrumb";
+@import "../vendor/bootstrap/scss/pagination";
+@import "../vendor/bootstrap/scss/badge";
+@import "../vendor/bootstrap/scss/jumbotron";
+@import "../vendor/bootstrap/scss/alert";
+@import "../vendor/bootstrap/scss/progress";
+@import "../vendor/bootstrap/scss/media";
+@import "../vendor/bootstrap/scss/list-group";
+@import "../vendor/bootstrap/scss/close";
+@import "../vendor/bootstrap/scss/toasts";
+@import "../vendor/bootstrap/scss/modal";
+@import "../vendor/bootstrap/scss/tooltip";
+@import "../vendor/bootstrap/scss/popover";
+@import "../vendor/bootstrap/scss/carousel";
+@import "../vendor/bootstrap/scss/spinners";
+@import "../vendor/bootstrap/scss/utilities";
+@import "../vendor/bootstrap/scss/print";
+
+
+
+/*!
+ * AdminUX style v1.0.0 (https://www.maxartkiller.com/)
+ * Copyright 2019-2019 The Maxartkiller Authors
+ * Copyright 2019-2019 Maxartkiller.com
+ * Licensed: You must have a valid license purchased only from maxartkiller.com in order to legally use the theme for your project.
+ */
+
+@import "var-blue-dark";
+@import "color-bgcolor";
+@import "typography";
+@import "body";
+@import "border";
+@import "icons";
+@import "layout";
+@import "sidebar";
+@import "header";
+@import "dropdown";
+@import "avatar";
+@import "card";
+@import "tab";
+@import "product";
+@import "timeline";
+@import "daterangepicker";
+@import "button";
+@import "chat";
+@import "chart";
+@import "list";
+@import "map";
+@import "table";
+@import "footer";
+@import "badge";
+@import "modal";
+@import "form";
+@import "style_picker";
+@import "navigation";
+@import "gallery";

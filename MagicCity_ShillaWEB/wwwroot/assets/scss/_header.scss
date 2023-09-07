@@ -1,0 +1,376 @@
+@function set-notification-text-color($color) {
+    @if (lightness($color) > 68) {
+        @return #000000; // Lighter backgorund, return dark color
+    }
+
+    @else {
+        @return #ffffff; // Darker background, return light color
+    }
+}
+
+#header-container.container-fluid {}
+
+#header-container.container {
+    .d-xxl-inline {
+        display: none !important;
+    }
+}
+
+.header {
+    color: $template-color;
+    position: relative;
+    z-index: 9;
+
+    .logo {
+        padding: 5px 0px;
+        display: inline-block;
+        white-space: nowrap;
+        vertical-align: middle;
+        margin: 5px 0px;
+        color: $template-color;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        & > .logo-icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+
+            .badge {
+                font-weight: normal
+            }
+
+            sup {
+                font-size: 0.6em
+            }
+
+            small {
+                font-size: 0.538em
+            }
+        }
+    }
+
+    .navbar {
+
+        .nav-link,
+        .btn {
+            line-height: 30px;
+            border-radius: 4px;
+            color: $template-color-primary;
+            padding: 0.3rem;
+            margin-top: -0.4rem;
+            margin-bottom: -0.4rem;
+            text-align: center;
+            min-width: 44px;
+
+            i,
+            img {
+                vertical-align: middle;
+            }
+        }
+
+        .btn-sm {
+            height: 30px;
+            line-height: 26px;
+            min-width: 36px;
+
+        }
+        .menu-btn{
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .flag-icon {
+            height: 15px;
+            width: 20px;
+            line-height: 15px;
+            border-radius: 3px;
+        }
+
+        .profile-link {
+
+            .username-text {
+                display: inline-block;
+                vertical-align: middle;
+                text-align: left;
+
+                .username {
+                    color: $template-color;
+                    margin-bottom: 0;
+                    margin-top: 5px;
+                    font-size: 14px;
+                    line-height: 14px;
+                    margin: 0;
+
+                    span {
+                        color: $template-color-primary;
+                        font-size: 10px;
+                        line-height: 10px;
+                        margin-bottom: 4px;
+                        display: block;
+                    }
+
+                }
+            }
+        }
+    }
+
+    .dropdown {
+        .dropdown-menu {
+            .btn {
+                padding: 0 10px;
+                margin: 0;
+            }
+            .form-control{
+                background-color: transparent;
+                color: #000000;
+            }
+        }
+    }
+
+
+}
+
+
+.search {
+    position: relative;
+    margin-left: 15px;
+
+    .form-control {
+        background-color: rgba($template-bgcolor, 0.5);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        color: set-notification-text-color($header-bgcolor);
+    }
+
+    & > .btn {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        padding: 0 !important;
+        height: 30px;
+        line-height: 30px;
+        width: 30px;
+        margin: 5px 0 0 0 !important;
+        min-width: 30px !important;
+
+        img,
+        i {
+            vertical-align: middle
+        }
+    }
+
+    .form-control-sm + .btn {
+        margin-top: 0 !important
+    }
+
+    .form-control-lg + .btn {
+        margin-top: 8px !important;
+        margin-right: 10px !important;
+    }
+}
+
+@keyframes countersmall {
+    0 {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+@keyframes countersmall2 {
+    0 {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+
+/* submenu */
+
+.submenu {
+    .navbar {
+        .navbar-nav {
+            .nav-item {
+                .nav-link {
+                    color: $template-color-primary;
+                }
+
+                &:hover,
+                &:focus {
+                    .nav-link {
+                        color: $template-color-primary-light;
+                    }
+                }
+
+                &.active {
+                    .nav-link {
+                        color: set-notification-text-color($template-bgcolor);
+                    }
+                }
+            }
+        }
+    }
+
+    .nav-item {
+        .nav-link {
+            color: $template-color-primary;
+            display: block;
+            padding: 0.32rem 0.8rem;
+
+            &:hover,
+            &:focus {
+                color: $template-color-primary-light;
+                background-color: rgba($submenu-color-primary, 0.25)
+            }
+
+            &.active {
+                background-color: $template-color-primary;
+                color: set-notification-text-color($template-color-primary);
+            }
+        }
+    }
+
+    .form-control,
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="range"],
+        {
+        background-color: rgba($template-bgcolor, 0.5);
+        ;
+        border-color: $template-bgcolor;
+        color: set-notification-text-color($template-bgcolor);
+    }
+
+}
+
+
+/* header fill */
+.header-fill {
+
+    .header {
+        color: $header-color;
+        background-color: rgba($header-bgcolor, 0.9);
+        -webkit-backdrop-filter: saturate(125%) blur(10px);
+        -moz-backdrop-filter: saturate(125%) blur(10px);
+        -ms-backdrop-filter: saturate(125%) blur(10px);
+        backdrop-filter: saturate(125%) blur(10px);
+
+        .navbar {
+
+            .nav-link,
+            .btn {
+                color: $header-color;
+            }
+
+
+            .profile-link {
+
+                .username-text {
+                    .username {
+                        color: $header-color;
+
+                        span {
+                            color: $header-color;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    .submenu {
+        color: $header-color;
+        background-color: rgba($submenu-bgcolor, 0.8);
+        -webkit-backdrop-filter: saturate(125%) blur(10px);
+        -moz-backdrop-filter: saturate(125%) blur(10px);
+        -ms-backdrop-filter: saturate(125%) blur(10px);
+        backdrop-filter: saturate(125%) blur(10px);
+
+        .navbar {
+            .navbar-nav {
+                .nav-item {
+                    .nav-link {
+                        color: $submenu-color-primary;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        .nav-link {
+                            color: $submenu-color-primary-light;
+                        }
+                    }
+
+                    &.active {
+                        .nav-link {
+                            color: set-notification-text-color($submenu-bgcolor);
+                        }
+                    }
+                }
+            }
+        }
+
+        .nav-item {
+            .nav-link {
+                color: $submenu-color-primary;
+                display: block;
+                padding: 0.32rem 0.8rem;
+
+                &:hover,
+                &:focus {
+                    color: $submenu-color-primary-light;
+                    background-color: rgba($submenu-color-primary, 0.25)
+                }
+
+                &.active {
+                    background-color: $submenu-color-primary;
+                    color: set-notification-text-color($submenu-color-primary);
+                }
+            }
+        }
+
+        .form-control,
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="range"],
+            {
+            background-color: rgba($template-bgcolor, 0.5);
+            border-color: $header-bgcolor;
+            color: set-notification-text-color($header-bgcolor);
+        }
+
+
+    }
+}
+
+
+@media screen and (max-width:992px) {
+    body.header-fixed-top.sidemenu-open .header-container {
+        margin-left: 0;
+    }
+}

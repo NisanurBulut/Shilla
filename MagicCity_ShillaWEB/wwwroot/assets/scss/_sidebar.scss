@@ -1,0 +1,544 @@
+@function set-notification-text-color($color) {
+    @if (lightness($color) > 50) {
+        @return #000000; // Lighter backgorund, return dark color
+    }
+
+    @else {
+        @return #ffffff; // Darker background, return light color
+    }
+}
+
+.sidebar {
+    background-color:$template-bgcolor;
+    color: $template-color;
+    width: $sidebar-width;
+    padding: 15px;
+    position: fixed;
+    left: -($sidebar-width+15px);
+    height: 100%;
+    top: 0;
+    z-index: 12;
+    @extend .transition;
+    overflow-y: auto;
+    /*background-color: rgba($template-bgcolor, 0.60);
+    -webkit-backdrop-filter: saturate(125%) blur(10px);
+    -moz-backdrop-filter: saturate(125%) blur(10px);
+    -ms-backdrop-filter: saturate(125%) blur(10px);
+    backdrop-filter: saturate(125%) blur(10px);*/
+
+    .logo {
+        padding: 5px 15px;
+        display: block;
+        white-space: nowrap;
+        margin: 0 0 15px 0;
+        color: $template-color;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        & > .logo-icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+
+            .badge {
+                font-weight: normal
+            }
+
+            sup {
+                font-size: 0.6em
+            }
+
+            small {
+                font-size: 0.538em
+            }
+        }
+    }
+
+    .subtitle {
+        color: $template-color-primary-light;
+        text-transform: uppercase;
+        line-height: 1.5;
+        padding: 5px 15px;
+        margin: 20px 0 10px 0;
+        white-space: nowrap;
+    }
+
+    .nav {
+
+        .nav-item {
+            padding: 0 5px;
+
+            .nav-link {
+                padding: 10px;
+                color: $template-color-primary;
+                font-size: 1.05em;
+                font-weight: normal;
+                border-radius: 4px;
+                margin-bottom: 5px;
+                white-space: nowrap;
+                position: relative;
+
+                .arrow {
+                    vertical-align: middle;
+                    float: right;
+                    height: 24px;
+                    line-height: 24px;
+                    width: 24px;
+                    @extend .transition;
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    margin-top: -12px;
+                }
+
+                .icon {
+                    padding: 0;
+                    height: 24px;
+                    line-height: 24px;
+                    width: 24px;
+                    border-radius: 3px;
+                    font-size: 1.18em;
+                    text-align: center;
+                    vertical-align: middle;
+                    margin-right: 15px;
+                    background-color: rgba($template-color-primary, 0.2);
+                }
+
+                img.icon {
+                    padding: 3px;
+                }
+
+                & + .dropdown-menu {
+                    position: relative !important;
+                    will-change: unset;
+                    top: 0px;
+                    left: 0px;
+                    transform: none !important;
+                    width: 100%;
+                    background-color: transparent;
+                    border: none;
+
+                }
+
+                &.dropdown-toggle {
+                    &:after {
+                        display: none;
+                    }
+                }
+
+                &:hover {
+                    background: rgba(71, 114, 203, 1);
+                    background: -moz-linear-gradient(left, rgba($sidebar-bgcolor, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+                    background: -webkit-gradient(left top, right top, color-stop(0%, rgba($sidebar-bgcolor, 0.6)), color-stop(100%, rgba(0, 0, 0, 0)));
+                    background: -webkit-linear-gradient(left, rgba($sidebar-bgcolor, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+                    background: -ms-linear-gradient(left, rgba($sidebar-bgcolor, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+                    background: linear-gradient(to right, rgba($sidebar-bgcolor, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+                    color: $sidebar-color;
+                }
+
+
+            }
+
+            &.active {
+                .nav-link {
+                    background: -moz-linear-gradient(left, rgba($sidebar-bgcolor, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                    background: -webkit-gradient(left top, right top, color-stop(0%, rgba($sidebar-bgcolor, 0.95)), color-stop(100%, rgba(0, 0, 0, 0)));
+                    background: -webkit-linear-gradient(left, rgba($sidebar-bgcolor, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                    background: -ms-linear-gradient(left, rgba($sidebar-bgcolor, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                    background: linear-gradient(to right, rgba($sidebar-bgcolor, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                    color: $sidebar-color;
+
+                    .icon {
+                        color: $sidebar-color;
+                        background-color: $template-color-primary
+                    }
+
+                }
+            }
+
+            &.dropdown {
+                &.show {
+                    & > .dropdown-toggle {
+                        background: rgba(71, 114, 203, 1);
+                        background: -moz-linear-gradient(left, rgba($sidebar-bgcolor, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                        background: -webkit-gradient(left top, right top, color-stop(0%, rgba($sidebar-bgcolor, 0.95)), color-stop(100%, rgba(0, 0, 0, 0)));
+                        background: -webkit-linear-gradient(left, rgba($sidebar-bgcolor, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                        background: -ms-linear-gradient(left, rgba($sidebar-bgcolor, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                        background: linear-gradient(to right, rgba($sidebar-bgcolor, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                        color: $sidebar-color;
+
+                        .icon {
+                            color: $sidebar-color;
+                            background-color: $template-color-primary
+                        }
+
+                        .arrow {
+                            transform: rotate(180deg);
+                            -webkit-transform: rotate(180deg);
+                            -moz-transform: rotate(180deg);
+                            -ms-transform: rotate(180deg);
+                        }
+
+                        &:before {
+                            display: none
+                        }
+                    }
+
+                }
+
+            }
+
+            & > .nav {
+                display: none;
+                padding-left: 30px;
+                margin-bottom: 5px;
+
+                .nav-item {
+                    padding: 0 10px;
+
+                    & > .nav {
+                        display: none;
+                        padding-left: 30px;
+                        margin-bottom: 5px;
+
+                        .nav-item {
+                            padding: 0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .card {
+        background-color: rgba(255, 255, 255, 0.1)
+    }
+}
+
+body {
+    &.sidemenu-open {
+        .sidebar {
+            left: 0;
+        }
+    }
+
+    &.sidebar-compact,
+    &.sidebar-icon {
+        .sidebar {
+            width: 115px;
+            left: -130px;
+
+            .logo {
+                text-align: center;
+
+                & > .logo-icon {
+                    margin: 0 auto;
+                }
+            }
+
+            .logo-text {
+                display: none;
+            }
+
+            .subtitle {
+                display: block;
+                height: 0px;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .nav {
+                width: 100%;
+
+                .nav-item {
+                    padding: 0;
+                    width: 100%;
+
+                    & > .nav-link {
+                        text-align: center;
+                        font-size: 0.9em;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        width: 100%;
+
+                        .icon {
+                            margin: 0 auto 5px auto;
+                        }
+
+                        span {
+                            display: block;
+                        }
+
+                        .arrow {
+                            display: none
+                        }
+                    }
+
+                    & > .nav {
+                        padding-left: 0;
+                        background-color: darken($template-bgcolor, 5%);
+                        border-radius: 4px;
+
+                        .nav-item {
+                            padding: 0px;
+
+                            .nav-link {
+                                span {
+                                    display: block;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
+                                    overflow: hidden;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .upgrad-box {
+                display: none
+            }
+
+            &:hover {
+                width: $sidebar-width;
+
+                .upgrad-box {
+                    display: block
+                }
+
+                .logo {
+                    text-align: left;
+
+                    & > .logo-icon {
+                        margin: 0 15px 0 auto;
+                    }
+                }
+
+                .logo-text {
+                    display: inline-block;
+                }
+
+                .subtitle {
+                    display: block;
+                    height: auto;
+                    padding: 5px 15px;
+                }
+
+                .nav {
+                    width: 100%;
+
+                    .nav-item {
+                        padding: 0;
+                        width: 100%;
+
+                        & > .nav-link {
+                            text-align: left;
+                            font-size: 1.05em;
+                            overflow: visible;
+                            width: auto;
+
+                            .icon {
+                                margin: 0 15px 0px 0;
+                            }
+
+                            span {
+                                display: inline-block;
+                                vertical-align: middle
+                            }
+
+                            .arrow {
+                                display: inline-block
+                            }
+                        }
+
+                        & > .nav {
+                            padding-left: 30px;
+                            background-color: transparent;
+                            border-radius: 4px;
+
+                            .nav-item {
+                                padding: 0px;
+
+                                .nav-link {
+                                    span {
+                                        display: block;
+                                        white-space: nowrap;
+                                        text-overflow: ellipsis;
+                                        overflow: hidden;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.sidemenu-open {
+            .sidebar {
+                left: 0;
+            }
+
+            .wrapper {
+                padding-left: 130px;
+            }
+
+            &.wrapper-square {
+                .wrapper {
+                    padding-left: 115px;
+                }
+            }
+        }
+    }
+
+    &.sidebar-icon {
+        .sidebar {
+            width: 80px;
+            left: -90px;
+
+            .subtitle {
+                width: 30px;
+                height: auto;
+                padding: 5px 10px;
+                letter-spacing: 20px;
+            }
+
+            .nav {
+                .nav-item {
+                    & > .nav-link {
+                        margin-bottom: 0;
+
+                        span {
+                            display: none
+                        }
+                    }
+
+                }
+            }
+
+            &:hover {
+                .subtitle {
+                    width: 100%;
+                    letter-spacing: normal;
+                }
+
+                .nav {
+                    .nav-item {
+                        & > .nav-link {
+                            margin-bottom: 5px;
+
+                        }
+
+                        &.dropdown.show {
+                            .nav {}
+                        }
+                    }
+                }
+            }
+        }
+
+        &.sidemenu-open {
+            .wrapper {
+                padding-left: 95px;
+            }
+
+            &.wrapper-square {
+                .wrapper {
+                    padding-left: 80px;
+                }
+            }
+        }
+    }
+
+    &.sidebar-fill {
+        .sidebar {
+            color: $sidebar-color;
+            background-color: $sidebar-bgcolor;            
+            /* background-color: rgba($sidebar-bgcolor, 0.60);*/
+
+            .logo {
+                color: $sidebar-color;
+
+                p {
+                    color: $sidebar-color-primary-light;
+                }
+            }
+
+            .subtitle {
+                color: $sidebar-color-primary-light;
+            }
+
+            .nav {
+
+                .nav-item {
+                    .nav-link {
+                        color: $sidebar-color-primary;
+
+                        .icon {
+                            background-color: rgba($sidebar-color-primary, 0.4);
+                        }
+
+                        &:hover {
+                            background: rgba(71, 114, 203, 1);
+                            background: -moz-linear-gradient(left, rgba($sidebar-color-primary, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+                            background: -webkit-gradient(left top, right top, color-stop(0%, rgba($sidebar-color-primary, 0.6)), color-stop(100%, rgba(0, 0, 0, 0)));
+                            background: -webkit-linear-gradient(left, rgba($sidebar-color-primary, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+                            background: -ms-linear-gradient(left, rgba($sidebar-color-primary, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+                            background: linear-gradient(to right, rgba($sidebar-color-primary, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+                            color: set-notification-text-color($sidebar-bgcolor);
+                        }
+
+
+                    }
+
+                    &.active {
+                        .nav-link {
+                            background: -moz-linear-gradient(left, rgba($sidebar-color-primary, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                            background: -webkit-gradient(left top, right top, color-stop(0%, rgba($sidebar-color-primary, 0.95)), color-stop(100%, rgba(0, 0, 0, 0)));
+                            background: -webkit-linear-gradient(left, rgba($sidebar-color-primary, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                            background: -ms-linear-gradient(left, rgba($sidebar-color-primary, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                            background: linear-gradient(to right, rgba($sidebar-color-primary, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                            color: set-notification-text-color($sidebar-bgcolor);
+
+                            .icon {
+                                color: $sidebar-bgcolor;
+                                background-color: $sidebar-color-primary
+                            }
+
+                        }
+                    }
+
+                    &.dropdown {
+                        &.show {
+                            & > .dropdown-toggle {
+                                background: rgba(71, 114, 203, 1);
+                                background: -moz-linear-gradient(left, rgba($sidebar-color-primary, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                                background: -webkit-gradient(left top, right top, color-stop(0%, rgba($sidebar-color-primary, 0.95)), color-stop(100%, rgba(0, 0, 0, 0)));
+                                background: -webkit-linear-gradient(left, rgba($sidebar-color-primary, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                                background: -ms-linear-gradient(left, rgba($sidebar-color-primary, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                                background: linear-gradient(to right, rgba($sidebar-color-primary, 0.95) 0%, rgba(0, 0, 0, 0) 100%);
+                                color: set-notification-text-color($sidebar-bgcolor);
+
+                                .icon {
+                                    color: $sidebar-bgcolor;
+                                    background-color: $sidebar-color-primary
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

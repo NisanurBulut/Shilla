@@ -1,0 +1,33 @@
+﻿@model MagicShilla_Utility.Dto.ShillaDto
+<div class="container">
+    <form asp-action="CreateShilla">
+        <input type="hidden" asp-for="@Model.Id" />
+        <div class="mb-3">
+            <label asp-for="Name" for="formGroupExampleInput" class="form-label">Example label</label>
+            <input type="text" asp-for="Name" disabled class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+            
+        </div>
+        <div class="mb-3">
+            <label asp-for="ImageUrl" for="formGroupExampleInputImageUrl" class="form-label">Image Url</label>
+            <input asp-for="ImageUrl" disabled type="url" class="form-control" id="formGroupExampleInputImageUrl" placeholder="Another input placeholder">
+            
+        </div>
+        <div class="mb-3">
+            <label asp-for="Details" for="formGroupExampleInputDetail" class="form-label">Example label</label>
+            <textarea type="text" disabled asp-for="Details" class="form-control" rows="4" id="formGroupExampleInputDetail" placeholder="Example input placeholder"></textarea>
+            
+        </div>
+        <div class="mb-3">
+            <label asp-for="Occupancy" for="formGroupExampleInputOccupancy"></label>
+            <input type="text" disabled asp-for="Occupancy" class="form-control" id="formGroupExampleInputOccupancy" />
+           
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+            }

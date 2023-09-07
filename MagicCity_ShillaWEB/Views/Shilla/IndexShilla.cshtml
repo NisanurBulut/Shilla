@@ -1,52 +1,52 @@
 ﻿@model IEnumerable<MagicShilla_Utility.Dto.ShillaDto>
-<hr/>
-<section class="py-5 text-center container">
-    <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Album example</h1>
-            <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-            <p>
-                <a asp-controller="Shilla" asp-action="CreateShilla" class="btn btn-primary my-2">Create Shilla Home</a>
-                <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-            </p>
-        </div>
-    </div>
-</section>
-<div class="album py-5 bg-body-tertiary">
-    <div class="container">
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          @foreach (var item in Model)
-            {
-
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                        <div class="card-body">
-                            <p class="card-text">@item.Details</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-secondary" 
-                                    asp-controller="Shilla" 
-                                    asp-action="ViewShilla"
-                                    asp-route-shillaId="@item.Id">View</button>
-                                    <button type="button" class="btn btn-sm text-white btn-warning" 
-                                    asp-controller="Shilla" 
-                                    asp-action="UpdateShilla"
-                                    asp-route-shillaId="@item.Id">
-                                        Edit
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-danger" 
-                                    asp-controller="Shilla" 
-                                    asp-action="DeleteShilla"
-                                    asp-route-shillaId="@item.Id">Delete</button>
-                                </div>
-                                <small class="text-body-secondary">@item.CreatedAt</small>
-                            </div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-12 col-md-6">
+            <div class="card shadow-sm border-0 mb-4 gradient-blue overflow-hidden">
+                <div class="card-header bg-none border-0">
+                    <p class="fs15">Borderless plain card</p>
+                </div>
+                <div class="card-header">
+                    
+                </div>
+                <div class="card-body p-0">
+                    <div class="row no-gutters">
+                        <div class="col-8 p-4">
+                            <h6 class="subtitle">Expenses</h6>
+                            <h1><span class="font-weight-light">$ 5600</span> </h1>
+                            <p class="text-mute">@item.Details</p>
+                            <p><span>$ 150</span> <span class="text-mute-high">Saved</span></p>
+                        </div>
+                        <div class="col-4">
+                            <img src="~/assets/img/carousel2.png" alt="" class="right-img float-right mnh-100 mw-100">
                         </div>
                     </div>
                 </div>
-            }
+                <div class="card-footer border-0 text-right">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-secondary"
+                                asp-controller="Shilla"
+                                asp-action="ViewShilla"
+                                asp-route-shillaId="@item.Id">
+                            View
+                        </button>
+                        <button type="button" class="btn btn-sm text-white btn-warning"
+                                asp-controller="Shilla"
+                                asp-action="UpdateShilla"
+                                asp-route-shillaId="@item.Id">
+                            Edit
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger"
+                                asp-controller="Shilla"
+                                asp-action="DeleteShilla"
+                                asp-route-shillaId="@item.Id">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    }
 </div>

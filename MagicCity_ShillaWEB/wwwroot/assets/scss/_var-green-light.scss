@@ -1,0 +1,28 @@
+/* global colors variables */
+$template-bgcolor: #d9ece2;
+$template-bgcolor-light: lighten($template-bgcolor, 18%);
+$template-color: #000000;
+$template-color-primary: #4caf78 ;
+$template-color-primary-light: lighten($template-color-primary, 15%);
+
+
+/* sidebar colors variables */
+$sidebar-width:270px;
+$sidebar-bgcolor: #4caf78;
+$sidebar-color: #ffffff;
+$sidebar-color-primary: #b2e2c7;
+$sidebar-color-primary-light: lighten($sidebar-color-primary, 10%);
+
+
+/* header colors variables */
+$header-bgcolor: #4caf78 ;
+$header-color: #ffffff;
+$header-color-primary: #b2e2c7;
+$header-color-primary-light: lighten($header-color-primary, 10%);
+
+
+/* submenu colors variables */
+$submenu-bgcolor: lighten($header-bgcolor, 5%);
+$submenu-color: #ffffff;
+$submenu-color-primary: #b2e2c7;
+$submenu-color-primary-light: lighten($submenu-color-primary, 10%);
