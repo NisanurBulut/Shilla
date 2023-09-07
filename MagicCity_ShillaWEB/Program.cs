@@ -10,6 +10,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient<IShillaService, ShillaService>();
 
 builder.Services.AddScoped<IShillaService, ShillaService>();
+
+builder.Services.AddHttpClient<IShillaNumberService, ShillaNumberService>();
+
+builder.Services.AddScoped<IShillaNumberService, ShillaNumberService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
