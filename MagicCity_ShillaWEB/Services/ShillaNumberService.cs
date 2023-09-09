@@ -17,7 +17,7 @@ namespace MagicCity_ShillaWEB.Services
             this._shillaUrl = configuration.GetValue<string>("ServiceUrls:ShillaNumberAPI");
         }
 
-        public Task<T> CreateAsync<T>(CreateShillaDto param)
+        public Task<T> CreateAsync<T>(ShillaNumberCreateDto param)
         {
             return SendAsync<T>(new APIRequest() { apiType = SD.ApiType.POST, Data = param, Url = $"{_shillaUrl}/ShillaNumberAPI/CreateShillaNumber" });
         }
@@ -49,13 +49,13 @@ namespace MagicCity_ShillaWEB.Services
             });
         }
 
-        public Task<T> UpdateAsync<T>(UpdateShillaDto param)
+        public Task<T> UpdateAsync<T>(ShillaNumberUpdateDto param)
         {
             return SendAsync<T>(new APIRequest()
             {
                 apiType = SD.ApiType.PUT,
                 Data = param,
-                Url = $"{_shillaUrl}/ShillaNumberAPI/UpdateShillaNumber/{param.Id}"
+                Url = $"{_shillaUrl}/ShillaNumberAPI/UpdateShillaNumber/{param.ShillaNo}"
             });
         }
     }

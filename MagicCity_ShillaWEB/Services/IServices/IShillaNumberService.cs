@@ -6,8 +6,8 @@ namespace MagicCity_ShillaWEB.Services.IServices
     {
         Task<T> GetAllAsync<T>();
         Task<T> GetAsync<T>(int id);
-        Task<T> CreateAsync<T>(CreateShillaDto param);
-        Task<T> UpdateAsync<T>(UpdateShillaDto param);
+        Task<T> CreateAsync<T>(ShillaNumberCreateDto param);
+        Task<T> UpdateAsync<T>(ShillaNumberUpdateDto param);
         Task<T> DeleteAsync<T>(int id);
     }
 }

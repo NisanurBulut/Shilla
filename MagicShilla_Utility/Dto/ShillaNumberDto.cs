@@ -9,5 +9,6 @@ namespace MagicShilla_Utility.Dto
         public string Details { get; set; }
         [Required]
         public int ShillaID { get; set; }
+        public ShillaDto ShillaItem { get; set; }
     }
 }
