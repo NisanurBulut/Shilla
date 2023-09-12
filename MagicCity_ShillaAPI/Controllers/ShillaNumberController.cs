@@ -84,14 +84,14 @@ namespace MagicCity_ShillaAPI.Controllers
                 #region custom validation
                 if (await _shillaNumberRepo.GetAsync(a => a.ShillaNo == shillaNumberDto.ShillaNo) != null)
                 {
-                    ModelState.AddModelError("Custom Error", "Shilla Number is already exists !");
+                    ModelState.AddModelError("ErrorMessages", "Shilla Number is already exists !");
                     _apiResponseModel.setBadRequestWithErrorMessage("Shilla Number is already exists !");
                     return BadRequest(ModelState);
                 }
 
                 if(await _shillaRepo.GetAsync(a => a.Id == shillaNumberDto.ShillaID) == null)
                 {
-                    ModelState.AddModelError("Custom Error", "Shilla ID is invalid !");
+                    ModelState.AddModelError("ErrorMessages", "Shilla ID is invalid !");
                     _apiResponseModel.setBadRequestWithErrorMessage("Shilla ID is invalid !");
                     return BadRequest(ModelState);
                 }
@@ -164,7 +164,7 @@ namespace MagicCity_ShillaAPI.Controllers
                 }
                 if (await _shillaRepo.GetAsync(a => a.Id == shillaNumberDto.ShillaID) == null)
                 {
-                    ModelState.AddModelError("Custom Error", "Shilla ID is invalid !");
+                    ModelState.AddModelError("ErrorMessages", "Shilla ID is invalid !");
                     _apiResponseModel.setBadRequestWithErrorMessage("Shilla ID is invalid !");
                     return BadRequest(ModelState);
                 }

@@ -14,12 +14,12 @@ namespace MagicCity_ShillaWEB.Services
         public ShillaNumberService(IHttpClientFactory httpClientFactoryParam, IConfiguration configuration) : base(httpClientFactoryParam)
         {
             this._httpClientFactory = httpClientFactoryParam;
-            this._shillaUrl = configuration.GetValue<string>("ServiceUrls:ShillaNumberAPI");
+            this._shillaUrl = configuration.GetValue<string>("ServiceUrls:ShillaAPI");
         }
 
         public Task<T> CreateAsync<T>(ShillaNumberCreateDto param)
         {
-            return SendAsync<T>(new APIRequest() { apiType = SD.ApiType.POST, Data = param, Url = $"{_shillaUrl}/ShillaNumberAPI/CreateShillaNumber" });
+            return SendAsync<T>(new APIRequest() { apiType = SD.ApiType.POST, Data = param, Url = $"{_shillaUrl}/ShillaNumber/CreateShillaNumber" });
         }
 
         public Task<T> DeleteAsync<T>(int id)
@@ -27,7 +27,7 @@ namespace MagicCity_ShillaWEB.Services
             return SendAsync<T>(new APIRequest()
             {
                 apiType = SD.ApiType.DELETE,
-                Url = $"{_shillaUrl}/ShillaNumberAPI/DeleteShillaNumber/{id}"
+                Url = $"{_shillaUrl}/ShillaNumber/DeleteShillaNumber/{id}"
             });
         }
 
@@ -36,7 +36,7 @@ namespace MagicCity_ShillaWEB.Services
             return SendAsync<T>(new APIRequest()
             {
                 apiType = SD.ApiType.GET,
-                Url = $"{_shillaUrl}/ShillaNumberAPI/GetShillaNumbers"
+                Url = $"{_shillaUrl}/ShillaNumber/GetShillaNumbers"
             });
         }
 
@@ -45,7 +45,7 @@ namespace MagicCity_ShillaWEB.Services
             return SendAsync<T>(new APIRequest()
             {
                 apiType = SD.ApiType.GET,
-                Url = $"{_shillaUrl}/ShillaNumberAPI/GetShillaNumber/{id}"
+                Url = $"{_shillaUrl}/ShillaNumber/GetShillaNumber/{id}"
             });
         }
 
@@ -55,7 +55,7 @@ namespace MagicCity_ShillaWEB.Services
             {
                 apiType = SD.ApiType.PUT,
                 Data = param,
-                Url = $"{_shillaUrl}/ShillaNumberAPI/UpdateShillaNumber/{param.ShillaNo}"
+                Url = $"{_shillaUrl}/ShillaNumber/UpdateShillaNumber/{param.ShillaNo}"
             });
         }
     }

@@ -69,7 +69,7 @@ namespace MagicCity_ShillaAPI.Controllers
             #region custom validation
             if (await _shillaRepo.GetAsync(a => a.Name.ToLower() == shillaDto.Name.ToLower()) != null)
             {
-                ModelState.AddModelError("", "Shilla city is already exists !");
+                ModelState.AddModelError("ErrorMessages", "Shilla city is already exists !");
                 return BadRequest(ModelState);
             }
             #endregion
