@@ -29,7 +29,7 @@ namespace MagicCity_ShillaAPI.Controllers
         {
             try
             {
-                IEnumerable<ShillaNumber> entityList = await _shillaNumberRepo.GetAllAsync();
+                IEnumerable<ShillaNumber> entityList = await _shillaNumberRepo.GetAllAsync(includeProperties:"Shilla");
                 _apiResponseModel.Result = _mapper.Map<ShillaNumberDto>(entityList);
                 _apiResponseModel.StatusCode = HttpStatusCode.OK;
                 return Ok(_apiResponseModel);
@@ -54,7 +54,7 @@ namespace MagicCity_ShillaAPI.Controllers
                 {
                     _apiResponseModel.setBadRequest();
                 }
-                var shillaNumberItem = await _shillaNumberRepo.GetAsync(u => u.ShillaNo == id);
+                var shillaNumberItem = await _shillaNumberRepo.GetAsync(u => u.ShillaNo == id, includeProperties:"Shilla");
                 if (shillaNumberItem == null)
                 {
                     _apiResponseModel.StatusCode = HttpStatusCode.NotFound;
