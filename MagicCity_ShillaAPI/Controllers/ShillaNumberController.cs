@@ -30,7 +30,12 @@ namespace MagicCity_ShillaAPI.Controllers
             try
             {
                 IEnumerable<ShillaNumber> entityList = await _shillaNumberRepo.GetAllAsync(includeProperties:"Shilla");
-                _apiResponseModel.Result = _mapper.Map<ShillaNumberDto>(entityList);
+                var response = new List<ShillaNumberDto>();
+                foreach (var entity in entityList)
+                {
+                    response.Add(_mapper.Map<ShillaNumberDto>(entity));
+                }
+                _apiResponseModel.Result = response;
                 _apiResponseModel.StatusCode = HttpStatusCode.OK;
                 return Ok(_apiResponseModel);
             }
