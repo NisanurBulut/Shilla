@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MagicShilla_Utility.Entity;
+using System.ComponentModel.DataAnnotations;
 
 namespace MagicShilla_Utility.Dto
 {
@@ -6,9 +7,10 @@ namespace MagicShilla_Utility.Dto
     {
         [Required]
         public int ShillaNo { get; set; } = 0;
-        public string Details { get; set; }
-        [Required]
         public int ShillaID { get; set; }
         public ShillaDto Shilla { get; set; }
+        public string Details { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
     }
 }

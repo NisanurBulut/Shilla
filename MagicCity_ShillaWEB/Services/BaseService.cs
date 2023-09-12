@@ -55,6 +55,7 @@ namespace MagicCity_ShillaWEB.Services
 
                 var apiContent = await apiResponse.Content.ReadAsStringAsync();
                 var APIResponseItem = JsonConvert.DeserializeObject<T>(apiContent);
+                
                 return APIResponseItem;
 
             }
