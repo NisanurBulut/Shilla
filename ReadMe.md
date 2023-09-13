@@ -195,6 +195,30 @@ Use AsNoTracking when you only require read-only access to entities and want to 
 
 <b>Data Transfer Objects</b> are used to transfer data between the <b>Application Layer</b> and <b>the Presentation Layer</b>.
 
+<hr/>
+
+#### 💡 Layouts
+Layout actually used to maintain consistency in the web pages and also using this, repetitive code can be reduced. Normally, layout mainly contains header, navigation, menu elements or footer sections.
+
+#### 💡 Partial Views
+Partial views mainly reduce code duplicate by maintain reusable parts of the views.
+
+#### 💡 View Components
+It is quite similar to the partial view in terms of reusability and reduce code repetition.
+
+<div style='border:1px solid blue; margin-bottom:3px;'>
+<ul>
+<li><i>View components do not use model binding</i></li>
+<li><i>View Component class must be derived from the ViewComponent class.</i></li>
+<li><i><b>Like Partial View,</b> View components does not depend on controllers. It has its own class to implement the logic to develop the component’s model and razor markup view page. </i></li>
+<li><i>View Components can utilize dependency injection</i></li>
+</ul>
+</div>
+
+<div style='border:1px solid red; padding-top:3px;'>
+<i>Actually, views help us to establish a SOC Design (Separation of Concerns) within the MVC application. 
+It basically separates the user interface from other parts of the application. </i>
+</div>
 
 <hr/>
 
