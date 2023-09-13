@@ -3,6 +3,10 @@ using MagicShilla_Utility.Data;
 using MagicShilla_Utility.Dto;
 using MagicShilla_Utility.Entity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace MagicCity_ShillaAPI.Repository
 {
@@ -26,15 +30,35 @@ namespace MagicCity_ShillaAPI.Repository
             return false;
         }
 
-        public Task<LoginResponseDto> LoginUserAsync(LoginRequestDto loginRequestDto)
+        public async Task<LoginResponseDto> LoginUserAsync(LoginRequestDto loginRequestDto)
         {
-            var userEntity = _dbContext.LocalUsers.FirstOrDefault(a => a.UserName.ToLower() == loginRequestDto.UserName.ToLower()
+            var userEntity = await _dbContext.LocalUsers.FirstOrDefaultAsync(a => a.UserName.ToLower() == loginRequestDto.UserName.ToLower()
             && a.Password == loginRequestDto.Password);
             if (userEntity == null)
             {
                 return null;
             }
 
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var secretItem = Encoding.ASCII.GetBytes(_secretKey);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim(ClaimTypes.Name, userEntity.Id.ToString()),
+                    new Claim(ClaimTypes.Role,userEntity.Role)
+
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new(new SymmetricSecurityKey(secretItem), SecurityAlgorithms.HmacSha256Signature)
+            };
+            var tokenItem = tokenHandler.CreateToken(tokenDescriptor);
+            var loginResponseDtoItem = new LoginResponseDto
+            {
+                Token = tokenHandler.WriteToken(tokenItem),
+                User = userEntity
+            };
+            return loginResponseDtoItem;
         }
 
         public async Task<LocalUser> RegisterAsync(RegisterationRequestDto registerationRequestDto)
