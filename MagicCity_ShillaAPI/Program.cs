@@ -7,6 +7,10 @@ using MagicCity_ShillaAPI.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using MagicShilla_Utility;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,10 +26,29 @@ builder.Services.AddDbContext<ShillaDbContext>(option =>
 
 });
 builder.Services.AddAutoMapper(typeof(MappingConfig));
+
+var keyItem = builder.Configuration.GetValue<string>("ApiSettings:Secret");
+
+builder.Services.AddAuthentication(a=>
+{
+    a.DefaultAuthenticateScheme=JwtBearerDefaults.AuthenticationScheme;
+    a.DefaultChallengeScheme=JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(b =>
+{
+    b.RequireHttpsMetadata = false;
+    b.SaveToken = true;
+    b.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(keyItem))
+    };
+});
+
 builder.Services.AddControllers(option =>
 {
    // option.ReturnHttpNotAcceptable = true;
 }).AddNewtonsoftJson();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -43,7 +66,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
