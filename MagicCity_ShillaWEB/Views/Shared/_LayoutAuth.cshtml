@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>AdminUX-PRO | Admin Dashboard HTML Template</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Worlds Best Admin UX Dashbaoard PRO version for bootstrap template, Select, Calandar, Report, Charts, Tables etc." name="description" />
+    <meta content="" name="author" />
+    <link rel="shortcut icon" href="../assets/img/logoicon.png">
+
+    <!-- g fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+    <!-- g fonts style ends -->
+    <!-- Vendor or 3rd party style -->
+    <!-- material icons -->
+    <link href="~/assets/vendor/material-icons/material-icons.css" rel="stylesheet">
+    <!-- flags icons -->
+    <link href="~/assets/vendor/flags/css/flag-icon.min.css" rel="stylesheet">
+    <!-- swiper -->
+    <link href="~/assets/vendor/swiper/css/swiper.min.css" rel="stylesheet">
+
+    <!-- Vendor or 3rd party style ends -->
+    <!-- Customized template style mandatory -->
+    <link href="~/assets/css/style-tomato-light.css" rel="stylesheet" id="stylelink">
+</head>
+<body>
+<div class="content shadow-sm position-relative" style="padding-bottom: 78.6px;">
+    <header class="header">
+        <!-- Fixed navbar -->
+        <nav class="container-fluid">
+            <div class="row">
+                <div class="col align-self-center">
+
+                        @{
+                            await Html.RenderPartialAsync("_LogoPartialView.cshtml");
+                        }
+                </div>
+                <div class="col text-right align-self-center">
+                    <a asp-area="" asp-controller="LocalUsers" asp-action="Register" class="btn btn-sm btn-primary text-uppercase">Register</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+        
+   
+
+    <!-- Main container starts -->
+    <div class="container main-container" id="main-container">
+            <img class="background opac blur" src="~/assets/img/login_background.jpg" />
+       @RenderBody();
+    </div>
+    <!-- Main container ends -->
+</div>
+
+<script src="~/assets/js/jquery-3.3.1.min.js"></script>
+<script src="~/assets/js/popper.min.js"></script>
+<script src="~/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/assets/vendor/cookie/jquery.cookie.js"></script>
+
+<!-- Global js ends -->
+<!-- Vendor or 3rd party js -->
+<!-- date range picker -->
+<script src="~/assets/vendor/daterangepicker-master/moment.min.js"></script>
+<script src="~/assets/vendor/daterangepicker-master/daterangepicker.js"></script>
+
+
+<!-- Vendor or 3rd party js ends -->
+<!-- Customized template js mandatory -->
+<script src="~/assets/js/main.js"></script>
+<!-- Customized template js ends -->
+<!-- theme picker -->
+<script src="~/assets/js/style-picker.js"></script>
+<!-- theme picker ends -->
+<!-- Customized page level js -->
+<script>
+    'use strict'
+    $(document).ready(function () {
+
+
+    });
+
+</script>
+<!-- Customized page level js ends -->
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

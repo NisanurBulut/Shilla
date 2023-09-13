@@ -49,6 +49,8 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ShillaDto))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<ShillaDto>> GetShilla(int id)
         {
             if (id == 0)
@@ -64,6 +66,8 @@ namespace MagicCity_ShillaAPI.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult<ShillaDto>> CreateShilla([FromBody] CreateShillaDto shillaDto)
         {
             #region custom validation
@@ -89,6 +93,8 @@ namespace MagicCity_ShillaAPI.Controllers
             return CreatedAtRoute("GetShillaById", new { id = entityItem.Id }, shillaDto);
         }
 
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -107,6 +113,8 @@ namespace MagicCity_ShillaAPI.Controllers
             await _shillaRepo.RemoveAsync(shillaItem);
             return NoContent();
         }
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPut("{id:int}", Name = "UpdateShilla")]
@@ -122,6 +130,9 @@ namespace MagicCity_ShillaAPI.Controllers
             await _shillaRepo.UpdateAsync(entityItem);
             return NoContent();
         }
+
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPatch("{id:int}", Name = "UpdatePartialShilla")]

@@ -10,6 +10,7 @@ namespace MagicShilla_Utility.Data
         {
             
         }
+        public DbSet<LocalUser>  LocalUsers{ get; set; }
         public DbSet<Shilla> Shillas { get; set; }
         public DbSet<ShillaNumber> ShillaNumbers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
