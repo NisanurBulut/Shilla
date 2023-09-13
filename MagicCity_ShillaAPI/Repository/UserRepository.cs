@@ -36,7 +36,11 @@ namespace MagicCity_ShillaAPI.Repository
             && a.Password == loginRequestDto.Password);
             if (userEntity == null)
             {
-                return null;
+                return new LoginResponseDto
+                {
+                    Token = "",
+                    User = null
+                };
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();

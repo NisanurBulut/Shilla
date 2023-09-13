@@ -31,6 +31,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IShillaRepository, ShillaRepository>();
 builder.Services.AddScoped<IShillaNumberRepository, ShillaNumberRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<ILogging, Logging>();
 var app = builder.Build();
 

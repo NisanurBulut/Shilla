@@ -8,6 +8,10 @@ namespace MagicCity_ShillaWEB.Models
         public bool IsSuccess { get; set; }
         public List<string> ErrorMessages { get; set; }
         public object Result { get; set; }
+        public APIResponse()
+        {
+            IsSuccess = false;
+        }
         public void setBadRequest()
         {
             StatusCode = HttpStatusCode.BadRequest;
@@ -18,6 +22,12 @@ namespace MagicCity_ShillaWEB.Models
             this.setBadRequest();
 
             this.ErrorMessages = new List<string>() { errorMessage };
+        }
+        public void setOk(object resultItem)
+        {
+            this.StatusCode=HttpStatusCode.OK;
+            this.Result = resultItem;
+            this.IsSuccess = true;
         }
     }
 }
