@@ -9,7 +9,7 @@ If you like or are using this project to learn or start your solution, please gi
 
 <hr/>
 
-![](/MagicCity_ShillaWEB/asset/back1.PNG)
+![](/MagicCity_ShillaWEB/wwwroot/assets/img/back1.PNG)
 
 <hr/>
 
