@@ -9,10 +9,11 @@ namespace MagicCity_ShillaAPI.Repository
     public class UserRepository : Repository<LocalUser>, IUserRepository
     {
         private ShillaDbContext _dbContext;
-        public UserRepository(ShillaDbContext dbContext) : base(dbContext)
+        private string _secretKey;
+        public UserRepository(ShillaDbContext dbContext, IConfiguration configuration) : base(dbContext)
         {
-
             _dbContext = dbContext;
+            _secretKey = configuration.GetValue<string>("ApiSettings:Secret");
         }
 
         public async Task<bool> IsUniqueUserAsync(string userName)
@@ -27,12 +28,18 @@ namespace MagicCity_ShillaAPI.Repository
 
         public Task<LoginResponseDto> LoginUserAsync(LoginRequestDto loginRequestDto)
         {
-            
+            var userEntity = _dbContext.LocalUsers.FirstOrDefault(a => a.UserName.ToLower() == loginRequestDto.UserName.ToLower()
+            && a.Password == loginRequestDto.Password);
+            if (userEntity == null)
+            {
+                return null;
+            }
+
         }
 
         public async Task<LocalUser> RegisterAsync(RegisterationRequestDto registerationRequestDto)
         {
-            LocalUser localUserEntity = new ()
+            LocalUser localUserEntity = new()
             {
                 UserName = registerationRequestDto.UserName,
                 Password = registerationRequestDto.Password,
