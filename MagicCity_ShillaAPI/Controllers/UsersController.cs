@@ -49,7 +49,7 @@ namespace MagicCity_ShillaAPI.Controllers
                 return BadRequest(_apiResponseModel);
             }
             var isUniqueItem = await _userRepo.IsUniqueUserAsync(param.UserName);
-            if (!isUniqueItem)
+            if (isUniqueItem==false)
             {
                 _apiResponseModel.setBadRequestWithErrorMessage("User is already exist.");
                 return BadRequest(_apiResponseModel);

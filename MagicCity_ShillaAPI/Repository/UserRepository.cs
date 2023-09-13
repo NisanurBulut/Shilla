@@ -77,7 +77,6 @@ namespace MagicCity_ShillaAPI.Repository
             _dbContext.LocalUsers.Add(localUserEntity);
             await _dbContext.SaveChangesAsync();
 
-            localUserEntity = null;
             return localUserEntity;
         }
     }
