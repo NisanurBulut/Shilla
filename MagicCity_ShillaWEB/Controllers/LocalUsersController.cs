@@ -17,6 +17,17 @@ namespace MagicCity_ShillaWEB.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SignUp(RegisterationRequestDto param)
+        {
+            var response = await _authService.RegisterAsync<APIResponse>(param);
+            if (response != null || response.IsSuccess)
+            {
+                return RedirectToAction("Login");
+            }
+            return View();
+        }
         [HttpGet]
 
         public IActionResult Login()
@@ -36,15 +47,8 @@ namespace MagicCity_ShillaWEB.Controllers
             }
             return View();
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterationRequestDto param)
-        {
-            var response = await _authService.RegisterAsync<APIResponse>(param);
-            if (response != null || response.IsSuccess)
-            {
-                return RedirectToAction("Login");
-            }
+        [HttpGet]
+        public IActionResult Register() { 
             return View();
         }
         [HttpGet]

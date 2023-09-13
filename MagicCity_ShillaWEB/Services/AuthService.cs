@@ -9,13 +9,14 @@ namespace MagicCity_ShillaWEB.Services
     public class AuthService : BaseService, IAuthService
     {
         private readonly IHttpClientFactory _httpClientFactory;
+
         private string _shillaUrl;
+
         public AuthService(IHttpClientFactory httpClientFactoryParam, IConfiguration configuration) : base(httpClientFactoryParam)
         {
             this._httpClientFactory = httpClientFactoryParam;
             this._shillaUrl = configuration.GetValue<string>("ServiceUrls:ShillaAPI");
         }
-
         public APIResponse responseModel { get ; set ; }
 
         public Task<T> LoginAsync<T>(LoginRequestDto loginRequestDto)
