@@ -27,12 +27,23 @@ namespace MagicCity_ShillaAPI.Repository
 
         public Task<LoginResponseDto> LoginUserAsync(LoginRequestDto loginRequestDto)
         {
-            throw new NotImplementedException();
+            
         }
 
-        public Task<LocalUser> RegisterAsync(RegisterationRequestDto registerationRequestDto)
+        public async Task<LocalUser> RegisterAsync(RegisterationRequestDto registerationRequestDto)
         {
-            throw new NotImplementedException();
+            LocalUser localUserEntity = new ()
+            {
+                UserName = registerationRequestDto.UserName,
+                Password = registerationRequestDto.Password,
+                FullName = registerationRequestDto.FullName,
+                Role = registerationRequestDto.Role
+            };
+            _dbContext.LocalUsers.Add(localUserEntity);
+            await _dbContext.SaveChangesAsync();
+
+            localUserEntity = null;
+            return localUserEntity;
         }
     }
 }
