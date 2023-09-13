@@ -22,7 +22,7 @@
 
     <!-- Vendor or 3rd party style ends -->
     <!-- Customized template style mandatory -->
-    <link href="~/assets/css/style-darkblue-dark.css" rel="stylesheet" id="stylelink">
+    <link href="~/assets/css/style-tomato-light.css" rel="stylesheet" id="stylelink">
 </head>
 <body>
 <div class="content shadow-sm position-relative" style="padding-bottom: 78.6px;">
@@ -31,13 +31,10 @@
         <nav class="container-fluid">
             <div class="row">
                 <div class="col align-self-center">
-                    <a href="" class="logo text-white">
-                            <img src="~/assets/img/logoicon.svg" alt="Shilla" class="logo-icon">
-                        <div class="logo-text">
-                                <h5 class="fs22 mb-0">Shilla <sup class="badge badge-danger">PRO</sup></h5>
-                            <p class="text-uppercase fs11">Shilla</p>
-                        </div>
-                    </a>
+
+                        @{
+                            await Html.RenderPartialAsync("_LogoPartialView.cshtml");
+                        }
                 </div>
                 <div class="col text-right align-self-center">
                     <a asp-area="" asp-controller="LocalUsers" asp-action="Register" class="btn btn-sm btn-primary text-uppercase">Register</a>

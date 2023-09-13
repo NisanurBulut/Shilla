@@ -155,17 +155,6 @@ $(document).ready(function () {
         $('body').css('font-size', '14px');
     }
 
-    /* style selected color scheme */
-    if ($.type($.cookie("styleselected")) != 'undefined' && $.cookie("styleselected") != '') {
-        var currentstyle = $('#stylelink');
-        $('head').append('<link href="../assets/css/' + $.cookie("styleselected") + '.css" rel="stylesheet" id="stylelink">');
-        setTimeout(function () {
-            currentstyle.remove();
-        }, 200);
-
-    } else {
-        $('head').append('<link href="../assets/css/style-darkblue-dark.css" rel="stylesheet" id="stylelink">');
-    }
 
 
     /* select checkbox personalize change events */

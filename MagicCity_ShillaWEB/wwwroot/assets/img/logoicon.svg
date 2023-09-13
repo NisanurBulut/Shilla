@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30.5" viewBox="0 0 30 30.5"><defs><style>.a{fill:#5b92ff;}.b{fill:#fff;}.c{filter:url(#c);}.d{filter:url(#a);}</style><filter id="a" x="0.5" y="1.5" width="29" height="29" filterUnits="userSpaceOnUse"><feOffset dy="1" input="SourceAlpha"/><feGaussianBlur stdDeviation="0.5" result="b"/><feFlood flood-opacity="0.2"/><feComposite operator="in" in2="b"/><feComposite in="SourceGraphic"/></filter><filter id="c" x="0.5" y="1.5" width="29" height="29" filterUnits="userSpaceOnUse"><feOffset dy="1" input="SourceAlpha"/><feGaussianBlur stdDeviation="1.5" result="d"/><feFlood flood-opacity="0.2"/><feComposite operator="in" in2="d"/><feComposite in="SourceGraphic"/></filter></defs><g transform="translate(-15 -24)"><rect class="a" width="30" height="30" rx="4" transform="translate(15 24)"/><g class="d" transform="matrix(1, 0, 0, 1, 15, 24)"><path class="a" d="M4,0H22a4,4,0,0,1,4,4V22a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z" transform="translate(2 2)"/></g><g class="c" transform="matrix(1, 0, 0, 1, 15, 24)"><path class="b" d="M10,20a9.913,9.913,0,0,1-4.243-.942l1.093-3.28h5.963l1.145,3.4h.016A9.934,9.934,0,0,1,10,20Zm6.862-2.725h0L11.4,2.672H8.244L2.9,17.039A10,10,0,1,1,20,10a9.908,9.908,0,0,1-3.137,7.274Zm-4.967-4.252H7.768L9.82,6.845l2.074,6.177Z" transform="translate(5 5)"/></g></g></svg>
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<svg height="800px" width="800px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 512 512" xml:space="preserve">
+<g>
+	<g>
+		<path style="fill:#ECF0F1;" d="M255.992,379.586c-4.043,0-7.698-2.798-8.607-6.912l-35.31-158.897
+			c-1.059-4.758,1.942-9.472,6.7-10.531c4.758-1.05,9.472,1.942,10.531,6.7l35.31,158.897c1.059,4.758-1.942,9.472-6.7,10.531
+			C257.272,379.516,256.627,379.586,255.992,379.586"/>
+		<path style="fill:#ECF0F1;" d="M220.686,379.591c-3.778,0-7.283-2.454-8.439-6.259l-70.886-232.607
+			c-1.421-4.661,1.209-9.596,5.87-11.017c4.67-1.439,9.596,1.209,11.017,5.87l70.886,232.607c1.421,4.661-1.209,9.596-5.87,11.017
+			C222.407,379.467,221.542,379.591,220.686,379.591"/>
+		<path style="fill:#ECF0F1;" d="M256.009,379.586c-0.636,0-1.28-0.071-1.924-0.212c-4.758-1.059-7.759-5.773-6.7-10.531
+			l35.31-158.897c1.059-4.758,5.791-7.759,10.531-6.7c4.758,1.059,7.759,5.773,6.7,10.531l-35.31,158.897
+			C263.707,376.788,260.052,379.586,256.009,379.586"/>
+		<path style="fill:#ECF0F1;" d="M291.315,379.591c-0.856,0-1.721-0.124-2.578-0.388c-4.661-1.421-7.292-6.356-5.87-11.017
+			l70.886-232.607c1.412-4.67,6.347-7.318,11.017-5.87c4.661,1.421,7.292,6.356,5.87,11.017l-70.886,232.607
+			C298.598,377.137,295.094,379.591,291.315,379.591"/>
+	</g>
+	<path style="fill:#C03A2B;" d="M319.902,0c-31.947,0-53.795,18.114-63.903,44.138C245.9,18.114,224.052,0,192.096,0
+		c-68.458,0-91.286,83.094-42.293,138.152c17.399,19.535,101.632,104.324,106.196,109.021
+		c4.564-4.696,88.806-89.485,106.196-109.021C411.188,83.094,388.369,0,319.902,0"/>
+	<polygon style="fill:#EFE6C7;" points="150.07,512 361.933,512 361.933,370.759 150.07,370.759 	"/>
+	<polygon style="fill:#D1C299;" points="361.932,370.759 150.07,370.759 256.001,467.738 	"/>
+	<polygon style="fill:#B7A776;" points="256.001,467.737 227.117,441.289 150.07,511.998 361.932,511.998 284.885,441.289 	"/>
+</g>
+</svg>
