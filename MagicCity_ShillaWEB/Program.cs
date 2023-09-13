@@ -14,6 +14,9 @@ builder.Services.AddScoped<IShillaService, ShillaService>();
 builder.Services.AddHttpClient<IShillaNumberService, ShillaNumberService>();
 
 builder.Services.AddScoped<IShillaNumberService, ShillaNumberService>();
+
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddHttpClient<IAuthService, AuthService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
