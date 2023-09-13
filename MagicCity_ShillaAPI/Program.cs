@@ -17,7 +17,9 @@ Log.Logger = new LoggerConfiguration().MinimumLevel.Error().WriteTo.File("shilla
 builder.Host.UseSerilog();
 builder.Services.AddDbContext<ShillaDbContext>(option =>
 {
-    option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
+    option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"),
+    option => option.MigrationsAssembly("MagicCity_ShillaAPI"));
+
 });
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 builder.Services.AddControllers(option =>
