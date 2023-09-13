@@ -1,0 +1,33 @@
+﻿
+<div class="sidebar">
+    <!-- Logo sidebar -->
+    <a href="" class="logo">
+        <img src="~/assets/img/logoicon.svg" alt="" class="logo-icon">
+        <div class="logo-text">
+            <h5 class="fs22 mb-0">Shilla <sup class="badge badge-danger">PRO</sup></h5>
+            <p class="text-uppercase fs11">Admin Dashboard</p>
+        </div>
+    </a>
+    <!-- Logo sidebar ends -->
+
+    <h6 class="subtitle fs11">Shilla Process</h6>
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Shilla" asp-action="Indexshilla"><i class="material-icons icon">filter_none</i><span>Liste</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Drama" asp-action="IndexDrama"><i class="material-icons icon">drama</i><span>Dramas</span></a>
+        </li>
+    </ul>
+    <h6 class="subtitle fs11">Shilla Number Process</h6>
+    <ul class="nav flex-column">
+
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="ShillaNumber" asp-action="IndexShillaNumber"><i class="material-icons icon">style</i><span>Shilla Numbers</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="ShillaNumber" asp-action="CreateShillaNumber"><i class="material-icons icon">style</i><span>Create Shilla Number</span></a>
+        </li>
+    </ul>
+</div>
