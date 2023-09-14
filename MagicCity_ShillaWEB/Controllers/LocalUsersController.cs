@@ -4,8 +4,10 @@ using MagicShilla_Utility;
 using MagicShilla_Utility.Dto;
 using MagicShilla_Utility.VM;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Security.Claims;
 
 namespace MagicCity_ShillaWEB.Controllers
 {
@@ -52,6 +54,13 @@ namespace MagicCity_ShillaWEB.Controllers
 
             var model = JsonConvert.DeserializeObject<LoginResponseDto>(Convert.ToString(response.Result));
             HttpContext.Session.SetString(SD.SessionToken,model.Token);
+
+            var identityItem = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+            identityItem.AddClaim(new Claim(ClaimTypes.Name, model.User.UserName));
+            identityItem.AddClaim(new Claim(ClaimTypes.Role, model.User.Role));
+            var principal = new ClaimsPrincipal(identityItem);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,principal);
+
             return RedirectToAction("IndexShilla", nameof(ShillaController));
         }
         [HttpGet]

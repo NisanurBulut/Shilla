@@ -1,6 +1,7 @@
 using MagicCity_ShillaWEB.Services;
 using MagicCity_ShillaWEB.Services.IServices;
 using MagicShilla_Utility;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAutoMapper(typeof(MappingConfig));
@@ -20,6 +21,16 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddDistributedMemoryCache();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.Cookie.HttpOnly = true;
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+        options.LoginPath = "/LocalUsers/Login";
+        options.AccessDeniedPath = "/LoginUsers/AccessDenied";
+        options.LogoutPath = "/LocalUsers/Logout";
+        options.SlidingExpiration = true;
+    });
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(10);
@@ -41,11 +52,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=LocalUsers}/{action=Login}/{id?}");
 
 app.Run();

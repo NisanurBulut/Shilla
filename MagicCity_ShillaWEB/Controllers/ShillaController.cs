@@ -4,11 +4,13 @@ using MagicCity_ShillaWEB.Models;
 using MagicCity_ShillaWEB.Services.IServices;
 using MagicShilla_Utility.Dto;
 using MagicShilla_Utility.VM;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace MagicCity_ShillaWEB.Controllers
 {
+   
     public class ShillaController : Controller
     {
         private readonly IShillaService _shillaService;
@@ -43,6 +45,7 @@ namespace MagicCity_ShillaWEB.Controllers
             }
             return View(ModelState);
         }
+        [Authorize("admin")]
         public async Task<IActionResult> CreateShilla()
         {
             return View(new CreateShillaDto());
@@ -57,6 +60,7 @@ namespace MagicCity_ShillaWEB.Controllers
             }
             return NotFound();
         }
+        [Authorize("admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateShilla(UpdateShillaDto paramModel)
@@ -72,6 +76,7 @@ namespace MagicCity_ShillaWEB.Controllers
             }
             return View(ModelState);
         }
+        [Authorize("admin")]
         public async Task<IActionResult> DeleteShilla(int shillaId)
         {
             var shillaEntityResponse = await _shillaService.GetAsync<APIResponseModel>(shillaId);
