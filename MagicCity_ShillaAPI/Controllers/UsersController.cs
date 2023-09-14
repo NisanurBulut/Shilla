@@ -21,7 +21,7 @@ namespace MagicCity_ShillaAPI.Controllers
             this._userRepo = userRepository;
             this._mapper = mapper;
         }
-        [HttpPost("Login")]
+        [HttpPost]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto param)
         {
             if (!ModelState.IsValid)
@@ -40,7 +40,7 @@ namespace MagicCity_ShillaAPI.Controllers
             _apiResponseModel.setOk(loginResponseItem);
             return Ok(_apiResponseModel);
         }
-        [HttpPost("Register")]
+        [HttpPost]
         public async Task<IActionResult> Register([FromBody] RegisterationRequestDto param)
         {
             if (!ModelState.IsValid)

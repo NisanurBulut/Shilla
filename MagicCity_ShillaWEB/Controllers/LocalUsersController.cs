@@ -1,7 +1,11 @@
-﻿using MagicCity_ShillaWEB.Models;
+﻿using AspNetCore;
+using MagicCity_ShillaWEB.Models;
 using MagicCity_ShillaWEB.Services.IServices;
+using MagicShilla_Utility;
 using MagicShilla_Utility.Dto;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace MagicCity_ShillaWEB.Controllers
 {
@@ -19,7 +23,7 @@ namespace MagicCity_ShillaWEB.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SignUp(RegisterationRequestDto param)
+        public async Task<IActionResult> SignUp([FromForm] RegisterationRequestDto param)
         {
             var response = await _authService.RegisterAsync<APIResponse>(param);
             if (response != null || response.IsSuccess)
@@ -37,24 +41,36 @@ namespace MagicCity_ShillaWEB.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SignIn(LoginRequestDto param)
+        public async Task<IActionResult> Signin([FromForm]LoginRequestDto param)
         {
 
             var response = await _authService.LoginAsync<APIResponse>(param);
-            if (response != null || response.IsSuccess)
+            if (response == null || !response.IsSuccess)
             {
-                return RedirectToAction("Login");
+                ModelState.AddModelError("CustomError",response.ErrorMessages.FirstOrDefault());
+                return RedirectToAction("Login",param);
             }
-            return View();
+
+            var model = JsonConvert.DeserializeObject<LoginResponseDto>(Convert.ToString(response.Result));
+            HttpContext.Session.SetString(SD.SessionToken,model.Token);
+            return RedirectToAction("IndexShilla", nameof(ShillaController));
         }
         [HttpGet]
-        public IActionResult Register() { 
-            return View();
+        public IActionResult Register() {
+            RegisterationRequestDto dtoParam = new();
+            return View(dtoParam);
         }
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
-            return View(null);
+            await HttpContext.SignOutAsync();
+            HttpContext.Session.SetString(SD.SessionToken,String.Empty);
+            return RedirectToAction(nameof(Login));
+        }
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
