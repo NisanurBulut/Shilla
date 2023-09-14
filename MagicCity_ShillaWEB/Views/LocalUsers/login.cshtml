@@ -1,41 +1,41 @@
 ﻿@{
     Layout = "_LayoutAuth";
+    ViewData["Title"] = "Login";
+    @model MagicShilla_Utility.Dto.LoginRequestDto
+
 }
 <div class="row login-row-height">
     <div class="col-12 col-md-6 col-lg-7 d-none d-md-flex"></div>
     <div class="col-12 col-md-6 col-lg-5 col-xl-4  align-self-center">
         <div class="card border-0 shadow-lg blur">
+            <h5 class="font-weight-light mb-1 text-mute-high">Welcome,</h5>
+            <h3 class="font-weight-normal mb-4">Please Sign In</h3>
             <div class="card-body py-5">
-                <h5 class="font-weight-light mb-1 text-mute-high">Welcome,</h5>
-                <h3 class="font-weight-normal mb-4">Please Sign In</h3>
-                <div class="card  mb-2 overflow-hidden">
-                    <div class="card-body p-0">
-                        <label for="inputEmail" class="sr-only">Email address</label>
-                        <input type="email" id="inputEmail" class="form-control rounded-0 border-0" placeholder="Email address" required="" autofocus="">
-                        <hr class="my-0">
-                        <label for="inputPassword" class="sr-only">Password</label>
-                        <input type="password" id="inputPassword" class="form-control rounded-0 border-0" placeholder="Password" required="">
+                <form method="post">
+                    <div class="text-danger" asp-asp-validation-summary="All">
                     </div>
-                </div>
-                <div class="my-3 row">
-                    <div class="col-12 col-md py-1">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
-                            <label class="custom-control-label" for="customCheck1">Remember Me</label>
+                    <div class="card  mb-2 overflow-hidden">
+                        <div class="card-body p-0">
+                            <label asp-for="@Model.UserName" class="sr-only">Email address</label>
+                            <input asp-for="@Model.UserName" id="@Model.UserName" class="form-control rounded-0 border-0"
+                                   placeholder="Email address" required="" autofocus="">
+                            <hr class="my-2">
+                            <label for="@Model.Password" class="sr-only">Password</label>
+                            <input type="password" asp-for="@Model.Password" id="@Model.Password" class="form-control rounded-0 border-0"
+                                   placeholder="Password" required="">
                         </div>
                     </div>
-                    <div class="col-12 col-md py-1 text-left text-md-right">
-                        <a href="resetpassword.html" class="template-primary">Forgot Password?</a>
-                    </div>
-                </div>
-                <div class="mb-4">
-                    <a href="dashboard-production.html" class=" btn btn-primary btn-block">Sign In <i class="material-icons md-18">arrow_forward</i></a>
-                </div>
+
+                    <button type="submit" asp-controller="LocalUsers" asp-action="Signin" class="form-control btn btn-primary btn-block mb-4">
+                        Sign In <i class="material-icons md-18">arrow_forward</i>
+                    </button>
+                </form>
                 <div class="">
-                    <p class="text-mute">
+                    <i class="">
                         Do not have account yet?<br>
-                        Please <a href="signup1.html" class="text-template-primary-light">Sign up</a> here.
-                    </p>
+                        Please <a asp-area="" asp-controller="LocalUsers" asp-action="Register" class="text-template-primary-light">Sign up</a> here.
+                    </i>
+                    <br />
                 </div>
             </div>
         </div>

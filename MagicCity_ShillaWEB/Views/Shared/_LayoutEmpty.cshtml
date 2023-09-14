@@ -36,9 +36,6 @@
                             await Html.RenderPartialAsync("_LogoPartialView.cshtml");
                         }
                 </div>
-                <div class="col text-right align-self-center">
-                    <a asp-area="" asp-controller="LocalUsers" asp-action="Register" class="btn btn-sm btn-primary text-uppercase">Register</a>
-                </div>
             </div>
         </nav>
     </header>
@@ -46,37 +43,41 @@
    
 
     <!-- Main container starts -->
-    <div class="container main-container" id="main-container">
-            <img class="background opac blur" src="~/assets/img/login_background.jpg" />
+    <div class="container main-container" id="main-container"> 
        @RenderBody();
     </div>
     <!-- Main container ends -->
 </div>
 
-    <script src="~/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="~/assets/js/popper.min.js"></script>
-    <script src="~/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/assets/vendor/cookie/jquery.cookie.js"></script>
+<script src="~/assets/js/jquery-3.3.1.min.js"></script>
+<script src="~/assets/js/popper.min.js"></script>
+<script src="~/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/assets/vendor/cookie/jquery.cookie.js"></script>
 
-    <!-- Global js ends -->
-    <!-- Vendor or 3rd party js -->
-    <!-- date range picker -->
-    <script src="~/assets/vendor/daterangepicker-master/moment.min.js"></script>
-
-    <!-- theme picker ends -->
-    <!-- Customized page level js -->
-    <script>
-        'use strict'
-        $(document).ready(function () {
+<!-- Global js ends -->
+<!-- Vendor or 3rd party js -->
+<!-- date range picker -->
+<script src="~/assets/vendor/daterangepicker-master/moment.min.js"></script>
+<script src="~/assets/vendor/daterangepicker-master/daterangepicker.js"></script>
 
 
-        });
+<!-- Vendor or 3rd party js ends -->
+<!-- Customized template js mandatory -->
+<script src="~/assets/js/main.js"></script>
+<!-- Customized template js ends -->
+<!-- theme picker -->
+<script src="~/assets/js/style-picker.js"></script>
+<!-- theme picker ends -->
+<!-- Customized page level js -->
+<script>
+    'use strict'
+    $(document).ready(function () {
 
-    </script>
-    <!-- Customized page level js ends -->
-    @await RenderSectionAsync("Scripts", required: false)
-    @section Scripts {
-        <partial name="_ValidationScriptsPartial" />
-    }
+
+    });
+
+</script>
+<!-- Customized page level js ends -->
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
