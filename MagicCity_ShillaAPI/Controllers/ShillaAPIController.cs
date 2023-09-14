@@ -18,19 +18,19 @@ namespace MagicCity_ShillaAPI.Controllers
     [ApiController]
     public class ShillaAPIController : ControllerBase
     {
-        protected APIResponse _apiResponseModel;
+        protected APIResponseModel _apiResponseModel;
         private readonly IMapper _mapper;
         private readonly IShillaRepository _shillaRepo;
         public ShillaAPIController(IShillaRepository shillaRepo, IMapper mapper)
         {
             _mapper = mapper;
             _shillaRepo = shillaRepo;
-            this._apiResponseModel = new APIResponse();
+            this._apiResponseModel = new APIResponseModel();
         }
 
 
         [HttpGet]
-        public async Task<ActionResult<APIResponse>> GetShillas()
+        public async Task<ActionResult<APIResponseModel>> GetShillas()
         {
             IEnumerable<Shilla> entityList = await _shillaRepo.GetAllAsync();
             var response = new List<ShillaDto>();

@@ -1,4 +1,7 @@
-﻿<nav class="navbar col-12 navbar-expand ">
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor httpAcc
+@using MagicShilla_Utility;
+
+<nav class="navbar col-12 navbar-expand ">
     <button class="menu-btn btn btn-link btn-sm" type="button">
         <i class="material-icons">menu</i>
     </button>
@@ -8,13 +11,12 @@
             <input class="form-control form-control-sm" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-link btn-sm" type="submit"><i class="material-icons">search</i></button>
         </form>
-        <!-- search ends -->
-        <!-- large desktop market rates starts -->
-       
-        <!-- large desktop market rates ends -->
-        <!-- icons dropwdowns starts -->
-        <ul class="navbar-nav ml-auto">
-           
+        @if (httpAcc.HttpContext.Session.GetString(SD.SessionToken) != null &&
+      httpAcc.HttpContext.Session.GetString(SD.SessionToken).ToString().Length > 0
+      )
+        {
+            <ul class="navbar-nav ml-auto">
+
             <!-- profile dropdown-->
             <li class="nav-item dropdown ml-0 ml-sm-4">
                 <a class="nav-link dropdown-toggle profile-link" href="#" id="navbarDropdown6" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,7 +33,7 @@
                 <div class="dropdown-menu dropdown-menu-right w-300 pt-0 overflow-hidden" aria-labelledby="navbarDropdown6">
                     <div class="position-relative text-center rounded py-5">
                         <div class="background">
-                            <img src="../assets/img/background-part.png" alt="">
+                            <img src="~/assets/img/background-part.png" alt="">
                         </div>
                     </div>
                     <div class="text-center mb-3 top-60 z-2">
@@ -56,6 +58,6 @@
                 </div>
             </li>
         </ul>
-        <!-- icons dropwdowns starts -->
+        }
     </div>
 </nav>

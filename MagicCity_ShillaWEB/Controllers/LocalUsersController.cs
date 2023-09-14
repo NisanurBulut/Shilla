@@ -1,5 +1,4 @@
-﻿using AspNetCore;
-using MagicCity_ShillaWEB.Models;
+﻿using MagicCity_ShillaWEB.Models;
 using MagicCity_ShillaWEB.Services.IServices;
 using MagicShilla_Utility;
 using MagicShilla_Utility.Dto;
@@ -26,7 +25,7 @@ namespace MagicCity_ShillaWEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp([FromForm] RegisterationRequestDto param)
         {
-            var response = await _authService.RegisterAsync<APIResponse>(param);
+            var response = await _authService.RegisterAsync<APIResponseModel>(param);
             if (response != null || response.IsSuccess)
             {
                 return RedirectToAction("Login");
@@ -44,8 +43,7 @@ namespace MagicCity_ShillaWEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Signin([FromForm]LoginRequestDto param)
         {
-
-            var response = await _authService.LoginAsync<APIResponse>(param);
+            var response = await _authService.LoginAsync<APIResponseModel>(param);
             if (response == null || !response.IsSuccess)
             {
                 ModelState.AddModelError("CustomError",response.ErrorMessages.FirstOrDefault());

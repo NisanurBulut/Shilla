@@ -2,6 +2,7 @@
 using MagicCity_ShillaWEB.Services.IServices;
 using MagicShilla_Utility;
 using MagicShilla_Utility.Dto;
+using MagicShilla_Utility.VM;
 
 namespace MagicCity_ShillaWEB.Services
 {
@@ -19,12 +20,12 @@ namespace MagicCity_ShillaWEB.Services
 
         public Task<T> CreateAsync<T>(ShillaNumberCreateDto param)
         {
-            return SendAsync<T>(new APIRequest() { apiType = SD.ApiType.POST, Data = param, Url = $"{_shillaUrl}/ShillaNumber/CreateShillaNumber" });
+            return SendAsync<T>(new APIRequestModel() { apiType = SD.ApiType.POST, Data = param, Url = $"{_shillaUrl}/ShillaNumber/CreateShillaNumber" });
         }
 
         public Task<T> DeleteAsync<T>(int id)
         {
-            return SendAsync<T>(new APIRequest()
+            return SendAsync<T>(new APIRequestModel()
             {
                 apiType = SD.ApiType.DELETE,
                 Url = $"{_shillaUrl}/ShillaNumber/DeleteShillaNumber/{id}"
@@ -33,7 +34,7 @@ namespace MagicCity_ShillaWEB.Services
 
         public Task<T> GetAllAsync<T>()
         {
-            return SendAsync<T>(new APIRequest()
+            return SendAsync<T>(new APIRequestModel()
             {
                 apiType = SD.ApiType.GET,
                 Url = $"{_shillaUrl}/ShillaNumber/GetShillaNumbers"
@@ -42,7 +43,7 @@ namespace MagicCity_ShillaWEB.Services
 
         public Task<T> GetAsync<T>(int id)
         {
-            return SendAsync<T>(new APIRequest()
+            return SendAsync<T>(new APIRequestModel()
             {
                 apiType = SD.ApiType.GET,
                 Url = $"{_shillaUrl}/ShillaNumber/GetShillaNumber/{id}"
@@ -51,7 +52,7 @@ namespace MagicCity_ShillaWEB.Services
 
         public Task<T> UpdateAsync<T>(ShillaNumberUpdateDto param)
         {
-            return SendAsync<T>(new APIRequest()
+            return SendAsync<T>(new APIRequestModel()
             {
                 apiType = SD.ApiType.PUT,
                 Data = param,

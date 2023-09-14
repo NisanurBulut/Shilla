@@ -24,7 +24,7 @@ namespace MagicCity_ShillaWEB.Controllers
         public async Task<IActionResult> IndexShillaNumber()
         {
             List<ShillaNumberDto> shillaNumberDtos = new List<ShillaNumberDto>();
-            var response = await _shillaNumberService.GetAllAsync<APIResponse>();
+            var response = await _shillaNumberService.GetAllAsync<APIResponseModel>();
             if (response != null && response.IsSuccess)
             {
                 shillaNumberDtos = JsonConvert.DeserializeObject<List<ShillaNumberDto>>(Convert.ToString(response.Result));
@@ -34,7 +34,7 @@ namespace MagicCity_ShillaWEB.Controllers
         public async Task<IActionResult> CreateShillaNumber()
         {
             ShillaNumberCreateVM shillaNumberCreateVM = new ShillaNumberCreateVM();
-            var response = await _shillaService.GetAllAsync<APIResponse>();
+            var response = await _shillaService.GetAllAsync<APIResponseModel>();
             if (response != null && response.IsSuccess)
             {
                 shillaNumberCreateVM.ShillaList = JsonConvert.DeserializeObject<List<ShillaDto>>(Convert.ToString(response.Result)).
@@ -56,7 +56,7 @@ namespace MagicCity_ShillaWEB.Controllers
                 return BadRequest(shillaNumberCreateVM);
 
             }
-            var response =await _shillaNumberService.CreateAsync<APIResponse>(shillaNumberCreateVM.ShillaNumberCreateDto);
+            var response =await _shillaNumberService.CreateAsync<APIResponseModel>(shillaNumberCreateVM.ShillaNumberCreateDto);
 
             if(response!=null && response.IsSuccess)
             {

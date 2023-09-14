@@ -12,7 +12,7 @@ namespace MagicCity_ShillaAPI.Controllers
     [ApiController]
     public class ShillaNumberController : Controller
     {
-        protected APIResponse _apiResponseModel;
+        protected APIResponseModel _apiResponseModel;
         private readonly IMapper _mapper;
         private readonly IShillaNumberRepository _shillaNumberRepo;
         private readonly IShillaRepository _shillaRepo;
@@ -20,7 +20,7 @@ namespace MagicCity_ShillaAPI.Controllers
         {
             _mapper = mapper;
             _shillaNumberRepo = shillaNumberRepository;
-            this._apiResponseModel = new APIResponse();
+            this._apiResponseModel = new APIResponseModel();
             _shillaRepo = shillaRepo;
         }
 
@@ -28,7 +28,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet]
-        public async Task<ActionResult<APIResponse>> GetShillaNumbers()
+        public async Task<ActionResult<APIResponseModel>> GetShillaNumbers()
         {
             try
             {
@@ -56,7 +56,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<APIResponse>> GetShillaNumber(int id)
+        public async Task<ActionResult<APIResponseModel>> GetShillaNumber(int id)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
-        public async Task<ActionResult<APIResponse>> CreateShillaNumber([FromBody] ShillaNumberCreateDto shillaNumberDto)
+        public async Task<ActionResult<APIResponseModel>> CreateShillaNumber([FromBody] ShillaNumberCreateDto shillaNumberDto)
         {
             try
             {
@@ -134,7 +134,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpDelete("{id:int}", Name = "DeleteShillaNumberById")]
-        public async Task<ActionResult<APIResponse>> DeleteShillaNumber(int id)
+        public async Task<ActionResult<APIResponseModel>> DeleteShillaNumber(int id)
         {
             try
             {
@@ -164,7 +164,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPut("{id:int}", Name = "UpdateShillaNumber")]
-        public async Task<ActionResult<APIResponse>> UpdateShillaNumber(int id, [FromBody] ShillaNumberUpdateDto shillaNumberDto)
+        public async Task<ActionResult<APIResponseModel>> UpdateShillaNumber(int id, [FromBody] ShillaNumberUpdateDto shillaNumberDto)
         {
             try
             {

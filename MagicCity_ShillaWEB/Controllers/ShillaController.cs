@@ -21,7 +21,7 @@ namespace MagicCity_ShillaWEB.Controllers
         public async Task<IActionResult> IndexShilla()
         {
             List<ShillaDto> shillaDtos = new List<ShillaDto>();
-            var response = await _shillaService.GetAllAsync<APIResponse>();
+            var response = await _shillaService.GetAllAsync<APIResponseModel>();
             if(response!=null  && response.IsSuccess)
             {
                 shillaDtos = JsonConvert.DeserializeObject<List<ShillaDto>>(Convert.ToString(response.Result));
@@ -36,7 +36,7 @@ namespace MagicCity_ShillaWEB.Controllers
             {
                 return View(ModelState);
             }
-            var response = await _shillaService.CreateAsync<APIResponse>(paramModel);
+            var response = await _shillaService.CreateAsync<APIResponseModel>(paramModel);
             if (response != null && response.IsSuccess)
             {
                 return RedirectToAction(nameof(IndexShilla));
@@ -49,7 +49,7 @@ namespace MagicCity_ShillaWEB.Controllers
         }
         public async Task<IActionResult> UpdateShilla(int shillaId)
         {
-            var shillaEntityResponse = await _shillaService.GetAsync<APIResponse>(shillaId);
+            var shillaEntityResponse = await _shillaService.GetAsync<APIResponseModel>(shillaId);
             if (shillaEntityResponse!= null && shillaEntityResponse.IsSuccess==true)
             {
                 ShillaDto shillaDtoModel = JsonConvert.DeserializeObject<ShillaDto>(Convert.ToString(shillaEntityResponse.Result));
@@ -65,7 +65,7 @@ namespace MagicCity_ShillaWEB.Controllers
             {
                 return View(ModelState);
             }
-            var response = await _shillaService.UpdateAsync<APIResponse>(paramModel);
+            var response = await _shillaService.UpdateAsync<APIResponseModel>(paramModel);
             if (response != null && response.IsSuccess)
             {
                 return RedirectToAction(nameof(IndexShilla));
@@ -74,7 +74,7 @@ namespace MagicCity_ShillaWEB.Controllers
         }
         public async Task<IActionResult> DeleteShilla(int shillaId)
         {
-            var shillaEntityResponse = await _shillaService.GetAsync<APIResponse>(shillaId);
+            var shillaEntityResponse = await _shillaService.GetAsync<APIResponseModel>(shillaId);
             if (shillaEntityResponse != null && shillaEntityResponse.IsSuccess == true)
             {
                 ShillaDto shillaDtoModel = JsonConvert.DeserializeObject<ShillaDto>(Convert.ToString(shillaEntityResponse.Result));
@@ -87,7 +87,7 @@ namespace MagicCity_ShillaWEB.Controllers
         public async Task<IActionResult> DeleteShilla(ShillaDto paramModel)
         {
            
-            var response = await _shillaService.DeleteAsync<APIResponse>(paramModel.Id);
+            var response = await _shillaService.DeleteAsync<APIResponseModel>(paramModel.Id);
             if (response != null && response.IsSuccess)
             {
                 return RedirectToAction(nameof(IndexShilla));

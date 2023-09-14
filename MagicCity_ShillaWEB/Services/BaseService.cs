@@ -11,7 +11,7 @@ namespace MagicCity_ShillaWEB.Services
 {
     public class BaseService : IBaseService
     {
-        public APIResponse responseModel { get; set; }
+        public APIResponseModel responseModel { get; set; }
         public IHttpClientFactory httpClientFactory { get; set; }
         public BaseService(IHttpClientFactory httpClientFactoryParam)
         {
@@ -19,7 +19,7 @@ namespace MagicCity_ShillaWEB.Services
             httpClientFactory = httpClientFactoryParam;
         }
 
-        public async Task<T> SendAsync<T>(APIRequest apiRequest)
+        public async Task<T> SendAsync<T>(APIRequestModel apiRequest)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace MagicCity_ShillaWEB.Services
             }
             catch (Exception ex)
             {
-                var dtoItem = new APIResponse
+                var dtoItem = new APIResponseModel
                 {
                     ErrorMessages = new List<string> { Convert.ToString(ex.Message) },
                     IsSuccess = false

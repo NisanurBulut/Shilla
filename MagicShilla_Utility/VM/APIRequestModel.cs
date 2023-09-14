@@ -3,7 +3,7 @@ using static MagicShilla_Utility.SD;
 
 namespace MagicShilla_Utility.VM
 {
-    public class APIRequest
+    public class APIRequestModel
     {
         public ApiType apiType { get; set; } = ApiType.GET;
         public string Url { get; set; }
