@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace MagicCity_ShillaWEB.Models
+namespace MagicShilla_Utility.VM
 {
     public class APIResponse
     {

@@ -1,6 +1,7 @@
 ﻿using MagicCity_ShillaWEB.Models;
 using MagicCity_ShillaWEB.Services.IServices;
 using MagicShilla_Utility;
+using MagicShilla_Utility.VM;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
