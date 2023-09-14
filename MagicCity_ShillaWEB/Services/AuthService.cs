@@ -3,6 +3,7 @@ using MagicCity_ShillaWEB.Services.IServices;
 using MagicShilla_Utility;
 using MagicShilla_Utility.Dto;
 using MagicShilla_Utility.Entity;
+using MagicShilla_Utility.VM;
 
 namespace MagicCity_ShillaWEB.Services
 {

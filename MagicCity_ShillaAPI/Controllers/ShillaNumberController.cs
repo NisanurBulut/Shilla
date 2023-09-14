@@ -4,7 +4,7 @@ using MagicShilla_Utility.Entity;
 using MagicCity_ShillaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
-using MagicCity_ShillaWEB.Models;
+using MagicShilla_Utility.VM;
 
 namespace MagicCity_ShillaAPI.Controllers
 {

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MagicCity_ShillaAPI.Repository.IRepository;
-using MagicCity_ShillaWEB.Models;
 using MagicShilla_Utility.Dto;
+using MagicShilla_Utility.VM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 

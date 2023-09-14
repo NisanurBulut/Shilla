@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using System.Collections.Immutable;
-using MagicCity_ShillaWEB.Models;
 using System.Net;
+using MagicShilla_Utility.VM;
 
 namespace MagicCity_ShillaAPI.Controllers
 {

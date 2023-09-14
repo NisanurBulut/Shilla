@@ -1,6 +1,7 @@
-﻿using static MagicShilla_Utility.SD;
+﻿
+using static MagicShilla_Utility.SD;
 
-namespace MagicCity_ShillaWEB.Models
+namespace MagicShilla_Utility.VM
 {
     public class APIRequest
     {
