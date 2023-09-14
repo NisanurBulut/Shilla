@@ -61,7 +61,7 @@ namespace MagicCity_ShillaWEB.Controllers
             var principal = new ClaimsPrincipal(identityItem);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,principal);
 
-            return RedirectToAction("IndexShilla", nameof(ShillaController));
+            return RedirectToAction("Index", "Home");
         }
         [HttpGet]
         public IActionResult Register() {

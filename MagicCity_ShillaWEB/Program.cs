@@ -12,9 +12,6 @@ builder.Services.AddHttpClient<IShillaService, ShillaService>();
 
 builder.Services.AddScoped<IShillaService, ShillaService>();
 
-builder.Services.AddHttpClient<IShillaNumberService, ShillaNumberService>();
-
-builder.Services.AddScoped<IShillaNumberService, ShillaNumberService>();
 builder.Services.AddHttpClient<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 

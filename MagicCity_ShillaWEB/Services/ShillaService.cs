@@ -11,52 +11,56 @@ namespace MagicCity_ShillaWEB.Services
         private readonly IHttpClientFactory _httpClientFactory;
 
         private string _shillaUrl;
-      
+
         public ShillaService(IHttpClientFactory httpClientFactoryParam, IConfiguration configuration) : base(httpClientFactoryParam)
         {
             this._httpClientFactory = httpClientFactoryParam;
             this._shillaUrl = configuration.GetValue<string>("ServiceUrls:ShillaAPI");
         }
 
-        public Task<T> CreateAsync<T>(CreateShillaDto param)
+        public Task<T> CreateAsync<T>(CreateShillaDto param, string token)
         {
-            return SendAsync<T>(new APIRequestModel() { apiType = SD.ApiType.POST, Data = param, Url = $"{_shillaUrl}/ShillaAPI/CreateShilla" });
+            return SendAsync<T>(new APIRequestModel() { apiType = SD.ApiType.POST, Data = param, Url = $"{_shillaUrl}/ShillaAPI/CreateShilla", Token = token });
         }
 
-        public Task<T> DeleteAsync<T>(int id)
+        public Task<T> DeleteAsync<T>(int id, string token)
         {
             return SendAsync<T>(new APIRequestModel()
             {
                 apiType = SD.ApiType.DELETE,
-                Url = $"{_shillaUrl}/ShillaAPI/DeleteShilla/{id}"
+                Url = $"{_shillaUrl}/ShillaAPI/DeleteShilla/{id}",
+                Token = token
             });
         }
 
-        public Task<T> GetAllAsync<T>()
+        public Task<T> GetAllAsync<T>(string token)
         {
             return SendAsync<T>(new APIRequestModel()
             {
                 apiType = SD.ApiType.GET,
-                Url = $"{_shillaUrl}/ShillaAPI/GetShillas"
+                Url = $"{_shillaUrl}/ShillaAPI/GetShillas",
+                Token = token
             });
         }
 
-        public Task<T> GetAsync<T>(int id)
+        public Task<T> GetAsync<T>(int id, string token)
         {
             return SendAsync<T>(new APIRequestModel()
             {
                 apiType = SD.ApiType.GET,
-                Url = $"{_shillaUrl}/ShillaAPI/GetShilla/{id}"
+                Url = $"{_shillaUrl}/ShillaAPI/GetShilla/{id}",
+                Token = token
             });
         }
 
-        public Task<T> UpdateAsync<T>(UpdateShillaDto param)
+        public Task<T> UpdateAsync<T>(UpdateShillaDto param, string token)
         {
             return SendAsync<T>(new APIRequestModel()
             {
                 apiType = SD.ApiType.PUT,
                 Data = param,
-                Url = $"{_shillaUrl}/ShillaAPI/UpdateShilla/{param.Id}"
+                Url = $"{_shillaUrl}/ShillaAPI/UpdateShilla/{param.Id}",
+                Token = token
             });
         }
     }

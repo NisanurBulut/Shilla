@@ -4,6 +4,7 @@ using MagicShilla_Utility;
 using MagicShilla_Utility.VM;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -52,6 +53,11 @@ namespace MagicCity_ShillaWEB.Services
 
 
                 HttpResponseMessage apiResponse = null;
+
+                if(!string.IsNullOrEmpty(apiRequest.Token)){
+                    clientItem.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiRequest.Token);
+                }
+
                 apiResponse = await clientItem.SendAsync(httpRequestMessage);
 
                 var apiContent = await apiResponse.Content.ReadAsStringAsync();
