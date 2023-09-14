@@ -4,6 +4,7 @@ using MagicShilla_Utility;
 using MagicShilla_Utility.VM;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -11,7 +12,7 @@ namespace MagicCity_ShillaWEB.Services
 {
     public class BaseService : IBaseService
     {
-        public APIResponse responseModel { get; set; }
+        public APIResponseModel responseModel { get; set; }
         public IHttpClientFactory httpClientFactory { get; set; }
         public BaseService(IHttpClientFactory httpClientFactoryParam)
         {
@@ -19,7 +20,7 @@ namespace MagicCity_ShillaWEB.Services
             httpClientFactory = httpClientFactoryParam;
         }
 
-        public async Task<T> SendAsync<T>(APIRequest apiRequest)
+        public async Task<T> SendAsync<T>(APIRequestModel apiRequest)
         {
             try
             {
@@ -52,6 +53,11 @@ namespace MagicCity_ShillaWEB.Services
 
 
                 HttpResponseMessage apiResponse = null;
+
+                if(!string.IsNullOrEmpty(apiRequest.Token)){
+                    clientItem.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiRequest.Token);
+                }
+
                 apiResponse = await clientItem.SendAsync(httpRequestMessage);
 
                 var apiContent = await apiResponse.Content.ReadAsStringAsync();
@@ -62,7 +68,7 @@ namespace MagicCity_ShillaWEB.Services
             }
             catch (Exception ex)
             {
-                var dtoItem = new APIResponse
+                var dtoItem = new APIResponseModel
                 {
                     ErrorMessages = new List<string> { Convert.ToString(ex.Message) },
                     IsSuccess = false

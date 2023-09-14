@@ -12,12 +12,12 @@ namespace MagicCity_ShillaAPI.Controllers
     [ApiController]
     public class UsersController : Controller
     {
-        protected APIResponse _apiResponseModel;
+        protected APIResponseModel _apiResponseModel;
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepo;
         public UsersController(IUserRepository userRepository, IMapper mapper)
         {
-            this._apiResponseModel = new APIResponse();
+            this._apiResponseModel = new APIResponseModel();
             this._userRepo = userRepository;
             this._mapper = mapper;
         }

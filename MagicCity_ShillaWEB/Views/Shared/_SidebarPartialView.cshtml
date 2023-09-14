@@ -1,11 +1,12 @@
 ﻿
+
 <div class="sidebar">
     <!-- Logo sidebar -->
     @{
         await Html.RenderPartialAsync("_LogoPartialView.cshtml");
     }
     <!-- Logo sidebar ends -->
-
+  
     <h6 class="subtitle fs11">Shilla Process</h6>
     <ul class="nav flex-column">
         <li class="nav-item">
@@ -14,16 +15,6 @@
 
         <li class="nav-item">
             <a class="nav-link" asp-area="" asp-controller="Drama" asp-action="IndexDrama"><i class="material-icons icon">drama</i><span>Dramas</span></a>
-        </li>
-    </ul>
-    <h6 class="subtitle fs11">Shilla Number Process</h6>
-    <ul class="nav flex-column">
-
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="ShillaNumber" asp-action="IndexShillaNumber"><i class="material-icons icon">style</i><span>Shilla Numbers</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="ShillaNumber" asp-action="CreateShillaNumber"><i class="material-icons icon">style</i><span>Create Shilla Number</span></a>
         </li>
     </ul>
 </div>

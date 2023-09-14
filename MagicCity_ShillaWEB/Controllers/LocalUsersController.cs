@@ -1,12 +1,13 @@
-﻿using AspNetCore;
-using MagicCity_ShillaWEB.Models;
+﻿using MagicCity_ShillaWEB.Models;
 using MagicCity_ShillaWEB.Services.IServices;
 using MagicShilla_Utility;
 using MagicShilla_Utility.Dto;
 using MagicShilla_Utility.VM;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Security.Claims;
 
 namespace MagicCity_ShillaWEB.Controllers
 {
@@ -26,7 +27,7 @@ namespace MagicCity_ShillaWEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignUp([FromForm] RegisterationRequestDto param)
         {
-            var response = await _authService.RegisterAsync<APIResponse>(param);
+            var response = await _authService.RegisterAsync<APIResponseModel>(param);
             if (response != null || response.IsSuccess)
             {
                 return RedirectToAction("Login");
@@ -44,8 +45,7 @@ namespace MagicCity_ShillaWEB.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Signin([FromForm]LoginRequestDto param)
         {
-
-            var response = await _authService.LoginAsync<APIResponse>(param);
+            var response = await _authService.LoginAsync<APIResponseModel>(param);
             if (response == null || !response.IsSuccess)
             {
                 ModelState.AddModelError("CustomError",response.ErrorMessages.FirstOrDefault());
@@ -54,7 +54,14 @@ namespace MagicCity_ShillaWEB.Controllers
 
             var model = JsonConvert.DeserializeObject<LoginResponseDto>(Convert.ToString(response.Result));
             HttpContext.Session.SetString(SD.SessionToken,model.Token);
-            return RedirectToAction("IndexShilla", nameof(ShillaController));
+
+            var identityItem = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+            identityItem.AddClaim(new Claim(ClaimTypes.Name, model.User.UserName));
+            identityItem.AddClaim(new Claim(ClaimTypes.Role, model.User.Role));
+            var principal = new ClaimsPrincipal(identityItem);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,principal);
+
+            return RedirectToAction("Index", "Home");
         }
         [HttpGet]
         public IActionResult Register() {

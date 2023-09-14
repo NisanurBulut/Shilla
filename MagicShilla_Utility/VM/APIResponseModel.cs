@@ -2,9 +2,9 @@
 
 namespace MagicShilla_Utility.VM
 {
-    public class APIResponse
+    public class APIResponseModel
     {
-        public APIResponse()
+        public APIResponseModel()
         {
             IsSuccess = false;
             ErrorMessages = new List<string>();
