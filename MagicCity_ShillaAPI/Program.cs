@@ -27,6 +27,7 @@ builder.Services.AddDbContext<ShillaDbContext>(option =>
     option => option.MigrationsAssembly("MagicCity_ShillaAPI"));
 
 });
+builder.Services.AddResponseCaching();
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 builder.Services.AddApiVersioning(options =>
 {
