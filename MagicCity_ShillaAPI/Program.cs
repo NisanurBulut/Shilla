@@ -40,7 +40,13 @@ builder.Services.AddApiVersioning(options =>
 //    options.GroupNameFormat = "'v'VVV";
 //});
 var keyItem = builder.Configuration.GetValue<string>("ApiSettings:Secret");
-
+builder.Services.AddControllers(option =>
+{
+    option.CacheProfiles.Add("Default30", new CacheProfile()
+    {
+        Duration=30
+    });
+});
 builder.Services.AddAuthentication(a =>
 {
     a.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
