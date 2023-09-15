@@ -260,7 +260,7 @@ It basically separates the user interface from other parts of the application. <
 </li><li>
 
 [AutoMapper](https://www.nuget.org/packages/AutoMapper/12.0.1)
-</li></li>
+</li><li>
 
 [Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer/5.1.0](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer/5.1.0/)
 </li></ol></td><td><ol><li> 
