@@ -27,6 +27,7 @@ builder.Services.AddDbContext<ShillaDbContext>(option =>
     option => option.MigrationsAssembly("MagicCity_ShillaAPI"));
 
 });
+builder.Services.AddResponseCaching();
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 builder.Services.AddApiVersioning(options =>
 {
@@ -57,8 +58,12 @@ builder.Services.AddAuthentication(a =>
 
 builder.Services.AddControllers(option =>
 {
+    option.CacheProfiles.Add("Default30", new CacheProfile()
+    {
+        Duration = 30
+    });
     // option.ReturnHttpNotAcceptable = true;
-}).AddNewtonsoftJson();
+}).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

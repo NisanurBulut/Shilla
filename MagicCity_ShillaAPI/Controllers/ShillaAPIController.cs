@@ -30,6 +30,10 @@ namespace MagicCity_ShillaAPI.Controllers
 
 
         [HttpGet]
+        [ResponseCache(CacheProfileName ="Default30")]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<APIResponseModel>> GetShillas()
         {
             IEnumerable<Shilla> entityList = await _shillaRepo.GetAllAsync();
@@ -51,6 +55,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore =true)]
         public async Task<ActionResult<ShillaDto>> GetShilla(int id)
         {
             if (id == 0)
