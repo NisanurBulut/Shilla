@@ -32,7 +32,12 @@ builder.Services.AddApiVersioning(options =>
 {
     options.AssumeDefaultVersionWhenUnspecified = true;
     options.DefaultApiVersion = new ApiVersion(1,0);
+    options.ReportApiVersions= true;
 });
+//builder.Services.AddVersionedApiExplorer(options =>
+//{
+//    options.GroupNameFormat = "'v'VVV";
+//});
 var keyItem = builder.Configuration.GetValue<string>("ApiSettings:Secret");
 
 builder.Services.AddAuthentication(a =>
@@ -77,13 +82,30 @@ builder.Services.AddSwaggerGen(options =>
                      Type=ReferenceType.SecurityScheme,
                      Id="Bearer"
                  },
-                 Scheme="oayth2",
+                 Scheme="oath2",
                  Name="Bearer",
                  In=ParameterLocation.Header
         },
              new List<string>()
         }
     });
+
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1.0",
+        Title = "Magic Shilla",
+        Description = "API to manage Shilla",
+        TermsOfService = new Uri("https://github.com/NisanurBulut/Shilla"),
+        Contact = new OpenApiContact
+        {
+            Name = "Nisanur Bulut",
+            Email = "nisanurbulutnb@gmail.com"
+        },
+        License = new OpenApiLicense{
+            Name="Open to source",
+            Url= new Uri("https://github.com/NisanurBulut/Shilla")
+        }
+    }); 
 });
 builder.Services.AddScoped<IShillaRepository, ShillaRepository>();
 builder.Services.AddScoped<IShillaNumberRepository, ShillaNumberRepository>();

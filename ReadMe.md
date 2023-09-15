@@ -303,5 +303,8 @@ It basically separates the user interface from other parts of the application. <
 
 </table>
 
+<hr/>
 
+### Swagger Documentation
 
+![swagger_documentation](/MagicCity_ShillaAPI/asset/swagger_documentation.PNG)
