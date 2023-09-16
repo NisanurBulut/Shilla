@@ -30,13 +30,21 @@ namespace MagicCity_ShillaAPI.Controllers
 
 
         [HttpGet]
-        [ResponseCache(CacheProfileName ="Default30")]
+        [ResponseCache(CacheProfileName = "Default30")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<APIResponseModel>> GetShillas()
+        public async Task<ActionResult<APIResponseModel>> GetShillas([FromQuery(Name = "filterOccupancy")] int? paramOccupancy)
         {
-            IEnumerable<Shilla> entityList = await _shillaRepo.GetAllAsync();
+            IEnumerable<Shilla> entityList;
+            if (paramOccupancy > 0)
+            {
+                entityList = await _shillaRepo.GetAllAsync(a => a.Occupancy == paramOccupancy);
+            }
+            else
+            {
+                entityList = await _shillaRepo.GetAllAsync();
+            }
             var response = new List<ShillaDto>();
             foreach (var entity in entityList)
             {
@@ -55,7 +63,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [ResponseCache(Location = ResponseCacheLocation.None, NoStore =true)]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<ActionResult<ShillaDto>> GetShilla(int id)
         {
             if (id == 0)
