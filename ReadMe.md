@@ -1,5 +1,5 @@
 ﻿﻿
-# Magic Shilla App 📌 On Going
+# Magic Shilla App 📌 
 
 ❤ I have missed the code Net core 
 
