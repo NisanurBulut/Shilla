@@ -1,20 +1,23 @@
 ﻿using MagicShilla_Utility.Entity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MagicShilla_Utility.Data
 {
-    public class ShillaDbContext:DbContext
+    public class ShillaDbContext : IdentityDbContext<ApplicationUser>
     {
         public ShillaDbContext(DbContextOptions<ShillaDbContext> options):base(options)
         {
             
         }
+        public DbSet<ApplicationUser> applicationUsers { get; set; }
         public DbSet<LocalUser>  LocalUsers{ get; set; }
         public DbSet<Shilla> Shillas { get; set; }
         public DbSet<ShillaNumber> ShillaNumbers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Shilla>().HasData(
 
     new Shilla

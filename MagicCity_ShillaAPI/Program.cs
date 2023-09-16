@@ -1,18 +1,18 @@
-using MagicCity_ShillaAPI;
-using MagicCity_ShillaAPI.Controllers;
-using MagicShilla_Utility.Data;
 using MagicCity_ShillaAPI.Logging;
 using MagicCity_ShillaAPI.Repository;
 using MagicCity_ShillaAPI.Repository.IRepository;
-using Microsoft.EntityFrameworkCore;
-using Serilog;
 using MagicShilla_Utility;
+using MagicShilla_Utility.Data;
+using MagicShilla_Utility.Entity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using Microsoft.Extensions.Configuration;
-using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using Serilog;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +27,8 @@ builder.Services.AddDbContext<ShillaDbContext>(option =>
     option => option.MigrationsAssembly("MagicCity_ShillaAPI"));
 
 });
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ShillaDbContext>();
 builder.Services.AddResponseCaching();
 builder.Services.AddAutoMapper(typeof(MappingConfig));
 builder.Services.AddApiVersioning(options =>
