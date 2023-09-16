@@ -2,6 +2,7 @@
 using MagicCity_ShillaAPI.Repository.IRepository;
 using MagicShilla_Utility.Dto;
 using MagicShilla_Utility.VM;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
@@ -15,6 +16,7 @@ namespace MagicCity_ShillaAPI.Controllers
         protected APIResponseModel _apiResponseModel;
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepo;
+        
         public UsersController(IUserRepository userRepository, IMapper mapper)
         {
             this._apiResponseModel = new APIResponseModel();

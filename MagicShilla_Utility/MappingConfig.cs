@@ -14,6 +14,7 @@ namespace MagicShilla_Utility
             CreateMap<ShillaNumber, ShillaNumberDto>().ReverseMap();
             CreateMap<ShillaNumber, ShillaNumberCreateDto>().ReverseMap();
             CreateMap<ShillaNumber, ShillaNumberUpdateDto>().ReverseMap();
+            CreateMap<ApplicationUser,LocalUserDto>().ReverseMap();
         }
     }
 }

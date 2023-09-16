@@ -8,6 +8,6 @@ namespace MagicCity_ShillaAPI.Repository.IRepository
     {
         Task<bool> IsUniqueUserAsync(string userName);
         Task<LoginResponseDto> LoginUserAsync(LoginRequestDto loginRequestDto);
-        Task<LocalUser> RegisterAsync(RegisterationRequestDto registerationRequestDto);
+        Task<LocalUserDto> RegisterAsync(RegisterationRequestDto registerationRequestDto);
     }
 }

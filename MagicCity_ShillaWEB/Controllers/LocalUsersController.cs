@@ -55,12 +55,6 @@ namespace MagicCity_ShillaWEB.Controllers
             var model = JsonConvert.DeserializeObject<LoginResponseDto>(Convert.ToString(response.Result));
             HttpContext.Session.SetString(SD.SessionToken,model.Token);
 
-            var identityItem = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-            identityItem.AddClaim(new Claim(ClaimTypes.Name, model.User.UserName));
-            identityItem.AddClaim(new Claim(ClaimTypes.Role, model.User.Role));
-            var principal = new ClaimsPrincipal(identityItem);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,principal);
-
             return RedirectToAction("Index", "Home");
         }
         [HttpGet]
