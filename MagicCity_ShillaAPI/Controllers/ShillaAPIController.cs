@@ -35,20 +35,20 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<APIResponseModel>> GetShillas([FromQuery(Name = "filterOccupancy")] int? paramOccupancy,
-            [FromQuery(Name ="filterName")] string searchParam)
+            [FromQuery(Name ="filterName")] string searchParam, int PageSize = 10, int PageNumber = 1)
         {
             IEnumerable<Shilla> entityList;
             if (paramOccupancy > 0)
             {
-                entityList = await _shillaRepo.GetAllAsync(a => a.Occupancy == paramOccupancy);
+                entityList = await _shillaRepo.GetAllAsync(a => a.Occupancy == paramOccupancy, PageSize: PageSize,PageNumber:PageNumber);
             }
             else
             {
-                entityList = await _shillaRepo.GetAllAsync();
+                entityList = await _shillaRepo.GetAllAsync(PageSize: PageSize, PageNumber: PageNumber);
             }
             if (!string.IsNullOrEmpty(searchParam))
             {
-                entityList = await _shillaRepo.GetAllAsync(a=>a.Name.ToLower().Contains(searchParam));
+                entityList = await _shillaRepo.GetAllAsync(a=>a.Name.ToLower().Contains(searchParam), PageSize: PageSize, PageNumber: PageNumber);
             }
             var response = new List<ShillaDto>();
             foreach (var entity in entityList)
