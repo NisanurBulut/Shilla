@@ -41,7 +41,7 @@ namespace MagicCity_ShillaAPI.Repository
             return await queryable.FirstOrDefaultAsync();
         }
 
-        public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? filter = null, string? includeProperties = null, int PageSize = 10, int PageNumber = 1)
+        public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? filter = null, string? includeProperties = null, int PageSize = 0, int PageNumber = 1)
         {
             IQueryable<T> queryable = dbSet;
             if (filter != null)

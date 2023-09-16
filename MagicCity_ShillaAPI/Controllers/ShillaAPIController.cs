@@ -37,7 +37,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<APIResponseModel>> GetShillas([FromQuery(Name = "filterOccupancy")] int? paramOccupancy,
-            [FromQuery(Name ="filterName")] string searchParam, int PageSize = 10, int PageNumber = 1)
+            [FromQuery(Name ="filterName")] string searchParam, int PageSize = 0, int PageNumber = 1)
         {
             IEnumerable<Shilla> entityList;
             if (paramOccupancy > 0)
