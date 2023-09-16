@@ -5,14 +5,14 @@ using MagicCity_ShillaAPI.Repository.IRepository;
 
 namespace MagicCity_ShillaAPI.Repository
 {
-    public class Repository<T>:IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         private ShillaDbContext _dbContext;
         internal DbSet<T> dbSet;
         public Repository(ShillaDbContext dbContext)
         {
             _dbContext = dbContext;
-            dbSet= _dbContext.Set<T>();
+            dbSet = _dbContext.Set<T>();
         }
         public async Task CreateAsync(T shillaEntity)
         {
@@ -31,9 +31,9 @@ namespace MagicCity_ShillaAPI.Repository
             {
                 queryable = queryable.Where(filter);
             }
-            if(includeProperties != null)
+            if (includeProperties != null)
             {
-                foreach(var includePropItem in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                foreach (var includePropItem in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     queryable.Include(includePropItem);
                 }
@@ -41,13 +41,20 @@ namespace MagicCity_ShillaAPI.Repository
             return await queryable.FirstOrDefaultAsync();
         }
 
-        public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
+        public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? filter = null, string? includeProperties = null, int PageSize = 0, int PageNumber = 1)
         {
-            IQueryable<T> queryable =dbSet;
+            IQueryable<T> queryable = dbSet;
             if (filter != null)
             {
                 queryable = queryable.Where(filter);
             }
+
+            if (PageSize > 0)
+            {
+                PageSize = (PageSize > 10) ? 100 : PageSize;
+                queryable = queryable.Skip(PageSize * (PageNumber - 1)).Take(PageSize);
+            }
+
             if (includeProperties != null)
             {
                 foreach (var includePropItem in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
@@ -69,6 +76,6 @@ namespace MagicCity_ShillaAPI.Repository
             await _dbContext.SaveChangesAsync();
         }
 
-      
+
     }
 }

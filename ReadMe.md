@@ -263,6 +263,9 @@ It basically separates the user interface from other parts of the application. <
 </li><li>
 
 [Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer/5.1.0](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer/5.1.0/)
+</li><li>
+
+[Microsoft.AspNetCore.Identity.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.AspNetCore.Identity.EntityFrameworkCore/7.0.0-preview.5.22303.8)
 </li></ol></td><td><ol><li> 
 
 [What is JSON Patch?](https://jsonpatch.com/) 

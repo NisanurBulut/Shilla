@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using System.Collections.Immutable;
 using System.Net;
 using MagicShilla_Utility.VM;
+using Newtonsoft.Json.Serialization;
+using System.Text.Json;
 
 namespace MagicCity_ShillaAPI.Controllers
 {
@@ -30,18 +32,37 @@ namespace MagicCity_ShillaAPI.Controllers
 
 
         [HttpGet]
-        [ResponseCache(CacheProfileName ="Default30")]
+        [ResponseCache(CacheProfileName = "Default30")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<APIResponseModel>> GetShillas()
+        public async Task<ActionResult<APIResponseModel>> GetShillas([FromQuery(Name = "filterOccupancy")] int? paramOccupancy,
+            [FromQuery(Name ="filterName")] string searchParam, int PageSize = 0, int PageNumber = 1)
         {
-            IEnumerable<Shilla> entityList = await _shillaRepo.GetAllAsync();
+            IEnumerable<Shilla> entityList;
+            if (paramOccupancy > 0)
+            {
+                entityList = await _shillaRepo.GetAllAsync(a => a.Occupancy == paramOccupancy, PageSize: PageSize,PageNumber:PageNumber);
+            }
+            else
+            {
+                entityList = await _shillaRepo.GetAllAsync(PageSize: PageSize, PageNumber: PageNumber);
+            }
+            if (!string.IsNullOrEmpty(searchParam))
+            {
+                entityList = await _shillaRepo.GetAllAsync(a=>a.Name.ToLower().Contains(searchParam), PageSize: PageSize, PageNumber: PageNumber);
+            }
             var response = new List<ShillaDto>();
             foreach (var entity in entityList)
             {
                 response.Add(_mapper.Map<ShillaDto>(entity));
             }
+            Pagination pagination = new Pagination
+            {
+                PageSize = PageSize,
+                PageNumber = PageNumber,
+            };
+            Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(pagination));
             _apiResponseModel.Result = response;
             _apiResponseModel.IsSuccess = true;
             _apiResponseModel.StatusCode = HttpStatusCode.OK;
@@ -55,7 +76,7 @@ namespace MagicCity_ShillaAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
-        [ResponseCache(Location = ResponseCacheLocation.None, NoStore =true)]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<ActionResult<ShillaDto>> GetShilla(int id)
         {
             if (id == 0)
