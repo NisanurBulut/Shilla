@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using System.Collections.Immutable;
 using System.Net;
 using MagicShilla_Utility.VM;
+using Newtonsoft.Json.Serialization;
+using System.Text.Json;
 
 namespace MagicCity_ShillaAPI.Controllers
 {
@@ -55,6 +57,12 @@ namespace MagicCity_ShillaAPI.Controllers
             {
                 response.Add(_mapper.Map<ShillaDto>(entity));
             }
+            Pagination pagination = new Pagination
+            {
+                PageSize = PageSize,
+                PageNumber = PageNumber,
+            };
+            Response.Headers.Add("X-Pagination",JsonSerializer.Serialize(pagination));
             _apiResponseModel.Result = response;
             _apiResponseModel.IsSuccess = true;
             _apiResponseModel.StatusCode = HttpStatusCode.OK;
