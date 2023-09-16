@@ -290,6 +290,9 @@ It basically separates the user interface from other parts of the application. <
 </li><li>
 
 [<i>IEnumerable vs IQueryable</i>](https://www.youtube.com/watch?v=J2u1DmnE9mU)
+</li><li>
+
+[<i>Udemy Course RESTful Web API - The Complete Guide (.NET7 API) Part 1</i>](https://www.udemy.com/course/restful-api-with-asp-dot-net-core-web-api/)
 </li></ol></td></tr></table>
 
 <hr/>
